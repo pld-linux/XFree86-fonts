@@ -25,7 +25,7 @@ Prereq:		/usr/X11R6/bin/mkfontdir
 Prereq:		textutils
 Prereq:		sed
 Obsoletes:	XFree86-latin2-fonts
-BuildArch:	noarch
+# It CAN'T BE noarch because ifarch alpha for PEX fonts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
