@@ -1,8 +1,8 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
-Version:	4.0.1
-Release:	2
+Version:	4.0.2
+Release:	1
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -199,9 +199,9 @@ mv -f 75dpi/{char,term,ncenR{18,24},lutBS{08,19,24},lutRS{08,19,24}}* xc/fonts/b
 
 rm -rf 100dpi 75dpi misc
 
-%patch0 -p0
-%patch1 -p1
-%patch2 -p1
+#%patch0 -p0
+#%patch1 -p1
+#%patch2 -p1
 
 %build
 %{__make} all -C ulT1mo-beta-1.0
