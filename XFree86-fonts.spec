@@ -17,8 +17,8 @@ Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
 Patch2:		%{name}-do_not_run_xftchache.patch
 # added release because 4.1.0-1 had broken libXfont/bdftopcf
-BuildRequires:	XFree86 = %{version}
-BuildRequires:	XFree86-devel = %{version}
+BuildRequires:	XFree86 >= %{version}
+BuildRequires:	XFree86-devel >= %{version}
 BuildRequires:	perl
 BuildRequires:	t1utils
 Prereq:		/usr/X11R6/bin/mkfontdir
