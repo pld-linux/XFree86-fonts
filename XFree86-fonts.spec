@@ -872,11 +872,11 @@ done
 
 %build
 cd xc/fonts
-imake -DBuildFonts -DUseInstalled -I%{_libdir}/X11/config
+imake -DBuildFonts -DUseInstalled -I%{_prefix}/lib/X11/config
 %{__make} Makefiles
 cd scaled
 imake -DBuildFonts -DBuildEthiopicFonts -DBuildBethMarduthoFonts \
-	-DUseInstalled -I%{_libdir}/X11/config
+	-DUseInstalled -I%{_prefix}/lib/X11/config
 %{__make} Makefiles
 cd ..
 %{__make} depend
