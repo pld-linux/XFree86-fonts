@@ -5,20 +5,22 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.2.0
-Release:	7
+Version:	4.3.0
+Release:	0.1
 License:	MIT
 Group:		X11/XFree86
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-2.tgz
-Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
-Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
+# We need source0 for arabic fonts
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
+Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-4.tgz
+Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-5.tgz
+#Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	%{name}.Fontmap
 Source4:	vga.pcf
 Patch0:		%{name}-extras-fix.patch
-Patch1:		%{name}-ISO8859-2.patch
-Patch2:		%{name}-do_not_run_xftchache.patch
-BuildRequires:	XFree86 >= %{version}-0.8
-BuildRequires:	XFree86-devel >= %{version}-0.8
+#Patch1:		%{name}-ISO8859-2.patch
+Patch2:		%{name}-do_not_run_fccache.patch
+BuildRequires:	XFree86 >= %{version}-1
+BuildRequires:	XFree86-devel >= %{version}-1
 BuildRequires:	perl
 BuildRequires:	t1utils
 Requires(post,postun):	%{_bindir}/mkfontdir
@@ -765,18 +767,18 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 
 %prep
 %setup -q -c -a1 -a2
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch0 -p0
+#%patch1 -p1
+%patch2 -p0
 
 cp -f xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc
 cp -f xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc
 
 # move ISO8859-2 fonts to main tree
-for i in {misc/{12x24,8x16},{75,100}dpi/{char,term,lu{BIS,bB}19}}*.bdf ; do
-	j="`echo $i | sed 's/\.bdf$//'`-ISO8859-2.bdf"
-	mv -f $i xc/fonts/bdf/$j
-done
+#for i in {misc/{12x24,8x16},{75,100}dpi/{char,term,lu{BIS,bB}19}}*.bdf ; do
+#	j="`echo $i | sed 's/\.bdf$//'`-ISO8859-2.bdf"
+#	mv -f $i xc/fonts/bdf/$j
+#done
 
 %build
 cd xc/fonts
