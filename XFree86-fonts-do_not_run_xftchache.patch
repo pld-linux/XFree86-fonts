@@ -5,13 +5,13 @@
  
  MakeFontsDir(fonts.scale)
 -MakeXftCache($(FONTS))
-+#MakeXftCache($(FONTS))
++XCOMM MakeXftCache($(FONTS))
  
  InstallFonts($(FONTINSTDIR))
  InstallFontScale($(FONTINSTDIR))
  InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
 -InstallXftCache($(FONTINSTDIR))
-+#InstallXftCache($(FONTINSTDIR))
++XCOMM InstallXftCache($(FONTINSTDIR))
  
  #ifdef IHaveSubdirs
  MakeSubdirs($(SUBDIRS))
