@@ -7,7 +7,7 @@ Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
 Source:		ftp://ftp.xfree86.org/pub/XFree86/3.3.3/source/X333src-2.tgz
-Patch0:		XFree86-3.3.3-3.3.3.1.diff.fonts.gz
+Patch0:		%{name}-3.3.3.1.patch.bz2
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define _fontdir        /usr/share/fonts
@@ -111,7 +111,7 @@ Cyrlica.
 
 %prep
 %setup -q -c 
-%patch0 -p0
+%patch0 -p1
 
 %build
 # Clean up to save a *lot* of disk space
