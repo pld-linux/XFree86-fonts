@@ -151,19 +151,3 @@ rm -rf $RPM_BUILD_ROOT
 %files -n XFree86-cyrillic-fonts
 %defattr(644,root,root,755)
 %{_fontdir}/cyrillic
-
-%changelog
-* Fri Feb 12 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [3.3.3.1-4d]
-- added Group(pl),
-- another modifications.
-
-* Fri Dec 18 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [3.3.3-1d]
-- major changes && build for PLD
-
-       -- sorry this spec is not finished yet but... --  
-
-* Thu Dec 03 1998 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
-- separate fonts from main package,
-- building RPM.
