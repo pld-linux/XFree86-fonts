@@ -1,8 +1,8 @@
 
-%define         _sver %(echo %{version} | tr -d .)
+%define		_sver	%(echo %{version} | tr -d .)
 
 Summary:	XFree86 Fonts
-Summary(pl):	Fonty dla systemu XFree86 
+Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.2.0
 Release:	3
@@ -39,9 +39,14 @@ BuildRequires:	XFree86 >= %{version}-0.8
 BuildRequires:	XFree86-devel >= %{version}-0.8
 BuildRequires:	perl
 BuildRequires:	t1utils
-PreReq:		/usr/X11R6/bin/mkfontdir
-PreReq:		textutils
-PreReq:		sed
+Requires(post):	%{_bindir}/mkfontdir
+Requires(post):	fileutils
+Requires(post):	textutils
+Requires(post):	sed
+Requires(postun):	%{_bindir}/mkfontdir
+Requires(postun):	fileutils
+Requires(postun):	textutils
+Requires(postun):	sed
 Requires:	%{name}-base = %{version}
 Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
@@ -171,7 +176,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-75dpi-fonts
 %ifarch sparc
 Obsoletes:	X11R6.1-75dpi-fonts
@@ -224,7 +230,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-100dpi-fonts
 
 %ifarch sparc
@@ -276,7 +283,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-cyrillic-fonts
 
 %description KOI8-R
@@ -306,7 +314,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-KOI8-R
 KOI8-R raster fonts.
@@ -335,7 +344,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-KOI8-R
 KOI8-R raster fonts.
@@ -364,7 +374,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-1
 Basic ISO-8859-1 raster fonts.
@@ -393,7 +404,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-1
 ISO-8859-1 raster fonts.
@@ -422,7 +434,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-1
 ISO-8859-1 raster fonts.
@@ -451,7 +464,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-2
 Basic ISO-8859-2 raster fonts.
@@ -480,7 +494,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-ISO8859-2-100dpi-fonts
 Obsoletes:	XFree86-latin2-100dpi-fonts
 
@@ -511,7 +526,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-ISO8859-2-75dpi-fonts
 Obsoletes:	XFree86-latin2-75dpi-fonts
 
@@ -539,9 +555,15 @@ Group(ru):	X11/ûÒÉÆÔÙ
 Group(sl):	X11/Pisave
 Group(sv):	X11/Typsnitt
 Group(uk):	X11/ûÒÉÆÔÉ
-PreReq:		textutils
-PreReq:		sed
-Requires:	XFree86 > 3.2 
+Requires(post):	fileutils
+Requires(post):	grep
+Requires(post):	textutils
+Requires(post):	sed
+Requires(postun):	fileutils
+Requires(postun):	grep
+Requires(postun):	textutils
+Requires(postun):	sed
+Requires:	XFree86 > 3.2
 Obsoletes:	XFree86-ISO8859-2-Type1-fonts
 Obsoletes:	XFree86-latin2-Type1-fonts
 
@@ -577,7 +599,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-3
 Basic ISO-8859-3 raster fonts.
@@ -606,7 +629,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-3
 ISO-8859-3 raster fonts.
@@ -635,7 +659,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-3
 ISO-8859-3 raster fonts.
@@ -664,7 +689,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-4
 Basic ISO-8859-4 raster fonts.
@@ -693,7 +719,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-4
 ISO-8859-4 raster fonts.
@@ -722,7 +749,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-4
 ISO-8859-4 raster fonts.
@@ -751,7 +779,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-5
 Basic ISO-8859-5 raster fonts.
@@ -780,7 +809,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-5
 ISO-8859-5 raster fonts.
@@ -809,7 +839,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-5
 ISO-8859-5 raster fonts.
@@ -838,7 +869,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-6
 Basic ISO-8859-6 raster fonts.
@@ -867,7 +899,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-6
 ISO-8859-6 raster fonts.
@@ -896,7 +929,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-6
 ISO-8859-6 raster fonts.
@@ -925,7 +959,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-7
 Basic ISO-8859-7 raster fonts.
@@ -954,7 +989,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-7
 ISO-8859-7 raster fonts.
@@ -983,7 +1019,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-7
 ISO-8859-7 raster fonts.
@@ -1012,7 +1049,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-8
 Basic ISO-8859-8 raster fonts.
@@ -1041,7 +1079,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-8
 ISO-8859-8 raster fonts.
@@ -1070,7 +1109,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-8
 ISO-8859-8 raster fonts.
@@ -1099,7 +1139,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-9
 Basic ISO-8859-9 raster fonts.
@@ -1128,7 +1169,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-9
 ISO-8859-9 raster fonts.
@@ -1157,7 +1199,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-9
 ISO-8859-9 raster fonts.
@@ -1186,7 +1229,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-10
 Basic ISO-8859-10 raster fonts.
@@ -1215,7 +1259,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-10
 ISO-8859-10 raster fonts.
@@ -1244,7 +1289,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-10
 ISO-8859-10 raster fonts.
@@ -1273,7 +1319,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-11
 Basic ISO-8859-11 raster fonts.
@@ -1302,7 +1349,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-11
 ISO-8859-11 raster fonts.
@@ -1331,7 +1379,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-11
 ISO-8859-11 raster fonts.
@@ -1360,7 +1409,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-12
 Basic ISO-8859-12 raster fonts.
@@ -1389,7 +1439,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-12
 ISO-8859-12 raster fonts.
@@ -1418,7 +1469,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-12
 ISO-8859-12 raster fonts.
@@ -1447,7 +1499,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-13
 Basic ISO-8859-13 raster fonts.
@@ -1476,7 +1529,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-13
 ISO-8859-13 raster fonts.
@@ -1505,7 +1559,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-13
 ISO-8859-13 raster fonts.
@@ -1534,7 +1589,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-14
 Basic ISO-8859-14 raster fonts.
@@ -1563,7 +1619,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-14
 ISO-8859-14 raster fonts.
@@ -1592,7 +1649,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-14
 ISO-8859-14 raster fonts.
@@ -1621,7 +1679,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-15
 Basic ISO-8859-15 raster fonts.
@@ -1650,7 +1709,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-15
 ISO-8859-15 raster fonts.
@@ -1679,7 +1739,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-15
 ISO-8859-15 raster fonts.
@@ -1708,7 +1769,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description JISX0201.1976-0
 Basic JISX0201.1976-0 raster fonts.
@@ -1737,7 +1799,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-JISX0201.1976-0
 JISX0201.1976-0 raster fonts.
@@ -1766,7 +1829,8 @@ Group(ru):	X11/XFree86
 Group(sl):	X11/XFree86
 Group(sv):	X11/XFree86
 Group(uk):	X11/XFree86
-PreReq:		%{_bindir}/mkfontdir
+Requires(post):	%{_bindir}/mkfontdir
+Requires(postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-JISX0201.1976-0
 JISX0201.1976-0 raster fonts.
@@ -2030,7 +2094,7 @@ cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
 cat Fontmap.* > Fontmap 2>/dev/null
-sed 's/^.*pfb -//' %{_t1fontsdir}/fonts.dir > %{_t1fontsdir}/fonts.dir.tmp 
+sed 's/^.*pfb -//' %{_t1fontsdir}/fonts.dir > %{_t1fontsdir}/fonts.dir.tmp
 grep -f %{_t1fontsdir}/fonts.dir.tmp \
 	%{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
 mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
