@@ -58,7 +58,7 @@ ISO10646-1 fonty BDF z dowolnym kodowaniem.
 Summary:	Base fonts (cursor and fixed)
 Summary(pl):	Podstawowe fonty (cursor i fixed)
 Group:		X11/XFree86
-Prereq:		textutils
+Requires(post,postun):	textutils
 
 %description base
 Base fonts (cursor and fixed) needed to start X server.
