@@ -6,7 +6,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.3.99.6
-Release:	1
+Release:	2
 License:	MIT
 Group:		X11/XFree86
 Source0:        ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
@@ -1344,7 +1344,6 @@ fontpostinst OTF
 %{_fontsdir}/Speedo/fonts.scale.%{name}
 %ghost %{_fontsdir}/Speedo/fonts.dir
 
-%dir %{_fontsdir}/TTF
 %{_fontsdir}/TTF/luxi*.ttf
 %ghost %{_fontsdir}/TTF/fonts.dir
 
