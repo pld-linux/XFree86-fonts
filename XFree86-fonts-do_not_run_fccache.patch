@@ -1,0 +1,36 @@
+diff -urN xc.orig/fonts/scaled/TTF/Imakefile xc/fonts/scaled/TTF/Imakefile
+--- xc.orig/fonts/scaled/TTF/Imakefile	Sun Mar  9 13:47:53 2003
++++ xc/fonts/scaled/TTF/Imakefile	Sun Mar  9 14:47:49 2003
+@@ -11,14 +11,12 @@
+ MakeFontsDir(fonts.scale)
+ 
+ #if UseFreetype2
+-MakeFcCache($(FONTS))
+ #endif
+ 
+ InstallFonts($(FONTINSTDIR))
+ InstallFontScale($(FONTINSTDIR))
+ InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
+ #if UseFreetype2
+-InstallFcCache($(FONTINSTDIR))
+ #endif
+ 
+ #ifdef IHaveSubdirs
+diff -urN xc.orig/fonts/scaled/Type1/Imakefile xc/fonts/scaled/Type1/Imakefile
+--- xc.orig/fonts/scaled/Type1/Imakefile	Sun Mar  9 13:47:53 2003
++++ xc/fonts/scaled/Type1/Imakefile	Sun Mar  9 14:25:27 2003
+@@ -32,14 +32,12 @@
+ 
+ MakeFontsDir(fonts.scale)
+ #if UseFreetype2
+-MakeFcCache($(FONTS))
+ #endif
+ 
+ InstallFonts($(FONTINSTDIR))
+ InstallFontScale($(FONTINSTDIR))
+ InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
+ #if UseFreetype2
+-InstallFcCache($(FONTINSTDIR))
+ #endif
+ 
+ #ifdef IHaveSubdirs
