@@ -50,7 +50,7 @@ tylko dla X serwera (lokalnie dla serwera lub poprzez xfs).
 %package utils
 Summary:	Perl scripts for generating BDF fonts
 Summary(pl):	Skrypty perlowe do generowania fontów BDF
-Group:		X11/XFree86
+Group:		X11
 
 %description utils
 Perl scripts that allow to generate from an ISO10646-1 encoded BDF
