@@ -4,12 +4,12 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.3.99.15
+Version:	4.3.99.16
 Release:	1
 License:	MIT
 Group:		Fonts
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
-# Source0-md5:	ae7ec191348888bc9f83318e55a009e1
+# Source0-md5:	9060c02f9e07620b8595e4d3da77a4b3
 # We need source0 for arabic fonts
 #Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
 #Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-4.tgz
