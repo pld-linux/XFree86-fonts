@@ -11,22 +11,25 @@ Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X402src-2.tgz
 Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X402src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
+Source4:	%{name}.Fontmap
+Source5:	%{name}-latin2-Type1.Fontmap
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
 Patch2:		ftp://ftp.xfree86.org/pub/XFree86/4.0.3/patches/4.0.2-4.0.3.diff.gz
 BuildRequires:	XFree86 = %{version}
 BuildRequires:	XFree86-devel = %{version}
 BuildRequires:	perl
-BuildRequires:	gzip
+BuildRequires:	t1utils
 Prereq:		/usr/X11R6/bin/mkfontdir
 Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_fontdir	/usr/share/fonts
 %define		_prefix		/usr/X11R6
-%define		_mandir		/usr/X11R6/man
-%define		_appnkldir	%{_datadir}/applnk
+%define		_mandir		%{_prefix}/man
+%define		_t1fontsdir	%{_fontsdir}/Type1
+%define		_t1afmdir	%{_t1fontsdir}/afm
+%define		_t1pfmdir	%{_t1fontsdir}/pfm
 
 %description
 This package contains the basic fonts. This package is required when
@@ -49,7 +52,7 @@ BDF font other BDF fonts in any possible encoding.
 
 %package -n XFree86-75dpi-fonts
 Summary:	X11R6 75dpi fonts - only need on server side
-Summary(de):	X11RT 76 dpi-Fonts - nur auf Serverseite erforderlich
+Summary(de):	X11RT 75 dpi-Fonts - nur auf Serverseite erforderlich
 Summary(fr):	Fontes 75 dpi X11R6 - nécessaire uniquement côté serveur
 Summary(pl):	Fonty o rozdzielczo¶ci 75dpi - potrzebne tylko po stronie serwera
 Summary(tr):	X11R6 75dpi yazýtipleri - yalnýzca sunucu tarafýnda gerekir
@@ -174,11 +177,8 @@ Summary(pl):	Fonty Type 1 ISO-8859-2
 Group:		X11/Fonts
 Group(de):	X11/Fonts
 Group(pl):	X11/Fonty
-Prereq:		type1inst
-Prereq:		/usr/bin/type1inst
 Prereq:		textutils
 Requires:	XFree86 > 3.2 
-Requires:	type1inst >= 0.6.1
 Obsoletes:	XFree86-ISO8859-2-Type1-fonts
 
 %description -n XFree86-latin2-Type1-fonts
@@ -190,7 +190,7 @@ copyrighted to their authors and declared to be freeware. Originals
 was taken from the net or CDs.
 
 %description -n XFree86-latin2-Type1-fonts -l pl
-Pakiet ten zawiera zestaw fontów Type 1 ISO-8859-2 dla X Window.
+Pakiet ten zawiera zestaw fontów Type1 ISO-8859-2 dla X Window.
 
 %prep
 %setup -q -c -b1 -b2 -a3
@@ -222,7 +222,7 @@ cd ..
 	UCS2ANY=`pwd`/fonts/util/ucs2any.pl \
 	BDFTRUNCATE=`pwd`/fonts/util/bdftruncate.pl \
 	UCSMAPPREFIX=`pwd`/fonts/util/map- \
-	CDEBUGFLAGS="$RPM_OPT_FLAGS"
+	CDEBUGFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -240,12 +240,28 @@ cd xc
 cd ..
 
 %{__make} -C ulT1mo-beta-1.0 install \
-	FONTDIR=$RPM_BUILD_ROOT%{_fontdir}
+	FONTDIR=$RPM_BUILD_ROOT%{_fontsdir}
+
+# separate *.afm, convert *.pfa to .pfb
+mv -f $RPM_BUILD_ROOT%{_t1fontsdir}/*.afm $RPM_BUILD_ROOT%{_t1afmdir}
+(cd $RPM_BUILD_ROOT%{_t1fontsdir}
+for f in *.pfa ; do
+	t1binary $f `basename $f .pfa`.pfb
+	rm -f $f
+done
+)
+
+tail -n +2 ulT1mo-beta-1.0/fonts.scale.ulT1mo \
+	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.XFree86-latin2-Type1-fonts
+tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
+	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
+install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
+install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-latin2-Type1-fonts
 
 # make TrueType font dir, touch default .dir and .scale files
-install	-d $RPM_BUILD_ROOT%{_fontdir}/TTF
-echo 0 > $RPM_BUILD_ROOT%{_fontdir}/TTF/fonts.dir
-echo 0 > $RPM_BUILD_ROOT%{_fontdir}/TTF/fonts.scale
+install	-d $RPM_BUILD_ROOT%{_fontsdir}/TTF
+echo 0 > $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.dir
+echo 0 > $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale
 
 gzip -9nf RELEASE_NOTES.TXT
 
@@ -253,125 +269,149 @@ gzip -9nf RELEASE_NOTES.TXT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-cd %{_fontdir}/misc
-%{_bindir}/mkfontdir
-
-%postun
-cd %{_fontdir}/misc
+cd %{_fontsdir}/misc
 umask 022
 %{_bindir}/mkfontdir
+cd %{_t1fontsdir}
+cat fonts.scale.* | sort -u > fonts.scale.tmp
+wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
+ln -sf fonts.scale fonts.dir
+cat Fontmap.* > Fontmap
+
+%postun
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+cd %{_t1fontsdir}
+cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
+wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
+ln -sf fonts.scale fonts.dir
+cat Fontmap.* > Fontmap 2>/dev/null
 
 %post -n XFree86-75dpi-fonts
-cd %{_fontdir}/75dpi
+cd %{_fontsdir}/75dpi
 umask 022
 %{_bindir}/mkfontdir
 
 %postun -n XFree86-75dpi-fonts
-cd %{_fontdir}/75dpi
+cd %{_fontsdir}/75dpi
 umask 022
 %{_bindir}/mkfontdir
 
 %post -n XFree86-100dpi-fonts
-cd %{_fontdir}/100dpi
+cd %{_fontsdir}/100dpi
+umask 022
 %{_bindir}/mkfontdir
 
 %postun -n XFree86-100dpi-fonts
-cd %{_fontdir}/100dpi
+cd %{_fontsdir}/100dpi
 umask 022
 %{_bindir}/mkfontdir
 
 %post -n XFree86-cyrillic-fonts
-cd %{_fontdir}/cyrillic
+cd %{_fontsdir}/cyrillic
+umask 022
 %{_bindir}/mkfontdir
 
 %post -n XFree86-latin2-100dpi-fonts
-cd %{_fontdir}/latin2/100dpi
+cd %{_fontsdir}/latin2/100dpi
+umask 022
 %{_bindir}/mkfontdir
 
 %post -n XFree86-latin2-75dpi-fonts
-cd %{_fontdir}/latin2/75dpi
+cd %{_fontsdir}/latin2/75dpi
+umask 022
 %{_bindir}/mkfontdir
 
 %post -n XFree86-latin2-Type1-fonts
-cd %{_fontdir}/Type1
-rm -f fonts.dir fonts.scale
-/usr/bin/type1inst -nogs -nolog -q
-grep '^.*ISO-8859-2.pfb' %{_fontdir}/Type1/fonts.dir |\
-sed 's/\(^.*ISO-8859-2.pfb \)\(.*\)/"\2"/' |\
-sed 's/\(^".*\)\(-[a-z]*-[a-z]*"\)/\1-iso8859-2" \1\2/' |\
-grep -v ^[0-9] > %{_fontdir}/Type1/fonts.alias.tmp
-cat %{_fontdir}/Type1/fonts.alias.tmp >>\
-%{_fontdir}/Type1/fonts.alias
-sort < %{_fontdir}/Type1/fonts.alias | uniq >\
-%{_fontdir}/Type1/fonts.alias.tmp
-mv -f %{_fontdir}/Type1/fonts.alias.tmp %{_fontdir}/Type1/fonts.alias
+cd %{_t1fontsdir}
+cat fonts.scale.* | sort -u > fonts.scale.tmp
+wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
+ln -sf fonts.scale fonts.dir
+cat Fontmap.* > Fontmap
+grep '^.*ISO-8859-2.pfb' %{_t1fontsdir}/fonts.dir |\
+	sed 's/\(^.*ISO-8859-2.pfb \)\(.*\)/"\2"/' |\
+	sed 's/\(^".*\)\(-[a-z]*-[a-z]*"\)/\1-iso8859-2" \1\2/' |\
+	grep -v ^[0-9] > %{_t1fontsdir}/fonts.alias.tmp
+cat %{_t1fontsdir}/fonts.alias.tmp >> %{_t1fontsdir}/fonts.alias
+sort -u < %{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
+mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
 
 %postun -n XFree86-latin2-Type1-fonts
-cd %{_fontdir}/Type1
-rm -f fonts.dir fonts.scale
-/usr/bin/type1inst -nogs -nolog -q
-sed 's/^.*pfb -//' %{_fontdir}/Type1/fonts.dir > \
-%{_fontdir}/Type1/fonts.dir.tmp 
-grep -f %{_fontdir}/Type1/fonts.dir.tmp \
-%{_fontdir}/Type1/fonts.alias > \
-%{_fontdir}/Type1/fonts.alias.tmp
-mv -f %{_fontdir}/Type1/fonts.alias.tmp %{_fontdir}/Type1/fonts.alias
-rm -f %{_fontdir}/Type1/fonts.dir.tmp
+cd %{_t1fontsdir}
+cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
+wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
+ln -sf fonts.scale fonts.dir
+cat Fontmap.* > Fontmap 2>/dev/null
+sed 's/^.*pfb -//' %{_t1fontsdir}/fonts.dir > %{_t1fontsdir}/fonts.dir.tmp 
+grep -f %{_t1fontsdir}/fonts.dir.tmp \
+	%{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
+mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
+rm -f %{_t1fontsdir}/fonts.dir.tmp
 
 %files
 %defattr(644,root,root,755)
 %doc RELEASE_NOTES.TXT.gz
-%dir %{_fontdir}/CID
-%dir %{_fontdir}/PEX
-%dir %{_fontdir}/Speedo
-%dir %{_fontdir}/TTF
-%dir %{_fontdir}/encodings
-%dir %{_fontdir}/local
-%dir %{_fontdir}/Type1
-%dir %{_fontdir}/misc
-%{_fontdir}/PEX/*
-%{_fontdir}/Speedo/*.spd
-%{_fontdir}/encodings/*
-%{_fontdir}/misc/*gz
-%{_fontdir}/Type1/*[a-z_].*f*
-%verify(not mtime size md5) %{_fontdir}/CID/fonts.*
-%verify(not mtime size md5) %{_fontdir}/Speedo/fonts.*
-%verify(not mtime size md5) %{_fontdir}/TTF/fonts.*
-%verify(not mtime size md5) %{_fontdir}/local/fonts.*
-%verify(not mtime size md5) %{_fontdir}/Type1/fonts.*
-%verify(not mtime size md5) %{_fontdir}/misc/fonts.*
+%dir %{_fontsdir}/CID
+%dir %{_fontsdir}/PEX
+%dir %{_fontsdir}/Speedo
+%dir %{_fontsdir}/TTF
+%dir %{_fontsdir}/encodings
+%dir %{_fontsdir}/local
+%dir %{_fontsdir}/misc
+%{_fontsdir}/PEX/*
+%{_fontsdir}/Speedo/*.spd
+%{_fontsdir}/encodings/*
+%{_fontsdir}/misc/*gz
+%{_t1fontsdir}/*[a-z_].pfb
+%{_t1afmdir}/*[a-z_].afm
+%{_t1fontsdir}/*.%{name}
+%verify(not mtime size md5) %{_fontsdir}/CID/fonts.*
+%verify(not mtime size md5) %{_fontsdir}/Speedo/fonts.*
+%verify(not mtime size md5) %{_fontsdir}/TTF/fonts.*
+%verify(not mtime size md5) %{_fontsdir}/local/fonts.*
+%verify(not mtime size md5) %{_fontsdir}/misc/fonts.*
 
 %files utils
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%{_fontdir}/util
+%{_fontsdir}/util
 
 %files -n XFree86-75dpi-fonts
 %defattr(644,root,root,755)
-%dir %{_fontdir}/75dpi
-%{_fontdir}/75dpi/*gz
-%verify(not mtime size md5) %{_fontdir}/75dpi/fonts.*
+%dir %{_fontsdir}/75dpi
+%{_fontsdir}/75dpi/*gz
+%verify(not mtime size md5) %{_fontsdir}/75dpi/fonts.*
 
 %files -n XFree86-100dpi-fonts
 %defattr(644,root,root,755)
-%dir %{_fontdir}/100dpi
-%{_fontdir}/100dpi/*gz
-%verify(not mtime size md5) %{_fontdir}/100dpi/fonts.*
+%dir %{_fontsdir}/100dpi
+%{_fontsdir}/100dpi/*gz
+%verify(not mtime size md5) %{_fontsdir}/100dpi/fonts.*
 
 %files -n XFree86-cyrillic-fonts
 %defattr(644,root,root,755)
-%{_fontdir}/cyrillic
+%{_fontsdir}/cyrillic
 
 %files -n XFree86-latin2-100dpi-fonts
 %defattr(644,root,root,755)
-%{_fontdir}/latin2/100dpi
+%{_fontsdir}/latin2/100dpi
 
 %files -n XFree86-latin2-75dpi-fonts
 %defattr(644,root,root,755)
-%{_fontdir}/latin2/75dpi
+%{_fontsdir}/latin2/75dpi
 
 %files -n XFree86-latin2-Type1-fonts
 %defattr(644,root,root,755)
-%{_fontdir}/Type1/afm/*
-%{_fontdir}/Type1/pfm/*
-%{_fontdir}/Type1/*-ISO-8859-2*
+%{_t1fontsdir}/*-ISO-8859-2*
+%{_t1afmdir}/*-ISO-8859-2*.afm
+%{_t1pfmdir}/*-ISO-8859-2*.pfm
+%{_t1fontsdir}/*.XFree86-latin2-Type1-fonts
