@@ -2,13 +2,15 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
 Version:	3.3.3.1
-Release:	5
+Release:	54
 Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
 Source:		ftp.xfree86.org:/pub/XFree86/3.3.3/source/X333src-2.tgz
 Patch0:		%{name}-3.3.3.1.patch.bz2
 Buildroot:	/tmp/%{name}-%{version}-root
+
+%define _fontdir        /usr/share/fonts
 
 %description 
 This package contains the basic fonts, programs and documentation for an X
