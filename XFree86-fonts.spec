@@ -878,7 +878,7 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 %setup -q -c -b1 -b2 -a3
 %patch0 -p1
 %patch1 -p1
-%patch3 -p1
+%patch2 -p1
 
 cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
 cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
