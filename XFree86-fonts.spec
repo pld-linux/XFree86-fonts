@@ -1,13 +1,13 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
-Version:	4.0
+Version:	4.0.1
 Release:	1
 Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-2.tgz
-Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-1.tgz
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X401src-2.tgz
+Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X401src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Patch0:		XFree86-fonts-extras-fix.patch
