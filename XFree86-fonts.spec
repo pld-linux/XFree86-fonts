@@ -194,15 +194,15 @@ rm -rf 100dpi 75dpi misc
 %patch2 -p1
 
 %build
-make all -C ulT1mo-beta-1.0
+%{__make} all -C ulT1mo-beta-1.0
 
 cd xc/fonts
 (cd bdf/misc; cp ../../../extras/fonts/arabic24/*.bdf .)
 (cd bdf/misc; cp ../../../extras/fonts/ClearlyU/*.bdf .)
 imake -DBuildFonts -DUseInstalled -I%{_libdir}/X11/config
-make Makefiles
-make depend
-make CDEBUGFLAGS="$RPM_OPT_FLAGS"
+%{__make} Makefiles
+%{__make} depend
+%{__make} CDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -211,7 +211,7 @@ rm -rf $RPM_BUILD_ROOT
  make DESTDIR=$RPM_BUILD_ROOT install.man;\
 )
 
-make -C ulT1mo-beta-1.0 install \
+%{__make} -C ulT1mo-beta-1.0 install \
 	FONTDIR=$RPM_BUILD_ROOT%{_fontdir}
 
 # make TrueType font dir, touch default .dir and .scale files
