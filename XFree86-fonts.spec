@@ -6,8 +6,8 @@ Release:	1
 Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-2.tgz
-Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-1.tgz
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X%{version}src-2.tgz
+Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X%{version}src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Patch0:		XFree86-fonts-extras-fix.patch
@@ -25,12 +25,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_appnkldir	%{_datadir}/applnk
 
 %description
-This package contains the basic fonts. This package is required when you
-have installed X server.
+This package contains the basic fonts. This package is required when
+you have installed X server.
 
 %description -l pl
-Pakiet ten zawiera podstawowe czcionki. Pakiet ten jest koniecznie potrzebny,
-je¶li masz zainstalowany jakikolwiek X serwer.
+Pakiet ten zawiera podstawowe czcionki. Pakiet ten jest koniecznie
+potrzebny, je¶li masz zainstalowany jakikolwiek X serwer.
 
 %package -n XFree86-75dpi-fonts
 Summary:	X11R6 75dpi fonts - only need on server side
@@ -43,7 +43,7 @@ Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
 %ifarch sparc
-Obsoletes: X11R6.1-75dpi-fonts
+Obsoletes:	X11R6.1-75dpi-fonts
 %endif
 
 %description -n XFree86-75dpi-fonts
@@ -51,22 +51,23 @@ The 75dpi fonts used on most Linux systems. Users with high resolution
 displays may prefer the 100dpi fonts available in a separate package.
 
 %description -l de -n XFree86-75dpi-fonts
-Die 75dpi-Fonts, die auf meisten Linux-Systemen verwendet werden. Für Benutzer
-mit einer hochauflösender Darstellung sind die 100dpi-Fonts eines getrennt
-erhältlichen Pakets besser geeignet.
+Die 75dpi-Fonts, die auf meisten Linux-Systemen verwendet werden. Für
+Benutzer mit einer hochauflösender Darstellung sind die 100dpi-Fonts
+eines getrennt erhältlichen Pakets besser geeignet.
 
 %description -l fr -n XFree86-75dpi-fonts
-Fontes 75 dpi utilisées sur la plupart des systèmes Linux. Ceux qui ont
-des écrans à haute résolution préfèreront les fontes 100 dpi disponibles
-dans un autre paquetage.
+Fontes 75 dpi utilisées sur la plupart des systèmes Linux. Ceux qui
+ont des écrans à haute résolution préfèreront les fontes 100 dpi
+disponibles dans un autre paquetage.
 
 %description -l pl -n XFree86-75dpi-fonts
-Pakiet ten zawiera czcionki rastrowe 75dpi. W wypadku wiêkszej rozdzielczo¶ci
-zalecane s± czcionki 100dpi, które s± dostêpne w osobnym pakiecie.
+Pakiet ten zawiera czcionki rastrowe 75dpi. W wypadku wiêkszej
+rozdzielczo¶ci zalecane s± czcionki 100dpi, które s± dostêpne w
+osobnym pakiecie.
 
 %description -l tr -n XFree86-75dpi-fonts
-Çoðu Linux sisteminde 75dpi yazýtipi kullanýlýr. Yüksek çözünürlük kullanan
-kullanýcýlar 100dpi yazýtiplerini yeðleyebilirler.
+Çoðu Linux sisteminde 75dpi yazýtipi kullanýlýr. Yüksek çözünürlük
+kullanan kullanýcýlar 100dpi yazýtiplerini yeðleyebilirler.
 
 %package -n XFree86-100dpi-fonts
 Summary:	X11R6 100dpi fonts - only need on server side
@@ -79,30 +80,32 @@ Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
 %ifarch sparc
-Obsoletes: X11R6.1-100dpi-fonts
+Obsoletes:	X11R6.1-100dpi-fonts
 %endif
 
 %description -n XFree86-100dpi-fonts
-The 100dpi fonts used on most Linux systems. Users with high resolution
-displays may prefer the 100dpi fonts available in a separate package.
+The 100dpi fonts used on most Linux systems. Users with high
+resolution displays may prefer the 100dpi fonts available in a
+separate package.
 
 %description -l de -n XFree86-100dpi-fonts
-Die 100dpi-Schriftarten, die auf den meisten Linux-Systemen zum Einsatz
-kommen. Anwender mit hochauflösenden Monitoren ziehen unter Umständen
-die 100dpi-Schriften vor, die in einem separaten Paket erhältlich sind.
+Die 100dpi-Schriftarten, die auf den meisten Linux-Systemen zum
+Einsatz kommen. Anwender mit hochauflösenden Monitoren ziehen unter
+Umständen die 100dpi-Schriften vor, die in einem separaten Paket
+erhältlich sind.
 
 %description -l fr -n XFree86-100dpi-fonts
 Les fontes 100dpi sont utilisées par la plupart des systèmes Linux.
-Les utilisateurs ayant des hautes résolutions peuvent préférer les 
+Les utilisateurs ayant des hautes résolutions peuvent préférer les
 fontes 100dpi disponibles dans un package séparé.
 
 %description -l pl -n XFree86-100dpi-fonts
-Pakiet ten zawiera czcionki rastrowe 100dpi. Bed± one potrzebne przy pracy z
-du¿± rozdzielczo¶ci±.
+Pakiet ten zawiera czcionki rastrowe 100dpi. Bed± one potrzebne przy
+pracy z du¿± rozdzielczo¶ci±.
 
 %description -l tr -n XFree86-100dpi-fonts
-Yüksek çözünürlük kullanan kullanýcýlar 100dpi yazýtiplerini 75dpi olanlara
-yeðleyebilirler.
+Yüksek çözünürlük kullanan kullanýcýlar 100dpi yazýtiplerini 75dpi
+olanlara yeðleyebilirler.
 
 %package -n XFree86-cyrillic-fonts
 Summary:	Cyrillic fonts - only need on server side
@@ -165,12 +168,12 @@ Requires:	XFree86 > 3.2
 Requires:	type1inst >= 0.6.1
 
 %description -n XFree86-latin2-Type1-fonts
-This package includes the Central European (ISO-8859-2) Type1 fonts for the
-X11 system.
+This package includes the Central European (ISO-8859-2) Type1 fonts
+for the X11 system.
 
 This is the famous ulT1mo (read ultimo) collection. All fonts are
-copyrighted to their authors and declared to be freeware. Originals was
-taken from the net or CDs.
+copyrighted to their authors and declared to be freeware. Originals
+was taken from the net or CDs.
 
 %description -n XFree86-latin2-Type1-fonts -l pl
 Pakiet ten zawiera zestaw fontów Type 1 ISO-8859-2 dla X Window.
@@ -196,12 +199,13 @@ make all -C ulT1mo-beta-1.0
 cd xc/fonts
 (cd bdf/misc; cp ../../../extras/fonts/arabic24/*.bdf .)
 (cd bdf/misc; cp ../../../extras/fonts/ClearlyU/*.bdf .)
-imake -DBuildFonts -DUseInstalled -I/usr/X11R6/lib/X11/config
+imake -DBuildFonts -DUseInstalled -I%{_libdir}/X11/config
 make Makefiles
 make depend
 make CDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
+rm -rf $RPM_BUILD_ROOT
 (cd xc/fonts;\
  make DESTDIR=$RPM_BUILD_ROOT install;\
  make DESTDIR=$RPM_BUILD_ROOT install.man;\
