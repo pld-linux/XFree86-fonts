@@ -1,8 +1,8 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
-Version:	4.0.2
-Release:	3
+Version:	4.0.3
+Release:	1
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -13,8 +13,11 @@ Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
+Patch2:		ftp://ftp.xfree86.org/pub/XFree86/4.0.3/patches/4.0.2-4.0.3.diff.gz
 BuildRequires:	XFree86 = %{version}
 BuildRequires:	XFree86-devel = %{version}
+BuildRequires:	perl
+BuildRequires:	gzip
 Prereq:		/usr/X11R6/bin/mkfontdir
 Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
@@ -193,6 +196,7 @@ Pakiet ten zawiera zestaw fontów Type 1 ISO-8859-2 dla X Window.
 %setup -q -c -b1 -b2 -a3
 %patch0 -p1
 %patch1 -p1
+%patch2 -p0
 
 cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
 cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
