@@ -5,7 +5,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
 Version:	4.2.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
