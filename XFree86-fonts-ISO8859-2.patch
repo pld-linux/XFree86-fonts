@@ -1,7 +1,6 @@
-diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/75dpi/Imakefile.inc
---- XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc	Wed Apr 18 21:46:56 2001
-+++ XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/75dpi/Imakefile.inc	Wed Jun 27 19:51:38 2001
-@@ -78,10 +78,18 @@
+--- XFree86-fonts-4.3.0/xc/fonts/bdf/75dpi/Imakefile.inc.orig	2003-06-03 23:47:47.000000000 +0200
++++ XFree86-fonts-4.3.0/xc/fonts/bdf/75dpi/Imakefile.inc	2003-06-03 23:57:46.000000000 +0200
+@@ -78,10 +78,17 @@
  	FontObj(charBI14) FontObj(charBI18) FontObj(charBI24) \
  	FontObj(charI08) FontObj(charI10) FontObj(charI12) FontObj(charI14) \
  	FontObj(charI18) FontObj(charI24) \
@@ -13,7 +12,6 @@ diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc XFree86-fonts-4.1
 +	FontObj(charR08-ISO8859-2) FontObj(charR10-ISO8859-2) \
 +	FontObj(charR12-ISO8859-2) FontObj(charR14-ISO8859-2) \
 +	FontObj(charR18-ISO8859-2) FontObj(charR24-ISO8859-2) \
-+	FontObj(luBIS19-ISO8859-2) FontObj(lubB19-ISO8859-2) \
  	FontObj(tech14) FontObj(techB14) \
 -	FontObj(term14) FontObj(termB14)
 +	FontObj(term14) FontObj(termB14) \
@@ -21,7 +19,7 @@ diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc XFree86-fonts-4.1
  
  #if BuildISO8859_1Fonts
  /*
-@@ -1312,16 +1320,32 @@
+@@ -1312,16 +1319,30 @@
  FontTarget(charI14)
  FontTarget(charI18)
  FontTarget(charI24)
@@ -43,8 +41,6 @@ diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc XFree86-fonts-4.1
 +FontTarget(charR14-ISO8859-2)
 +FontTarget(charR18-ISO8859-2)
 +FontTarget(charR24-ISO8859-2)
-+FontTarget(luBIS19-ISO8859-2)
-+FontTarget(lubB19-ISO8859-2)
  FontTarget(tech14)
  FontTarget(techB14)
  FontTarget(term14)
@@ -54,10 +50,9 @@ diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc XFree86-fonts-4.1
  
  #if BuildISO8859_1Fonts
  /*
-diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/misc/Imakefile
---- XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile	Wed Jun 27 19:56:53 2001
-+++ XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/misc/Imakefile	Wed Jun 27 19:54:23 2001
-@@ -276,7 +276,8 @@
+--- XFree86-fonts-4.3.0/xc/fonts/bdf/misc/Imakefile.orig	2003-06-03 23:12:12.000000000 +0200
++++ XFree86-fonts-4.3.0/xc/fonts/bdf/misc/Imakefile	2003-06-04 00:00:33.000000000 +0200
+@@ -327,7 +327,8 @@
  
  MISCOBJS = \
  	$(MISC_8859_1_OBJS) $(MISC_JISX0201_OBJS) $(MISC_JA_OBJS) \
@@ -67,7 +62,7 @@ diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile XFree86-fonts-4.1.0.la
  	
  OBJS = $(UCSOBJS) $(DERIVEDOBJS) $(DERIVEDOBJS2) $(PREDERIVEDOBJS) \
  	$(MISCOBJS) $(ARABIC24OBJS) $(CLEARLYUOBJS)
-@@ -664,6 +665,8 @@
+@@ -787,6 +788,8 @@
  FontTarget(8x16)
  FontTarget(12x24)
  #endif
@@ -76,60 +71,3 @@ diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile XFree86-fonts-4.1.0.la
  #if BuildJISX0201Fonts
  FontTarget(8x16rk)
  FontTarget(12x24rk)
---- XFree86-fonts-4.1.0/xc/fonts/bdf/misc/fonts.alias~	Mon Jan 22 22:09:26 2001
-+++ XFree86-fonts-4.1.0/xc/fonts/bdf/misc/fonts.alias	Wed Jun 27 20:59:14 2001
-@@ -23,6 +23,29 @@
- 12x24        -sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-1
- nil2         -misc-nil-medium-r-normal--2-20-75-75-c-10-misc-fontspecific
- 
-+fixedlatin2    -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2
-+variablelatin2 -*-helvetica-bold-r-normal-*-*-120-*-*-*-*-iso8859-2
-+5x7latin2      -misc-fixed-medium-r-normal--7-70-75-75-c-50-iso8859-2
-+5x8latin2      -misc-fixed-medium-r-normal--8-80-75-75-c-50-iso8859-2
-+6x9latin2      -misc-fixed-medium-r-normal--9-90-75-75-c-60-iso8859-2
-+6x10latin2     -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-2
-+6x12latin2     -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-2
-+6x13latin2     -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2
-+6x13boldlatin2 -misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso8859-2
-+7x13latin2     -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-2
-+7x13boldlatin2 -misc-fixed-bold-r-normal--13-120-75-75-c-70-iso8859-2
-+7x14latin2     -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-2
-+7x14boldlatin2 -misc-fixed-bold-r-normal--14-130-75-75-c-70-iso8859-2
-+8x13latin2     -misc-fixed-medium-r-normal--13-120-75-75-c-80-iso8859-2
-+8x13boldlatin2 -misc-fixed-bold-r-normal--13-120-75-75-c-80-iso8859-2
-+8x16latin2     -sony-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
-+9x15latin2     -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-2
-+9x15boldlatin2 -misc-fixed-bold-r-normal--15-140-75-75-c-90-iso8859-2
-+9x18latin2     -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso8859-2
-+9x18boldlatin2 -misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-2
-+10x20latin2    -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-2
-+12x24latin2    -sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
-+ 
- heb6x13      -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-8
- heb8x13      -misc-fixed-medium-r-normal--13-120-75-75-c-80-iso8859-8
- 
-@@ -75,3 +98,24 @@
- -sony-fixed-medium-r-normal--24-230-75-75-c-120-jisx0201.1976-0 -sony-fixed-medium-r-normal--24-170-100-100-c-120-jisx0201.1976-0
- -jis-fixed-medium-r-normal--16-110-100-100-c-160-jisx0208.1983-0 -jis-fixed-medium-r-normal--16-150-75-75-c-160-jisx0208.1983-0
- -jis-fixed-medium-r-normal--24-170-100-100-c-240-jisx0208.1983-0 -jis-fixed-medium-r-normal--24-230-75-75-c-240-jisx0208.1983-0
-+-misc-fixed-medium-r-normal--7-50-100-100-c-50-iso8859-2 -misc-fixed-medium-r-normal--7-70-75-75-c-50-iso8859-2
-+-misc-fixed-medium-r-normal--8-60-100-100-c-50-iso8859-2 -misc-fixed-medium-r-normal--8-80-75-75-c-50-iso8859-2
-+-misc-fixed-medium-r-normal--9-80-100-100-c-60-iso8859-2 -misc-fixed-medium-r-normal--9-90-75-75-c-60-iso8859-2
-+-misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-2 -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-2
-+-misc-fixed-medium-r-semicondensed--12-90-100-100-c-60-iso8859-2 -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-2
-+-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-2 -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2
-+-misc-fixed-bold-r-semicondensed--13-100-100-100-c-60-iso8859-2 -misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso8859-2
-+-misc-fixed-medium-r-normal--13-100-100-100-c-70-iso8859-2 -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-2
-+-misc-fixed-bold-r-normal--13-100-100-100-c-70-iso8859-2 -misc-fixed-bold-r-normal--13-120-75-75-c-70-iso8859-2
-+-misc-fixed-medium-r-normal--13-100-100-100-c-80-iso8859-2 -misc-fixed-medium-r-normal--13-120-75-75-c-80-iso8859-2
-+-misc-fixed-bold-r-normal--13-100-100-100-c-80-iso8859-2 -misc-fixed-bold-r-normal--13-120-75-75-c-80-iso8859-2
-+-misc-fixed-medium-r-normal--14-110-100-100-c-70-iso8859-2 -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-2
-+-misc-fixed-medium-r-normal--15-120-100-100-c-90-iso8859-2 -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-2
-+-misc-fixed-bold-r-normal--15-120-100-100-c-90-iso8859-2 -misc-fixed-bold-r-normal--15-140-75-75-c-90-iso8859-2
-+-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-2 -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-2
-+-biznet-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-2 -biznet-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
-+-biznet-fixed-medium-r-normal--24-230-75-75-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
-+-sony-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-2 -biznet-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
-+-sony-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2 -biznet-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
-+-sony-fixed-medium-r-normal--24-230-75-75-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
-+-sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2

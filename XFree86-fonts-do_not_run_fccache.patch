@@ -34,3 +34,30 @@ diff -urN xc.orig/fonts/scaled/Type1/Imakefile xc/fonts/scaled/Type1/Imakefile
  #endif
  
  #ifdef IHaveSubdirs
+--- xc/fonts/scaled/Ethiopic/Imakefile.orig	2003-02-04 03:18:19.000000000 +0100
++++ xc/fonts/scaled/Ethiopic/Imakefile	2003-06-04 00:53:08.000000000 +0200
+@@ -7,7 +7,6 @@
+ OTFINSTDIR = $(FONTDIR)/OTF
+ 
+ #if UseFreetype2
+-MakeFcCache($(TTFFONTS) $(OTFFONTS))
+ #endif
+ 
+ InstallMultipleFlags($(TTFFONTS),$(TTFINSTDIR),$(INSTDATFLAGS))
+--- xc/fonts/scaled/Meltho/Imakefile.orig	2003-06-04 01:27:53.000000000 +0200
++++ xc/fonts/scaled/Meltho/Imakefile	2003-06-04 01:28:04.000000000 +0200
+@@ -15,14 +15,12 @@
+ MakeFontsDir(fonts.scale)
+ 
+ #if UseFreetype2
+-MakeFcCache($(FONTS))
+ #endif
+ 
+ InstallFonts($(FONTINSTDIR))
+ InstallFontScale($(FONTINSTDIR))
+ InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
+ #if UseFreetype2
+-InstallFcCache($(FONTINSTDIR))
+ #endif
+ 
+ #ifdef IHaveSubdirs
