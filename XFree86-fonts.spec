@@ -2,7 +2,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
 Version:	4.1.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -15,7 +15,8 @@ Source4:	%{name}.Fontmap
 Source5:	%{name}-latin2-Type1.Fontmap
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
-BuildRequires:	XFree86 = %{version}
+# added release because 4.1.0-1 had broken libXfont/bdftopcf
+BuildRequires:	XFree86 = %{version}-%{release}
 BuildRequires:	XFree86-devel = %{version}
 BuildRequires:	perl
 BuildRequires:	t1utils
@@ -935,11 +936,11 @@ done
 )
 
 tail -n +2 ulT1mo-beta-1.0/fonts.scale.ulT1mo \
-	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.XFree86-latin2-Type1-fonts
+	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.XFree86-fonts-Type1-ISO8859-2
 tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
-install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-latin2-Type1-fonts
+install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
 
 # make TrueType font dir, touch default .dir and .scale files
 install	-d $RPM_BUILD_ROOT%{_fontsdir}/TTF
@@ -1615,7 +1616,7 @@ umask 022
 %{_t1fontsdir}/*-ISO-8859-2*
 %{_t1afmdir}/*-ISO-8859-2*.afm
 %{_t1pfmdir}/*-ISO-8859-2*.pfm
-%{_t1fontsdir}/*.XFree86-latin2-Type1-fonts
+%{_t1fontsdir}/*.XFree86-fonts-Type1-ISO8859-2
 
 %files ISO8859-3
 %defattr(644,root,root,755)
