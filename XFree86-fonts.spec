@@ -24,7 +24,6 @@ BuildRequires:	t1utils
 Requires(post,postun):	%{_bindir}/mkfontdir
 Requires(post,postun):	fileutils
 Requires(post,postun):	textutils
-Requires(post,postun):	sed
 Requires:	%{name}-base = %{version}
 Obsoletes:	XFree86-latin2-fonts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -843,7 +842,7 @@ cat fonts.alias.* > fonts.alias
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
@@ -854,7 +853,7 @@ fi
 cd %{_fontsdir}/TTF
 umask 022
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
@@ -870,7 +869,7 @@ cat fonts.alias.* > fonts.alias 2>/dev/null
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
@@ -881,7 +880,7 @@ fi
 cd %{_fontsdir}/TTF
 umask 022
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
