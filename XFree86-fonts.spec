@@ -50,7 +50,6 @@ Requires(postun):	textutils
 Requires(postun):	sed
 Requires:	%{name}-base = %{version}
 Obsoletes:	XFree86-latin2-fonts
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_mandir		%{_prefix}/man
