@@ -35,8 +35,8 @@ Source6:	vga.pcf
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
 Patch2:		%{name}-do_not_run_xftchache.patch
-BuildRequires:	XFree86 >= %{version}
-BuildRequires:	XFree86-devel >= %{version}
+BuildRequires:	XFree86 >= %{version}-0.8
+BuildRequires:	XFree86-devel >= %{version}-0.8
 BuildRequires:	perl
 BuildRequires:	t1utils
 PreReq:		/usr/X11R6/bin/mkfontdir
