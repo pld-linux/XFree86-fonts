@@ -215,6 +215,20 @@ ISO-8859-1 raster fonts.
 %description 75dpi-ISO8859-1 -l pl
 Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 75dpi.
 
+%package ISO8859-2
+Summary:	ISO-8859-2 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-2
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-2
+Basic ISO-8859-2 raster fonts.
+
+%description ISO8859-2 -l pl
+Podstawowe fonty rastrowe ISO-8859-2.
+
 %package 100dpi-ISO8859-2
 Summary:	ISO-8859-2 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi
@@ -859,7 +873,6 @@ JISX0201.1976-0 raster fonts.
 Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 
 %prep
-%setup -q -c -b1
 %setup -q -c -b1 -b2 -a3
 %patch0 -p1
 %patch1 -p1
@@ -869,13 +882,16 @@ cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
 
 cd misc
 for i in {12x24,8x16}*.bdf ; do
-	mv $i "`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
+	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
+	mv -f $i $j
+	mv -f $j ../xc/fonts/bdf/misc/
 done
-cd ..
-mv -f misc/{12x24,8x16}*.bdf xc/fonts/bdf/misc/
-# TODO:
-#mv -f 100dpi/{char,term,lutBS,lutRS}* xc/fonts/bdf/100dpi/
-#mv -f 75dpi/{char,term,ncenR{18,24},lutBS{08,19,24},lutRS{08,19,24}}* xc/fonts/bdf/75dpi/
+cd ../100dpi
+for i in {char,term,lu{BIS,bB}19}*.bdf ; do
+	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
+	mv -f $i ../xc/fonts/bdf/100dpi/$j
+	mv -f ../75dpi/$i ../xc/fonts/bdf/75dpi/$j
+done
 
 %build
 %{__make} all -C ulT1mo-beta-1.0
@@ -961,42 +977,87 @@ rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
 cat Fontmap.* > Fontmap 2>/dev/null
 
-%post -n XFree86-75dpi-fonts
+%post 75dpi
 cd %{_fontsdir}/75dpi
 umask 022
 %{_bindir}/mkfontdir
 
-%postun -n XFree86-75dpi-fonts
+%postun 75dpi
 cd %{_fontsdir}/75dpi
 umask 022
 %{_bindir}/mkfontdir
 
-%post -n XFree86-100dpi-fonts
+%post 100dpi
 cd %{_fontsdir}/100dpi
 umask 022
 %{_bindir}/mkfontdir
 
-%postun -n XFree86-100dpi-fonts
+%postun 100dpi
 cd %{_fontsdir}/100dpi
 umask 022
 %{_bindir}/mkfontdir
 
-%post -n XFree86-cyrillic-fonts
-cd %{_fontsdir}/cyrillic
+%post ISO8859-1
+cd %{_fontsdir}/misc
 umask 022
 %{_bindir}/mkfontdir
 
-%post -n XFree86-latin2-100dpi-fonts
-cd %{_fontsdir}/latin2/100dpi
+%postun ISO8859-1
+cd %{_fontsdir}/misc
 umask 022
 %{_bindir}/mkfontdir
 
-%post -n XFree86-latin2-75dpi-fonts
-cd %{_fontsdir}/latin2/75dpi
+%post 75dpi-ISO8859-1
+cd %{_fontsdir}/75dpi
 umask 022
 %{_bindir}/mkfontdir
 
-%post -n XFree86-latin2-Type1-fonts
+%postun 75dpi-ISO8859-1
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-1
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-1
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-2
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-2
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-2
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-2
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-2
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-2
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post Type1-ISO8859-2
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
@@ -1013,7 +1074,7 @@ cat %{_t1fontsdir}/fonts.alias.tmp >> %{_t1fontsdir}/fonts.alias
 sort -u < %{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
 mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
 
-%postun -n XFree86-latin2-Type1-fonts
+%postun Type1-ISO8859-2
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
@@ -1028,6 +1089,432 @@ grep -f %{_t1fontsdir}/fonts.dir.tmp \
 mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
 rm -f %{_t1fontsdir}/fonts.dir.tmp
 
+%post ISO8859-3
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-3
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-3
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-3
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-4
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-4
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-5
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-5
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-5
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-5
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-5
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-5
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-6
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-6
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-6
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-6
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-6
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-6
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-7
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-7
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-7
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-7
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-7
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-7
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-8
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-8
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-8
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-8
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-8
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-8
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-9
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-9
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-9
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-9
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-9
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-9
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-10
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-10
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-10
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-10
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-10
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-10
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-11
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-11
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-11
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-11
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-11
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-11
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-12
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-12
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-12
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-12
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-12
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-12
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-13
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-13
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-13
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-13
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-13
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-13
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-14
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-14
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-14
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-14
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-14
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-14
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post ISO8859-15
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun ISO8859-15
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-ISO8859-15
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-ISO8859-15
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-ISO8859-15
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-ISO8859-15
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post KOI8-R
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+cd %{_fontsdir}/cyrillic
+umask 022
+%{_bindir}/mkfontdir
+
+%postun KOI8-R
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+cd %{_fontsdir}/cyrillic
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-KOI8-R
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-KOI8-R
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-KOI8-R
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-KOI8-R
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post JISX0201.1976-0
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%postun JISX0201.1976-0
+cd %{_fontsdir}/misc
+umask 022
+%{_bindir}/mkfontdir
+
+%post 75dpi-JISX0201.1976-0
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 75dpi-JISX0201.1976-0
+cd %{_fontsdir}/75dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%post 100dpi-JISX0201.1976-0
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
+%postun 100dpi-JISX0201.1976-0
+cd %{_fontsdir}/100dpi
+umask 022
+%{_bindir}/mkfontdir
+
 %files
 %defattr(644,root,root,755)
 %doc RELEASE_NOTES.TXT.gz
@@ -1041,7 +1528,6 @@ rm -f %{_t1fontsdir}/fonts.dir.tmp
 %{_fontsdir}/PEX/*
 %{_fontsdir}/Speedo/*.spd
 %{_fontsdir}/encodings/*
-%{_fontsdir}/misc/*gz
 %{_t1fontsdir}/*[a-z_].pfb
 %{_t1afmdir}/*[a-z_].afm
 %{_t1fontsdir}/*.%{name}
@@ -1050,6 +1536,36 @@ rm -f %{_t1fontsdir}/fonts.dir.tmp
 %verify(not mtime size md5) %{_fontsdir}/TTF/fonts.*
 %verify(not mtime size md5) %{_fontsdir}/local/fonts.*
 %verify(not mtime size md5) %{_fontsdir}/misc/fonts.*
+%{_fontsdir}/misc/10x20.pcf.gz
+%{_fontsdir}/misc/12x24.pcf.gz
+%{_fontsdir}/misc/5x7.pcf.gz
+%{_fontsdir}/misc/5x8.pcf.gz
+%{_fontsdir}/misc/6x10.pcf.gz
+%{_fontsdir}/misc/6x12.pcf.gz
+%{_fontsdir}/misc/6x13.pcf.gz
+%{_fontsdir}/misc/6x13B.pcf.gz
+%{_fontsdir}/misc/6x13O.pcf.gz
+%{_fontsdir}/misc/6x9.pcf.gz
+%{_fontsdir}/misc/7x13.pcf.gz
+%{_fontsdir}/misc/7x13B.pcf.gz
+%{_fontsdir}/misc/7x13O.pcf.gz
+%{_fontsdir}/misc/7x14.pcf.gz
+%{_fontsdir}/misc/7x14B.pcf.gz
+%{_fontsdir}/misc/8x13.pcf.gz
+%{_fontsdir}/misc/8x13B.pcf.gz
+%{_fontsdir}/misc/8x13O.pcf.gz
+%{_fontsdir}/misc/8x16.pcf.gz
+%{_fontsdir}/misc/9x15.pcf.gz
+%{_fontsdir}/misc/9x15B.pcf.gz
+%{_fontsdir}/misc/9x18.pcf.gz
+%{_fontsdir}/misc/9x18B.pcf.gz
+%{_fontsdir}/misc/arabic*.pcf.gz
+%{_fontsdir}/misc/[c-e]*.pcf.gz
+%{_fontsdir}/misc/[g-h]*.pcf.gz
+%{_fontsdir}/misc/k*.pcf.gz
+%{_fontsdir}/misc/[m-z]*.pcf.gz
+%{_fontsdir}/misc/*rk.pcf.gz
+%{_fontsdir}/misc/*ko.pcf.gz
 
 %files utils
 %defattr(644,root,root,755)
@@ -1059,35 +1575,40 @@ rm -f %{_t1fontsdir}/fonts.dir.tmp
 %files 75dpi
 %defattr(644,root,root,755)
 %dir %{_fontsdir}/75dpi
-%{_fontsdir}/75dpi/*gz
+%{_fontsdir}/75dpi/*[a-zA-Z_][0-9][0-9].pcf.gz
 %verify(not mtime size md5) %{_fontsdir}/75dpi/fonts.*
+%verify(not mtime size md5) %{_fontsdir}/75dpi/encodings.dir
 
 %files 100dpi
 %defattr(644,root,root,755)
 %dir %{_fontsdir}/100dpi
-%{_fontsdir}/100dpi/*gz
+%{_fontsdir}/100dpi/*[a-zA-Z_][0-9][0-9].pcf.gz
 %verify(not mtime size md5) %{_fontsdir}/100dpi/fonts.*
-
+%verify(not mtime size md5) %{_fontsdir}/100dpi/encodings.dir
 
 %files ISO8859-1
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-1.pcf.gz
 
 %files 75dpi-ISO8859-1
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-1.pcf.gz
 
 %files 100dpi-ISO8859-1
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-1.pcf.gz
 
 %files ISO8859-2
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-2.pcf.gz
 
 %files 75dpi-ISO8859-2
 %defattr(644,root,root,755)
-%{_fontsdir}/latin2/75dpi
+%{_fontsdir}/75dpi/*ISO8859-2.pcf.gz
 
 %files 100dpi-ISO8859-2
 %defattr(644,root,root,755)
-%{_fontsdir}/latin2/100dpi
+%{_fontsdir}/100dpi/*ISO8859-2.pcf.gz
 
 %files Type1-ISO8859-2
 %defattr(644,root,root,755)
@@ -1098,136 +1619,179 @@ rm -f %{_t1fontsdir}/fonts.dir.tmp
 
 %files ISO8859-3
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-3.pcf.gz
 
 %files 75dpi-ISO8859-3
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-3.pcf.gz
 
 %files 100dpi-ISO8859-3
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-3.pcf.gz
 
 %files ISO8859-4
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-4.pcf.gz
 
 %files 75dpi-ISO8859-4
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-4.pcf.gz
 
 %files 100dpi-ISO8859-4
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-4.pcf.gz
 
 %files ISO8859-5
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-5.pcf.gz
 
-%files 75dpi-ISO8859-5
-%defattr(644,root,root,755)
+#%files 75dpi-ISO8859-5
+#%defattr(644,root,root,755)
+#%{_fontsdir}/75dpi/*ISO8859-5.pcf.gz
 
-%files 100dpi-ISO8859-5
-%defattr(644,root,root,755)
+#%files 100dpi-ISO8859-5
+#%defattr(644,root,root,755)
+#%{_fontsdir}/100dpi/*ISO8859-5.pcf.gz
 
-%files ISO8859-6
-%defattr(644,root,root,755)
+#%files ISO8859-6
+#%defattr(644,root,root,755)
+#%{_fontsdir}/misc/*ISO8859-6.pcf.gz
 
-%files 75dpi-ISO8859-6
-%defattr(644,root,root,755)
+#%files 75dpi-ISO8859-6
+#%defattr(644,root,root,755)
+#%{_fontsdir}/75dpi/*ISO8859-6.pcf.gz
 
-%files 100dpi-ISO8859-6
-%defattr(644,root,root,755)
+#%files 100dpi-ISO8859-6
+#%defattr(644,root,root,755)
+#%{_fontsdir}/100dpi/*ISO8859-6.pcf.gz
 
 %files ISO8859-7
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-7.pcf.gz
 
-%files 75dpi-ISO8859-7
-%defattr(644,root,root,755)
+#%files 75dpi-ISO8859-7
+#%defattr(644,root,root,755)
+#%{_fontsdir}/75dpi/*ISO8859-7.pcf.gz
 
-%files 100dpi-ISO8859-7
-%defattr(644,root,root,755)
+#%files 100dpi-ISO8859-7
+#%defattr(644,root,root,755)
+#%{_fontsdir}/100dpi/*ISO8859-7.pcf.gz
 
 %files ISO8859-8
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-8.pcf.gz
 
-%files 75dpi-ISO8859-8
-%defattr(644,root,root,755)
+#%files 75dpi-ISO8859-8
+#%defattr(644,root,root,755)
+#%{_fontsdir}/75dpi/*ISO8859-8.pcf.gz
 
-%files 100dpi-ISO8859-8
-%defattr(644,root,root,755)
+#%files 100dpi-ISO8859-8
+#%defattr(644,root,root,755)
+#%{_fontsdir}/100dpi/*ISO8859-8.pcf.gz
 
 %files ISO8859-9
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-9.pcf.gz
 
 %files 75dpi-ISO8859-9
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-9.pcf.gz
 
 %files 100dpi-ISO8859-9
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-9.pcf.gz
 
 %files ISO8859-10
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-10.pcf.gz
 
 %files 75dpi-ISO8859-10
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-10.pcf.gz
 
 %files 100dpi-ISO8859-10
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-10.pcf.gz
 
-%files ISO8859-11
-%defattr(644,root,root,755)
+#%files ISO8859-11
+#%defattr(644,root,root,755)
+#%{_fontsdir}/misc/*ISO8859-11.pcf.gz
 
-%files 75dpi-ISO8859-11
-%defattr(644,root,root,755)
+#%files 75dpi-ISO8859-11
+#%defattr(644,root,root,755)
+#%{_fontsdir}/75dpi/*ISO8859-11.pcf.gz
 
-%files 100dpi-ISO8859-11
-%defattr(644,root,root,755)
+#%files 100dpi-ISO8859-11
+#%defattr(644,root,root,755)
+#%{_fontsdir}/100dpi/*ISO8859-11.pcf.gz
 
-%files ISO8859-12
-%defattr(644,root,root,755)
+#%files ISO8859-12
+#%defattr(644,root,root,755)
+#%{_fontsdir}/misc/*ISO8859-12.pcf.gz
 
-%files 75dpi-ISO8859-12
-%defattr(644,root,root,755)
+#%files 75dpi-ISO8859-12
+#%defattr(644,root,root,755)
+#%{_fontsdir}/75dpi/*ISO8859-12.pcf.gz
 
-%files 100dpi-ISO8859-12
-%defattr(644,root,root,755)
+#%files 100dpi-ISO8859-12
+#%defattr(644,root,root,755)
+#%{_fontsdir}/100dpi/*ISO8859-12.pcf.gz
 
 %files ISO8859-13
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-13.pcf.gz
 
 %files 75dpi-ISO8859-13
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-13.pcf.gz
 
 %files 100dpi-ISO8859-13
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-13.pcf.gz
 
 %files ISO8859-14
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-14.pcf.gz
 
 %files 75dpi-ISO8859-14
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-14.pcf.gz
 
 %files 100dpi-ISO8859-14
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-14.pcf.gz
 
 %files ISO8859-15
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*ISO8859-15.pcf.gz
 
 %files 75dpi-ISO8859-15
 %defattr(644,root,root,755)
+%{_fontsdir}/75dpi/*ISO8859-15.pcf.gz
 
 %files 100dpi-ISO8859-15
 %defattr(644,root,root,755)
+%{_fontsdir}/100dpi/*ISO8859-15.pcf.gz
 
 %files KOI8-R
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*KOI8-R.pcf.gz
 %{_fontsdir}/cyrillic
 
-%files 75dpi-KOI8-R
-%defattr(644,root,root,755)
-
-%files 100dpi-KOI8-R
-%defattr(644,root,root,755)
+#%files 75dpi-KOI8-R
+#%defattr(644,root,root,755)
+#
+#%files 100dpi-KOI8-R
+#%defattr(644,root,root,755)
 
 %files JISX0201.1976-0
 %defattr(644,root,root,755)
+%{_fontsdir}/misc/*JISX0201.1976-0.pcf.gz
+%{_fontsdir}/misc/*ja.pcf.gz
+%{_fontsdir}/misc/jiskan*.pcf.gz
 
-%files 75dpi-JISX0201.1976-0
-%defattr(644,root,root,755)
-
-%files 100dpi-JISX0201.1976-0
-%defattr(644,root,root,755)
+#%files 75dpi-JISX0201.1976-0
+#%defattr(644,root,root,755)
+#
+#%files 100dpi-JISX0201.1976-0
+#%defattr(644,root,root,755)
