@@ -13,6 +13,7 @@ Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
+BuildRequires:	XFree86 = %{version}
 BuildRequires:	XFree86-devel = %{version}
 Prereq:		/usr/X11R6/bin/mkfontdir
 Obsoletes:	XFree86-latin2-fonts
