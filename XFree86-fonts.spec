@@ -11,8 +11,11 @@ License:	MIT
 Group:		X11/XFree86
 # We need source0 for arabic fonts
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
+# Source0-md5:	4f241a4f867363f40efa2b00dca292af
 Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-4.tgz
+# Source1-md5:	567903747018f2534965ab6cb3976b38
 Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-5.tgz
+# Source2-md5:	4dbdbe9a85c8f7f98dd0ee015a3c7b4f
 #Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	%{name}.Fontmap
 Source4:	vga.pcf
