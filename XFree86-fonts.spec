@@ -10,7 +10,7 @@ Source:		ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-2.tgz
 BuildRequires:	XFree86-devel = %{version}
 Requires:	type1inst
 Prereq:		%{_bindir}/mkfontdir
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_fontdir	/usr/share/fonts
 %define		_prefix		/usr/X11R6
