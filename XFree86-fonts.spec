@@ -5,8 +5,8 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.3.99.6
-Release:	2
+Version:	4.3.99.7
+Release:	1
 License:	MIT
 Group:		Fonts
 Source0:        ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
@@ -22,8 +22,7 @@ Source4:	%{name}.Fontmap
 Source5:	vga.pcf
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-do_not_run_fccache.patch
-Patch2:		%{name}-lubB19-typo.patch
-Patch3:		%{name}-ISO8859-2.patch
+Patch2:		%{name}-ISO8859-2.patch
 #BuildRequires:	XFree86 >= %{version}-1
 #BuildRequires:	XFree86-devel >= %{version}-1
 BuildRequires:	perl
@@ -860,7 +859,6 @@ Starosyryjskie fonty OpenType.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
-%patch3 -p1
 
 cp -f xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc
 cp -f xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc
