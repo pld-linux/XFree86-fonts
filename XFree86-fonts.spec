@@ -120,15 +120,13 @@ Summary(tr):	X11R6 100dpi yazýtipleri - yalnýzca sunucu tarafýnda gereklidir
 Group:		X11/XFree86
 Requires(post,postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-100dpi-fonts
-
 %ifarch sparc
 Obsoletes:	X11R6.1-100dpi-fonts
 %endif
 
 %description 100dpi
-The 100dpi fonts used on most Linux systems. Users with high
-resolution displays may prefer the 100dpi fonts available in a
-separate package.
+The 100dpi fonts used on most Linux systems. Users with low resolution
+displays may prefer the 75dpi fonts available in a separate package.
 
 %description 100dpi -l de
 Die 100dpi-Schriftarten, die auf den meisten Linux-Systemen zum
