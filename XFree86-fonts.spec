@@ -6,8 +6,8 @@ Release:	54
 Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
-Source:		ftp.xfree86.org:/pub/XFree86/3.3.3/source/X333src-2.tgz
-Patch0:		%{name}-3.3.3.1.patch.bz2
+Source:		ftp://ftp.xfree86.org/pub/XFree86/3.3.3/source/X333src-2.tgz
+Patch0:		XFree86-3.3.3-3.3.3.1.diff.fonts.gz
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define _fontdir        /usr/share/fonts
@@ -111,7 +111,7 @@ Cyrlica.
 
 %prep
 %setup -q -c 
-%patch0 -p1
+%patch0 -p0
 
 %build
 # Clean up to save a *lot* of disk space
@@ -135,22 +135,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n XFree86-fonts
 %defattr(644,root,root,755)
-/usr/X11R6/lib/X11/fonts/PEX
-/usr/X11R6/lib/X11/fonts/Speedo
-/usr/X11R6/lib/X11/fonts/Type1
-/usr/X11R6/lib/X11/fonts/misc
+%{_fontdir}/PEX
+%{_fontdir}/Speedo
+%{_fontdir}/Type1
+%{_fontdir}/misc
 
 %files -n XFree86-75dpi-fonts
 %defattr(644,root,root,755)
-/usr/X11R6/lib/X11/fonts/75dpi
+%{_fontdir}/75dpi
 
 %files -n XFree86-100dpi-fonts
 %defattr(644,root,root,755)
-/usr/X11R6/lib/X11/fonts/100dpi
+%{_fontdir}/100dpi
 
 %files -n XFree86-cyrillic-fonts
 %defattr(644,root,root,755)
-/usr/X11R6/lib/X11/fonts/cyrillic
+%{_fontdir}/cyrillic
 
 %changelog
 * Fri Feb 12 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
