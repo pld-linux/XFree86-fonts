@@ -1896,7 +1896,11 @@ done
 # make "fixed" font
 sed -e 's/^FONT -Misc.*/FONT fixed/' xc/fonts/bdf/misc/6x13-ISO8859-1.bdf | \
 	%{_bindir}/bdftopcf -t | gzip -9 > $RPM_BUILD_ROOT%{_fontsdir}/misc/fixed.pcf.gz
-
+# remove "fixed" alias
+grep -v '^fixed[ \t]' $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias \
+	> $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias.new
+mv -f $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias{.new,}
+	
 tail -n +2 ulT1mo-beta-1.0/fonts.scale.ulT1mo | sed -e 's/\.pfb/-ISO-8859-2\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.XFree86-fonts-Type1-ISO8859-2
 tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
