@@ -1,19 +1,18 @@
-
-%define		_sver	%(echo %{version} | tr -d .)
-
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.3.99.903
+Version:	4.4.0
 Release:	0.1
 License:	MIT
 Group:		Fonts
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
-# Source0-md5:	9864cd3f5443849d13694d9b2a7b1e72
+#Source0:	ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
 # We need source0 for arabic fonts
-#Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
-#Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-4.tgz
-#Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-5.tgz
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-1.tgz
+# Source0-md5:	97cea3d9e1197dde32ca34e3b6086469
+Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-4.tgz
+# Source1-md5:	5d1792f5c154c7462c6aef39c7853b3b
+Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-5.tgz
+# Source2-md5:	5c37f028efc6d54a9c725e333f9cc8ae
 Source3:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 # Source3-md5:	5dd69ab949d833944048b10a97f7a589
 Source4:	%{name}.Fontmap
@@ -855,8 +854,8 @@ Syriac OpenType fonts.
 Starosyryjskie fonty OpenType.
 
 %prep
-#%setup -q -c -a1 -a2 -a3
-%setup -q -c -a3
+%setup -qcT -b0 -b1 -b2 -b3
+#%setup -q -c -a3
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
