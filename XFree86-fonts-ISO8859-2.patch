@@ -1,6 +1,6 @@
-diff -urN XFree86-fonts-4.0.2.orig/ulT1mo-beta-1.0/Makefile XFree86-fonts-4.0.2/ulT1mo-beta-1.0/Makefile
---- XFree86-fonts-4.0.2.orig/ulT1mo-beta-1.0/Makefile	Thu Jan  1 01:00:00 1970
-+++ XFree86-fonts-4.0.2/ulT1mo-beta-1.0/Makefile	Sun Dec 31 02:36:18 2000
+diff -urN XFree86-fonts-4.1.0/ulT1mo-beta-1.0/Makefile XFree86-fonts-4.1.0.latin2/ulT1mo-beta-1.0/Makefile
+--- XFree86-fonts-4.1.0/ulT1mo-beta-1.0/Makefile	Thu Jan  1 01:00:00 1970
++++ XFree86-fonts-4.1.0.latin2/ulT1mo-beta-1.0/Makefile	Wed Jun 27 19:55:15 2001
 @@ -0,0 +1,24 @@
 +FONTDIR=/usr/share/fonts
 +
@@ -26,225 +26,87 @@ diff -urN XFree86-fonts-4.0.2.orig/ulT1mo-beta-1.0/Makefile XFree86-fonts-4.0.2/
 +	install pfm/*.pfm $(FONTDIR)/Type1/pfm
 +
 +
-diff -urN XFree86-fonts-4.0.2.orig/xc/fonts/bdf/latin2/100dpi/Imakefile XFree86-fonts-4.0.2/xc/fonts/bdf/latin2/100dpi/Imakefile
---- XFree86-fonts-4.0.2.orig/xc/fonts/bdf/latin2/100dpi/Imakefile	Mon May  3 15:11:59 1999
-+++ XFree86-fonts-4.0.2/xc/fonts/bdf/latin2/100dpi/Imakefile	Sun Dec 31 02:36:18 2000
-@@ -4,6 +4,9 @@
- 	FontObj(courB18) FontObj(courB24) FontObj(courBO08) \
- 	FontObj(courBO10) FontObj(courBO12) FontObj(courBO14) \
- 	FontObj(courBO18) FontObj(courBO24) FontObj(courO08) \
-+	FontObj(charI08) FontObj(charI10) FontObj(charI12) FontObj(charI14) \
-+	FontObj(charI18) FontObj(charI24) FontObj(charR08) FontObj(charR10) \
-+	FontObj(charR12) FontObj(charR14) FontObj(charR18) FontObj(charR24) \
- 	FontObj(courO10) FontObj(courO12) FontObj(courO14) FontObj(courO18) \
- 	FontObj(courO24) FontObj(courR08) FontObj(courR10) FontObj(courR12) \
- 	FontObj(courR14) FontObj(courR18) FontObj(courR24) FontObj(helvB08) \
-@@ -42,11 +45,16 @@
- 	FontObj(lubI24) FontObj(lubR08) FontObj(lubR10) FontObj(lubR12) \
- 	FontObj(lubR14) FontObj(lubR18) FontObj(lubR24) FontObj(luBIS19) \
- 	FontObj(luBS19) FontObj(luIS19) FontObj(luRS19) FontObj(lubB19) \
--	FontObj(lubBI19) FontObj(lubI19) FontObj(lubR19) \
-+	FontObj(lubBI19) FontObj(lubI19) FontObj(lubR19) FontObj(lutBS08) \
-+	FontObj(lutBS10) FontObj(lutBS12) FontObj(lutBS14) FontObj(lutBS18) \
-+	FontObj(lutBS19) FontObj(lutBS14) FontObj(lutRS08) FontObj(lutRS10) \
-+	FontObj(lutRS12) FontObj(lutRS14) FontObj(lutRS18) FontObj(lutRS19) \
-+	FontObj(lutRS14) \
- 	FontObj(UTI___14) FontObj(UTI___12) \
- 	FontObj(UTI___24) FontObj(UTI___10) FontObj(UTI___18) \
- 	FontObj(UTRG__14) FontObj(UTRG__12) FontObj(UTRG__24) \
--	FontObj(UTRG__10) FontObj(UTRG__18)
-+	FontObj(UTRG__10) FontObj(UTRG__18) \
-+	FontObj(term14) FontObj(termB14)
+diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/75dpi/Imakefile.inc
+--- XFree86-fonts-4.1.0/xc/fonts/bdf/75dpi/Imakefile.inc	Wed Apr 18 21:46:56 2001
++++ XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/75dpi/Imakefile.inc	Wed Jun 27 19:51:38 2001
+@@ -78,10 +78,18 @@
+ 	FontObj(charBI14) FontObj(charBI18) FontObj(charBI24) \
+ 	FontObj(charI08) FontObj(charI10) FontObj(charI12) FontObj(charI14) \
+ 	FontObj(charI18) FontObj(charI24) \
++	FontObj(charI08-ISO8859-2) FontObj(charI10-ISO8859-2) \
++	FontObj(charI12-ISO8859-2) FontObj(charI14-ISO8859-2) \
++	FontObj(charI18-ISO8859-2) FontObj(charI24-ISO8859-2) \
+ 	FontObj(charR08) FontObj(charR10) FontObj(charR12) FontObj(charR14) \
+ 	FontObj(charR18) FontObj(charR24) \
++	FontObj(charR08-ISO8859-2) FontObj(charR10-ISO8859-2) \
++	FontObj(charR12-ISO8859-2) FontObj(charR14-ISO8859-2) \
++	FontObj(charR18-ISO8859-2) FontObj(charR24-ISO8859-2) \
++	FontObj(luBIS19-ISO8859-2) FontObj(lubB19-ISO8859-2) \
+ 	FontObj(tech14) FontObj(techB14) \
+-	FontObj(term14) FontObj(termB14)
++	FontObj(term14) FontObj(termB14) \
++	FontObj(term14-ISO8859-2) FontObj(termB14-ISO8859-2)
  
- OBJS = $(OBJS1) $(OBJS2)
+ #if BuildISO8859_1Fonts
+ /*
+@@ -1312,16 +1320,32 @@
+ FontTarget(charI14)
+ FontTarget(charI18)
+ FontTarget(charI24)
++FontTarget(charI08-ISO8859-2)
++FontTarget(charI10-ISO8859-2)
++FontTarget(charI12-ISO8859-2)
++FontTarget(charI14-ISO8859-2)
++FontTarget(charI18-ISO8859-2)
++FontTarget(charI24-ISO8859-2)
+ FontTarget(charR08)
+ FontTarget(charR10)
+ FontTarget(charR12)
+ FontTarget(charR14)
+ FontTarget(charR18)
+ FontTarget(charR24)
++FontTarget(charR08-ISO8859-2)
++FontTarget(charR10-ISO8859-2)
++FontTarget(charR12-ISO8859-2)
++FontTarget(charR14-ISO8859-2)
++FontTarget(charR18-ISO8859-2)
++FontTarget(charR24-ISO8859-2)
++FontTarget(luBIS19-ISO8859-2)
++FontTarget(lubB19-ISO8859-2)
+ FontTarget(tech14)
+ FontTarget(techB14)
+ FontTarget(term14)
+ FontTarget(termB14)
++FontTarget(term14-ISO8859-2)
++FontTarget(termB14-ISO8859-2)
  
-@@ -78,6 +86,18 @@
- FontTarget(courR14)
- FontTarget(courR18)
- FontTarget(courR24)
-+FontTarget(charI08)
-+FontTarget(charI10)
-+FontTarget(charI12)
-+FontTarget(charI14)
-+FontTarget(charI18)
-+FontTarget(charI24)
-+FontTarget(charR08)
-+FontTarget(charR10)
-+FontTarget(charR12)
-+FontTarget(charR14)
-+FontTarget(charR18)
-+FontTarget(charR24)
- FontTarget(helvB08)
- FontTarget(helvB10)
- FontTarget(helvB12)
-@@ -206,6 +226,20 @@
- FontTarget(lubR18)
- FontTarget(lubR19)
- FontTarget(lubR24)
-+FontTarget(lutBS08)
-+FontTarget(lutBS10)
-+FontTarget(lutBS12)
-+FontTarget(lutBS14)
-+FontTarget(lutBS18)
-+FontTarget(lutBS19)
-+FontTarget(lutBS24)
-+FontTarget(lutRS08)
-+FontTarget(lutRS10)
-+FontTarget(lutRS12)
-+FontTarget(lutRS14)
-+FontTarget(lutRS18)
-+FontTarget(lutRS19)
-+FontTarget(lutRS24)
- FontTarget(UTI___14)
- FontTarget(UTI___12)
- FontTarget(UTI___24)
-@@ -216,6 +250,8 @@
- FontTarget(UTRG__24)
- FontTarget(UTRG__10)
- FontTarget(UTRG__18)
-+FontTarget(term14)
-+FontTarget(termB14)
+ #if BuildISO8859_1Fonts
+ /*
+diff -urN XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/misc/Imakefile
+--- XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile	Wed Jun 27 19:56:53 2001
++++ XFree86-fonts-4.1.0.latin2/xc/fonts/bdf/misc/Imakefile	Wed Jun 27 19:54:23 2001
+@@ -276,7 +276,8 @@
  
- InstallFontObjs($(OBJS1),$(FONTINSTDIR))
- InstallFontObjs($(OBJS2),$(FONTINSTDIR))
-diff -urN XFree86-fonts-4.0.2.orig/xc/fonts/bdf/latin2/75dpi/Imakefile XFree86-fonts-4.0.2/xc/fonts/bdf/latin2/75dpi/Imakefile
---- XFree86-fonts-4.0.2.orig/xc/fonts/bdf/latin2/75dpi/Imakefile	Mon May  3 15:12:00 1999
-+++ XFree86-fonts-4.0.2/xc/fonts/bdf/latin2/75dpi/Imakefile	Sun Dec 31 02:36:18 2000
-@@ -4,6 +4,9 @@
- 	FontObj(courB18) FontObj(courB24) FontObj(courBO08) \
- 	FontObj(courBO10) FontObj(courBO12) FontObj(courBO14) \
- 	FontObj(courBO18) FontObj(courBO24) FontObj(courO08) \
-+	FontObj(charI08) FontObj(charI10) FontObj(charI12) FontObj(charI14) \
-+	FontObj(charI18) FontObj(charI24) FontObj(charR08) FontObj(charR10) \
-+	FontObj(charR12) FontObj(charR14) FontObj(charR18) FontObj(charR24) \
- 	FontObj(courO10) FontObj(courO12) FontObj(courO14) FontObj(courO18) \
- 	FontObj(courO24) FontObj(courR08) FontObj(courR10) FontObj(courR12) \
- 	FontObj(courR14) FontObj(courR18) FontObj(courR24) FontObj(helvB08) \
-@@ -15,8 +18,8 @@
- 	FontObj(helvR10) FontObj(helvR12) FontObj(helvR14) FontObj(helvR18) \
- 	FontObj(helvR24) FontObj(ncenB08) FontObj(ncenB10) FontObj(ncenB12) \
- 	FontObj(ncenB14) FontObj(ncenB18) FontObj(ncenB24) FontObj(ncenBI08) \
--	FontObj(ncenBI10) FontObj(ncenBI12) FontObj(ncenBI14) \
--	FontObj(ncenBI18) FontObj(ncenBI24) FontObj(ncenI08) \
-+	FontObj(ncenBI10) FontObj(ncenBI12) FontObj(ncenBI14) FontObj(ncenR18) \
-+	FontObj(ncenBI18) FontObj(ncenBI24) FontObj(ncenI08) FontObj(ncenR24) \
- 	FontObj(ncenI10) FontObj(ncenI12) FontObj(ncenI14) FontObj(ncenI18) \
- 	FontObj(ncenI24) FontObj(ncenR08) FontObj(ncenR10) FontObj(ncenR12) \
- 	FontObj(ncenR14) FontObj(timB08) FontObj(timB10) FontObj(timB12) \
-@@ -40,15 +43,17 @@
- 	FontObj(lubI10) FontObj(lubI12) FontObj(lubI14) FontObj(lubI18) \
- 	FontObj(lubI24) FontObj(lubR08) FontObj(lubR10) FontObj(lubR12) \
- 	FontObj(lubR14) FontObj(lubR18) FontObj(lubR24) \
-+	FontObj(lutBS08) FontObj(lutBS19) FontObj(lutBS24) \
- 	FontObj(lutBS10) FontObj(lutBS12) FontObj(lutBS14) FontObj(lutBS18) \
--	FontObj(lutRS10) FontObj(lutRS12) \
--	FontObj(lutRS14) FontObj(lutRS18) FontObj(luBIS19) \
-+	FontObj(lutRS08) FontObj(lutRS10) FontObj(lutRS12) FontObj(lutRS19) \
-+	FontObj(lutRS14) FontObj(lutRS18) FontObj(luBIS19) FontObj(lutRS24) \
- 	FontObj(luBS19) FontObj(luIS19) FontObj(luRS19) FontObj(lubB19) \
- 	FontObj(lubBI19) FontObj(lubI19) FontObj(lubR19) \
- 	FontObj(UTI___14) FontObj(UTI___12) \
- 	FontObj(UTI___24) FontObj(UTI___10) FontObj(UTI___18) \
- 	FontObj(UTRG__14) FontObj(UTRG__12) FontObj(UTRG__24) \
--	FontObj(UTRG__10) FontObj(UTRG__18)
-+	FontObj(UTRG__10) FontObj(UTRG__18) \
-+	FontObj(term14) FontObj(termB14)
- 
- OBJS = $(OBJS1) $(OBJS2)
- 
-@@ -80,6 +85,18 @@
- FontTarget(courR14)
- FontTarget(courR18)
- FontTarget(courR24)
-+FontTarget(charI08)
-+FontTarget(charI10)
-+FontTarget(charI12)
-+FontTarget(charI14)
-+FontTarget(charI18)
-+FontTarget(charI24)
-+FontTarget(charR08)
-+FontTarget(charR10)
-+FontTarget(charR12)
-+FontTarget(charR14)
-+FontTarget(charR18)
-+FontTarget(charR24)
- FontTarget(helvB08)
- FontTarget(helvB10)
- FontTarget(helvB12)
-@@ -126,6 +143,8 @@
- FontTarget(ncenR10)
- FontTarget(ncenR12)
- FontTarget(ncenR14)
-+FontTarget(ncenR18)
-+FontTarget(ncenR24)
- FontTarget(timB08)
- FontTarget(timB10)
- FontTarget(timB12)
-@@ -206,14 +225,20 @@
- FontTarget(lubR18)
- FontTarget(lubR19)
- FontTarget(lubR24)
-+FontTarget(lutBS08)
- FontTarget(lutBS10)
- FontTarget(lutBS12)
- FontTarget(lutBS14)
- FontTarget(lutBS18)
-+FontTarget(lutBS19)
-+FontTarget(lutBS24)
-+FontTarget(lutRS08)
- FontTarget(lutRS10)
- FontTarget(lutRS12)
- FontTarget(lutRS14)
- FontTarget(lutRS18)
-+FontTarget(lutRS19)
-+FontTarget(lutRS24)
- FontTarget(UTI___14)
- FontTarget(UTI___12)
- FontTarget(UTI___24)
-@@ -224,6 +249,8 @@
- FontTarget(UTRG__24)
- FontTarget(UTRG__10)
- FontTarget(UTRG__18)
-+FontTarget(term14)
-+FontTarget(termB14)
- 
- InstallFontObjs($(OBJS1),$(FONTINSTDIR))
- InstallFontObjs($(OBJS2),$(FONTINSTDIR))
-diff -urN XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/Imakefile XFree86-fonts-4.0.2/xc/fonts/bdf/misc/Imakefile
---- XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/Imakefile	Sun Dec 31 02:33:52 2000
-+++ XFree86-fonts-4.0.2/xc/fonts/bdf/misc/Imakefile	Sun Dec 31 02:38:34 2000
-@@ -212,8 +212,8 @@
- 	FontObj(10x20-ISO8859-1)
- #endif
- 
--MISCOBJS = FontObj(8x16) FontObj(8x16rk) \
--	FontObj(12x24) FontObj(12x24rk) \
-+MISCOBJS = FontObj(8x16) FontObj(8x16-ISO8859-2) FontObj(8x16rk) \
-+	FontObj(12x24) FontObj(12x24-ISO8859-2) FontObj(12x24rk) \
- 	FontObj(cursor) FontObj(deccurs) FontObj(decsess) FontObj(olcursor) \
- 	FontObj(olgl10) FontObj(olgl12) FontObj(olgl14) FontObj(olgl19) \
- 	FontObj(micro) \
-@@ -576,8 +576,10 @@
- 
- /* Other fonts */
+ MISCOBJS = \
+ 	$(MISC_8859_1_OBJS) $(MISC_JISX0201_OBJS) $(MISC_JA_OBJS) \
+-	$(MISC_KO_OBJS) $(MISC_ZH_OBJS) $(MISC_MISC_OBJS)
++	$(MISC_KO_OBJS) $(MISC_ZH_OBJS) $(MISC_MISC_OBJS) \
++	FontObj(12x24-ISO8859-2) FontObj(8x16-ISO8859-2)
+ 	
+ OBJS = $(UCSOBJS) $(DERIVEDOBJS) $(DERIVEDOBJS2) $(PREDERIVEDOBJS) \
+ 	$(MISCOBJS) $(ARABIC24OBJS) $(CLEARLYUOBJS)
+@@ -664,6 +665,8 @@
  FontTarget(8x16)
-+FontTarget(8x16-ISO8859-2)
- FontTarget(8x16rk)
  FontTarget(12x24)
+ #endif
++FontTarget(8x16-ISO8859-2)
 +FontTarget(12x24-ISO8859-2)
+ #if BuildJISX0201Fonts
+ FontTarget(8x16rk)
  FontTarget(12x24rk)
- FontTarget(cursor)
- FontTarget(deccurs)
-diff -urN XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/fonts.alias XFree86-fonts-4.0.2/xc/fonts/bdf/misc/fonts.alias
---- XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/fonts.alias	Sun Dec 26 18:47:37 1999
-+++ XFree86-fonts-4.0.2/xc/fonts/bdf/misc/fonts.alias	Sun Dec 31 02:46:14 2000
-@@ -19,10 +19,35 @@
- 8x16         -sony-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-1
- 9x15         -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-1
- 9x15bold     -misc-fixed-bold-r-normal--15-140-75-75-c-90-iso8859-1
-+9x18         -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso8859-1
-+9x18bold     -misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1
- 10x20        -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
+--- XFree86-fonts-4.1.0/xc/fonts/bdf/misc/fonts.alias~	Mon Jan 22 22:09:26 2001
++++ XFree86-fonts-4.1.0/xc/fonts/bdf/misc/fonts.alias	Wed Jun 27 20:59:14 2001
+@@ -23,6 +23,29 @@
  12x24        -sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-1
  nil2         -misc-nil-medium-r-normal--2-20-75-75-c-10-misc-fontspecific
  
@@ -270,15 +132,14 @@ diff -urN XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/fonts.alias XFree86-fonts-4
 +9x18boldlatin2 -misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-2
 +10x20latin2    -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-2
 +12x24latin2    -sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
-+
++ 
  heb6x13      -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-8
  heb8x13      -misc-fixed-medium-r-normal--13-120-75-75-c-80-iso8859-8
  
-@@ -75,6 +100,28 @@
+@@ -75,3 +98,24 @@
  -sony-fixed-medium-r-normal--24-230-75-75-c-120-jisx0201.1976-0 -sony-fixed-medium-r-normal--24-170-100-100-c-120-jisx0201.1976-0
  -jis-fixed-medium-r-normal--16-110-100-100-c-160-jisx0208.1983-0 -jis-fixed-medium-r-normal--16-150-75-75-c-160-jisx0208.1983-0
  -jis-fixed-medium-r-normal--24-170-100-100-c-240-jisx0208.1983-0 -jis-fixed-medium-r-normal--24-230-75-75-c-240-jisx0208.1983-0
-+
 +-misc-fixed-medium-r-normal--7-50-100-100-c-50-iso8859-2 -misc-fixed-medium-r-normal--7-70-75-75-c-50-iso8859-2
 +-misc-fixed-medium-r-normal--8-60-100-100-c-50-iso8859-2 -misc-fixed-medium-r-normal--8-80-75-75-c-50-iso8859-2
 +-misc-fixed-medium-r-normal--9-80-100-100-c-60-iso8859-2 -misc-fixed-medium-r-normal--9-90-75-75-c-60-iso8859-2
@@ -300,6 +161,3 @@ diff -urN XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/fonts.alias XFree86-fonts-4
 +-sony-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2 -biznet-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
 +-sony-fixed-medium-r-normal--24-230-75-75-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
 +-sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
- 
- ! These fonts are not really ISO8859-1, but these aliases are provided
- ! for compatibility with X11R5.
