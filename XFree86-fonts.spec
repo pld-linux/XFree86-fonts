@@ -114,7 +114,7 @@ kullanan kullanýcýlar 100dpi yazýtiplerini yeðleyebilirler.
 %package 100dpi
 Summary:	X11R6 100dpi fonts - only need on server side
 Summary(de):	X11R6 100dpi-Fonts - nur auf Server-Seite erforderlich
-Summary(fr):	Fontes 100ppp pour X11R6 - nécessaires seulement coté serveur.
+Summary(fr):	Fontes 100ppp pour X11R6 - nécessaires seulement coté serveur
 Summary(pl):	Fonty o rozdzielczosci 100dpi - potrzebne tylko po stronie serwera
 Summary(tr):	X11R6 100dpi yazýtipleri - yalnýzca sunucu tarafýnda gereklidir
 Group:		X11/XFree86
