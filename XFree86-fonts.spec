@@ -957,8 +957,6 @@ gzip -9nf $RPM_BUILD_ROOT%{_fontsdir}/misc/vga.pcf
 # make TrueType font dir
 install	-d $RPM_BUILD_ROOT%{_fontsdir}/TTF
 
-gzip -9nf xc/RELNOTES.TXT
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -1542,7 +1540,6 @@ umask 022
 
 %files
 %defattr(644,root,root,755)
-%doc xc/RELNOTES.TXT.gz
 %dir %{_fontsdir}/CID
 %dir %{_fontsdir}/Speedo
 %dir %{_fontsdir}/TTF
