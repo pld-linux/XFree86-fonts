@@ -2587,7 +2587,7 @@ umask 022
 %{_fontsdir}/misc/cursor.pcf.gz
 %{_fontsdir}/misc/fixed.pcf.gz
 
-%ifnarch alpha
+%ifnarch %{alpha}
 %files PEX
 %defattr(644,root,root,755)
 %{_fontsdir}/PEX
