@@ -28,8 +28,9 @@ PreReq:		/usr/X11R6/bin/mkfontdir
 PreReq:		freetype1
 PreReq:		textutils
 PreReq:		sed
+PreReq:		xfs
 Obsoletes:	XFree86-latin2-fonts
-# It CAN'T BE noarch because ifarch alpha for PEX fonts
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -879,7 +880,7 @@ JISX0201.1976-0 raster fonts.
 Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 
 %prep
-%setup -q -c -b1 -b2 -a3
+%setup -q -c -a1 -a2 -a3
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -887,18 +888,21 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
 cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
 
-cd misc
+(cd xc/fonts/bdf/misc
 for i in {12x24,8x16}*.bdf ; do
 	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
-	mv -f $i $j
-	mv -f $j ../xc/fonts/bdf/misc/
-done
-cd ../100dpi
+	cp -f $i $j
+done)
+(cd xc/fonts/bdf/75dpi
 for i in {char,term,lu{BIS,bB}19}*.bdf ; do
 	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
-	mv -f $i ../xc/fonts/bdf/100dpi/$j
-	mv -f ../75dpi/$i ../xc/fonts/bdf/75dpi/$j
-done
+	cp -f $i $j
+done)
+(cd xc/fonts/bdf/100dpi
+for i in {char,term,lu{BIS,bB}19}*.bdf ; do
+	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
+	cp -f $i $j
+done)
 
 %build
 %{__make} all -C ulT1mo-beta-1.0
@@ -949,12 +953,10 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
 install %{SOURCE6} $RPM_BUILD_ROOT%{_fontsdir}/misc
 
-# make TrueType font dir, touch default .dir and .scale files
+# make TrueType font dir
 install	-d $RPM_BUILD_ROOT%{_fontsdir}/TTF
-echo 0 > $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.dir
-echo 0 > $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale
 
-gzip -9nf RELEASE_NOTES.TXT
+gzip -9nf xc/RELNOTES.TXT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -971,9 +973,12 @@ cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
 cat Fontmap.* > Fontmap
+%{_bindir}/xftcache .
 cd %{_fontsdir}/TTF
 umask 022
-%{_bindir}/ttmkfdir > fonts.scale
+/usr/bin/ttmkfdir > fonts.scale
+ln -sf fonts.scale fonts.dir
+%{_bindir}/xftcache .
 
 %postun
 cd %{_fontsdir}/misc
@@ -987,9 +992,12 @@ cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
 cat Fontmap.* > Fontmap 2>/dev/null
+%{_bindir}/xftcache .
 cd %{_fontsdir}/TTF
 umask 022
-%{_bindir}/ttmkfdir > fonts.scale
+/usr/bin/ttmkfdir > fonts.scale
+ln -sf fonts.scale fonts.dir
+%{_bindir}/xftcache .
 
 %post 75dpi
 cd %{_fontsdir}/75dpi
@@ -1087,6 +1095,7 @@ grep '^.*ISO-8859-2.pfb' %{_t1fontsdir}/fonts.dir |\
 cat %{_t1fontsdir}/fonts.alias.tmp >> %{_t1fontsdir}/fonts.alias
 sort -u < %{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
 mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
+%{_bindir}/xftcache .
 
 %postun Type1-ISO8859-2
 cd %{_t1fontsdir}
@@ -1102,6 +1111,7 @@ grep -f %{_t1fontsdir}/fonts.dir.tmp \
 	%{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
 mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
 rm -f %{_t1fontsdir}/fonts.dir.tmp
+%{_bindir}/xftcache .
 
 %post ISO8859-3
 cd %{_fontsdir}/misc
@@ -1531,19 +1541,13 @@ umask 022
 
 %files
 %defattr(644,root,root,755)
-%doc RELEASE_NOTES.TXT.gz font/scales/TTF/COPYRIGHT.BH
+%doc xc/RELNOTES.TXT.gz
 %dir %{_fontsdir}/CID
-%ifnarch alpha
-%dir %{_fontsdir}/PEX
-%endif
 %dir %{_fontsdir}/Speedo
 %dir %{_fontsdir}/TTF
 %dir %{_fontsdir}/encodings
 %dir %{_fontsdir}/local
 %dir %{_fontsdir}/misc
-%ifnarch alpha
-%{_fontsdir}/PEX/*
-%endif
 %{_fontsdir}/Speedo/*.spd
 %{_fontsdir}/TTF/*.ttf
 %{_fontsdir}/encodings/*
