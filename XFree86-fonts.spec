@@ -6,7 +6,8 @@ Release:	0.1
 Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
-Source:		ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-2.tgz
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-2.tgz
+Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-1.tgz
 BuildRequires:	XFree86-devel = %{version}
 Requires:	type1inst
 Prereq:		%{_bindir}/mkfontdir
@@ -137,7 +138,7 @@ Latin 2 raster fonts.
 Czcionki rastrowe ISO-8859-2.
 
 %prep
-%setup -q -c 
+%setup -q -c -b 1
 
 %build
 cd xc/fonts
