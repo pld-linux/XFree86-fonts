@@ -1,0 +1,28 @@
+--- xc/fonts/bdf/misc/Imakefile.org	Wed Dec 29 01:56:40 1999
++++ xc/fonts/bdf/misc/Imakefile	Tue Apr 11 15:08:47 2000
+@@ -47,8 +47,8 @@
+ 	FontObj(clR8x14) FontObj(clR8x16) FontObj(clR8x8) FontObj(clR9x15) \
+ 	FontObj(k14) FontObj(jiskan16) FontObj(jiskan24) FontObj(hanglg16) \
+ 	FontObj(hanglm16) FontObj(hanglm24) FontObj(gb16fs) FontObj(gb16st) \
+-	FontObj(gb24st) \
+-	$(ARABIC24OBJS) $(CLEARLYUOBJS)
++	FontObj(gb24st) FontObj(arabic24) FontObj(cu-alt12) FontObj(cu-arabic12) \
++	FontObj(cu-lig12) FontObj(cu-pua12) FontObj(cu12)
+ 
+ FONTINSTDIR = $(FONTDIR)/misc
+ 
+@@ -168,14 +168,6 @@
+ FontTarget(cu-lig12)
+ FontTarget(cu-pua12)
+ FontTarget(cu12)
+-
+-LinkSourceFile(arabic24.bdf,$(ARABIC24DIR))
+-
+-LinkSourceFile(cu-alt12.bdf,$(CLEARLYUDIR))
+-LinkSourceFile(cu-arabic12.bdf,$(CLEARLYUDIR))
+-LinkSourceFile(cu-lig12.bdf,$(CLEARLYUDIR))
+-LinkSourceFile(cu-pua12.bdf,$(CLEARLYUDIR))
+-LinkSourceFile(cu12.bdf,$(CLEARLYUDIR))
+ 
+ InstallFonts($(FONTINSTDIR))
+ InstallFontAliases($(FONTINSTDIR))
