@@ -41,12 +41,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_t1pfmdir	%{_t1fontsdir}/pfm
 
 %description
-This package contains the basic fonts. This package is required when
-you have installed X server.
+This package contains some common used fonts.
 
 %description -l pl
-Pakiet ten zawiera podstawowe czcionki. Pakiet ten jest koniecznie
-potrzebny, je¶li masz zainstalowany jakikolwiek X serwer.
+Pakiet ten zawiera czêsto u¿ywane czcionki.
 
 %package utils
 Summary:	Perl scripts for generating BDF fonts
