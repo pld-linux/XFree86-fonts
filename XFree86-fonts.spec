@@ -1,6 +1,5 @@
 
 %define		_sver	%(echo %{version} | tr -d .)
-%define		_prefix		/usr/X11R6
 
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
@@ -33,7 +32,8 @@ Requires:	%{_fontsdir}/Type1
 Obsoletes:	XFree86-latin2-fonts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_mandir	%{_prefix}/man
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 %define		_t1fontsdir	%{_fontsdir}/Type1
 %define		_t1afmdir	%{_t1fontsdir}/afm
 %define		_t1pfmdir	%{_t1fontsdir}/pfm
