@@ -1564,23 +1564,23 @@ cat fonts.alias.* > fonts.alias
 
 #%files 75dpi-ISO8859-5
 #%defattr(644,root,root,755)
-#%{_fontsdir}/75dpi/*ISO8859-5.pcf.gz
+#%%{_fontsdir}/75dpi/*ISO8859-5.pcf.gz
 
 #%files 100dpi-ISO8859-5
 #%defattr(644,root,root,755)
-#%{_fontsdir}/100dpi/*ISO8859-5.pcf.gz
+#%%{_fontsdir}/100dpi/*ISO8859-5.pcf.gz
 
 #%files ISO8859-6
 #%defattr(644,root,root,755)
-#%{_fontsdir}/misc/*ISO8859-6.pcf.gz
+#%%{_fontsdir}/misc/*ISO8859-6.pcf.gz
 
 #%files 75dpi-ISO8859-6
 #%defattr(644,root,root,755)
-#%{_fontsdir}/75dpi/*ISO8859-6.pcf.gz
+#%%{_fontsdir}/75dpi/*ISO8859-6.pcf.gz
 
 #%files 100dpi-ISO8859-6
 #%defattr(644,root,root,755)
-#%{_fontsdir}/100dpi/*ISO8859-6.pcf.gz
+#%%{_fontsdir}/100dpi/*ISO8859-6.pcf.gz
 
 %files ISO8859-7
 %defattr(644,root,root,755)
@@ -1588,11 +1588,11 @@ cat fonts.alias.* > fonts.alias
 
 #%files 75dpi-ISO8859-7
 #%defattr(644,root,root,755)
-#%{_fontsdir}/75dpi/*ISO8859-7.pcf.gz
+#%%{_fontsdir}/75dpi/*ISO8859-7.pcf.gz
 
 #%files 100dpi-ISO8859-7
 #%defattr(644,root,root,755)
-#%{_fontsdir}/100dpi/*ISO8859-7.pcf.gz
+#%%{_fontsdir}/100dpi/*ISO8859-7.pcf.gz
 
 %files ISO8859-8
 %defattr(644,root,root,755)
@@ -1600,11 +1600,11 @@ cat fonts.alias.* > fonts.alias
 
 #%files 75dpi-ISO8859-8
 #%defattr(644,root,root,755)
-#%{_fontsdir}/75dpi/*ISO8859-8.pcf.gz
+#%%{_fontsdir}/75dpi/*ISO8859-8.pcf.gz
 
 #%files 100dpi-ISO8859-8
 #%defattr(644,root,root,755)
-#%{_fontsdir}/100dpi/*ISO8859-8.pcf.gz
+#%%{_fontsdir}/100dpi/*ISO8859-8.pcf.gz
 
 %files ISO8859-9
 %defattr(644,root,root,755)
@@ -1632,27 +1632,27 @@ cat fonts.alias.* > fonts.alias
 
 #%files ISO8859-11
 #%defattr(644,root,root,755)
-#%{_fontsdir}/misc/*ISO8859-11.pcf.gz
+#%%{_fontsdir}/misc/*ISO8859-11.pcf.gz
 
 #%files 75dpi-ISO8859-11
 #%defattr(644,root,root,755)
-#%{_fontsdir}/75dpi/*ISO8859-11.pcf.gz
+#%%{_fontsdir}/75dpi/*ISO8859-11.pcf.gz
 
 #%files 100dpi-ISO8859-11
 #%defattr(644,root,root,755)
-#%{_fontsdir}/100dpi/*ISO8859-11.pcf.gz
+#%%{_fontsdir}/100dpi/*ISO8859-11.pcf.gz
 
 #%files ISO8859-12
 #%defattr(644,root,root,755)
-#%{_fontsdir}/misc/*ISO8859-12.pcf.gz
+#%%{_fontsdir}/misc/*ISO8859-12.pcf.gz
 
 #%files 75dpi-ISO8859-12
 #%defattr(644,root,root,755)
-#%{_fontsdir}/75dpi/*ISO8859-12.pcf.gz
+#%%{_fontsdir}/75dpi/*ISO8859-12.pcf.gz
 
 #%files 100dpi-ISO8859-12
 #%defattr(644,root,root,755)
-#%{_fontsdir}/100dpi/*ISO8859-12.pcf.gz
+#%%{_fontsdir}/100dpi/*ISO8859-12.pcf.gz
 
 %files ISO8859-13
 %defattr(644,root,root,755)
