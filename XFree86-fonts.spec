@@ -1356,7 +1356,6 @@ fontpostinst OTF
 
 %files base
 %defattr(644,root,root,755)
-%dir %{_fontsdir}/misc
 %{_fontsdir}/misc/cursor.pcf.gz
 %{_fontsdir}/misc/6x13-ISO8859-1.pcf.gz
 %{_fontsdir}/misc/fonts.alias.00XFree86-fonts-base
