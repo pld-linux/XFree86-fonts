@@ -1,7 +1,7 @@
 diff -urN xc.orig/fonts/scaled/TTF/Imakefile xc/fonts/scaled/TTF/Imakefile
 --- xc.orig/fonts/scaled/TTF/Imakefile	Sun Mar  9 13:47:53 2003
 +++ xc/fonts/scaled/TTF/Imakefile	Sun Mar  9 14:47:49 2003
-@@ -11,14 +11,12 @@
+@@ -11,13 +11,11 @@
  MakeFontsDir(fonts.scale)
  
  #if UseFreetype2
@@ -9,7 +9,6 @@ diff -urN xc.orig/fonts/scaled/TTF/Imakefile xc/fonts/scaled/TTF/Imakefile
  #endif
  
  InstallFonts($(FONTINSTDIR))
- InstallFontScale($(FONTINSTDIR))
  InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
  #if UseFreetype2
 -InstallFcCache($(FONTINSTDIR))
@@ -19,15 +18,14 @@ diff -urN xc.orig/fonts/scaled/TTF/Imakefile xc/fonts/scaled/TTF/Imakefile
 diff -urN xc.orig/fonts/scaled/Type1/Imakefile xc/fonts/scaled/Type1/Imakefile
 --- xc.orig/fonts/scaled/Type1/Imakefile	Sun Mar  9 13:47:53 2003
 +++ xc/fonts/scaled/Type1/Imakefile	Sun Mar  9 14:25:27 2003
-@@ -32,14 +32,12 @@
- 
+@@ -32,13 +32,11 @@
+ MakeFontsScale($(OBJS))
  MakeFontsDir(fonts.scale)
  #if UseFreetype2
 -MakeFcCache($(FONTS))
  #endif
  
  InstallFonts($(FONTINSTDIR))
- InstallFontScale($(FONTINSTDIR))
  InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
  #if UseFreetype2
 -InstallFcCache($(FONTINSTDIR))
@@ -46,7 +44,7 @@ diff -urN xc.orig/fonts/scaled/Type1/Imakefile xc/fonts/scaled/Type1/Imakefile
  InstallMultipleFlags($(TTFFONTS),$(TTFINSTDIR),$(INSTDATFLAGS))
 --- xc/fonts/scaled/Meltho/Imakefile.orig	2003-06-04 01:27:53.000000000 +0200
 +++ xc/fonts/scaled/Meltho/Imakefile	2003-06-04 01:28:04.000000000 +0200
-@@ -15,14 +15,12 @@
+@@ -15,13 +15,11 @@
  MakeFontsDir(fonts.scale)
  
  #if UseFreetype2
@@ -54,7 +52,6 @@ diff -urN xc.orig/fonts/scaled/Type1/Imakefile xc/fonts/scaled/Type1/Imakefile
  #endif
  
  InstallFonts($(FONTINSTDIR))
- InstallFontScale($(FONTINSTDIR))
  InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
  #if UseFreetype2
 -InstallFcCache($(FONTINSTDIR))
