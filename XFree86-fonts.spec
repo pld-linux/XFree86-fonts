@@ -35,6 +35,7 @@ potrzebny, je¶li masz zainstalowany jakikolwiek X serwer.
 
 %package utils
 Summary:	Perl scripts for generating BDF fonts
+Summary(pl):	Skrypty perlowe do generowania fontów BDF
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
@@ -47,7 +48,7 @@ BDF font other BDF fonts in any possible encoding.
 Summary:	X11R6 75dpi fonts - only need on server side
 Summary(de):	X11RT 76 dpi-Fonts - nur auf Serverseite erforderlich
 Summary(fr):	Fontes 75 dpi X11R6 - nécessaire uniquement côté serveur
-Summary(pl):	Fonty o rozdzielczo¶ci 75dpi-niebêdne dla serwera.
+Summary(pl):	Fonty o rozdzielczo¶ci 75dpi - potrzebne tylko po stronie serwera
 Summary(tr):	X11R6 75dpi yazýtipleri - yalnýzca sunucu tarafýnda gerekir
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -85,7 +86,7 @@ kullanan kullanýcýlar 100dpi yazýtiplerini yeðleyebilirler.
 Summary:	X11R6 100dpi fonts - only need on server side
 Summary(de):	X11R6 100dpi-Fonts - nur auf Server-Seite erforderlich
 Summary(fr):	Fontes 100ppp pour X11R6 - nécessaires seulement coté serveur.
-Summary(pl):	Fonty o rozdzielczosci 100dpi - niezbêdne dla serwera.
+Summary(pl):	Fonty o rozdzielczosci 100dpi - potrzebne tylko po stronie serwera
 Summary(tr):	X11R6 100dpi yazýtipleri - yalnýzca sunucu tarafýnda gereklidir
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -114,7 +115,7 @@ fontes 100dpi disponibles dans un package séparé.
 
 %description -l pl -n XFree86-100dpi-fonts
 Pakiet ten zawiera czcionki rastrowe 100dpi. Bed± one potrzebne przy
-pracy z du¿± rozdzielczo¶ci±.
+pracy w du¿ych rozdzielczo¶ciach.
 
 %description -l tr -n XFree86-100dpi-fonts
 Yüksek çözünürlük kullanan kullanýcýlar 100dpi yazýtiplerini 75dpi
@@ -141,6 +142,7 @@ Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
+Obsoletes:	XFree86-ISO8859-2-100dpi-fonts
 
 %description -n XFree86-latin2-100dpi-fonts
 Latin 2 raster fonts.
@@ -155,12 +157,13 @@ Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
+Obsoletes:	XFree86-ISO8859-2-75dpi-fonts
 
 %description -n XFree86-latin2-75dpi-fonts
 Latin 2 raster fonts.
 
 %description -l pl -n XFree86-latin2-75dpi-fonts
-Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi
+Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi.
 
 %package -n XFree86-latin2-Type1-fonts
 Summary:	Type1 (scalable) ISO8859-2 X11 system fonts
@@ -170,9 +173,10 @@ Group(de):	X11/Fonts
 Group(pl):	X11/Fonty
 Prereq:		type1inst
 Prereq:		/usr/bin/type1inst
+Prereq:		textutils
 Requires:	XFree86 > 3.2 
 Requires:	type1inst >= 0.6.1
-Prereq:		textutils
+Obsoletes:	XFree86-ISO8859-2-Type1-fonts
 
 %description -n XFree86-latin2-Type1-fonts
 This package includes the Central European (ISO-8859-2) Type1 fonts
