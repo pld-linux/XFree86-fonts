@@ -2,13 +2,13 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
 Version:	4.0.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X401src-2.tgz
-Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X401src-1.tgz
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X402src-2.tgz
+Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X402src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Patch0:		%{name}-extras-fix.patch
@@ -32,6 +32,16 @@ you have installed X server.
 %description -l pl
 Pakiet ten zawiera podstawowe czcionki. Pakiet ten jest koniecznie
 potrzebny, je¶li masz zainstalowany jakikolwiek X serwer.
+
+%package utils
+Summary:	Perl scripts for generating BDF fonts
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+
+%description utils
+Perl scripts that allow to generate from an ISO10646-1 encoded
+BDF font other BDF fonts in any possible encoding.
 
 %package -n XFree86-75dpi-fonts
 Summary:	X11R6 75dpi fonts - only need on server side
@@ -177,23 +187,20 @@ Pakiet ten zawiera zestaw fontów Type 1 ISO-8859-2 dla X Window.
 
 %prep
 %setup -q -c -b1 -b2 -a3
-%patch0 -p0
+%patch0 -p1
 %patch1 -p1
-ln -s . xc/fonts/fonts
-
-rm -f misc/{font*,*13*}
-
-cd misc
-for i in *.bdf ; do
-	mv $i "`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
-done
-cd ..
-mv -f misc/*.bdf xc/fonts/bdf/misc/
-mv -f 100dpi/{char,term,lutBS,lutRS}* xc/fonts/bdf/latin2/100dpi/
-mv -f 75dpi/{char,term,ncenR{18,24},lutBS{08,19,24},lutRS{08,19,24}}* xc/fonts/bdf/latin2/75dpi/
 
 cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
 cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
+
+cd misc
+for i in {12x24,8x16}*.bdf ; do
+	mv $i "`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
+done
+cd ..
+mv -f misc/{12x24,8x16}*.bdf xc/fonts/bdf/misc/
+mv -f 100dpi/{char,term,lutBS,lutRS}* xc/fonts/bdf/latin2/100dpi/
+mv -f 75dpi/{char,term,ncenR{18,24},lutBS{08,19,24},lutRS{08,19,24}}* xc/fonts/bdf/latin2/75dpi/
 
 %build
 %{__make} all -C ulT1mo-beta-1.0
@@ -202,14 +209,27 @@ cd xc/fonts
 imake -DBuildFonts -DUseInstalled -I%{_libdir}/X11/config
 %{__make} Makefiles
 %{__make} depend
-%{__make} CDEBUGFLAGS="$RPM_OPT_FLAGS"
+cd ..
+%{__make} -C fonts TOP=`pwd` \
+	UCS2ANY=`pwd`/fonts/util/ucs2any.pl \
+	BDFTRUNCATE=`pwd`/fonts/util/bdftruncate.pl \
+	UCSMAPPREFIX=`pwd`/fonts/util/map- \
+	CDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-(cd xc/fonts;\
- make DESTDIR=$RPM_BUILD_ROOT install;\
- make DESTDIR=$RPM_BUILD_ROOT install.man;\
-)
+cd xc
+%{__make} -C fonts install TOP=`pwd` \
+	UCS2ANY=`pwd`/fonts/util/ucs2any.pl \
+	BDFTRUNCATE=`pwd`/fonts/util/bdftruncate.pl \
+	UCSMAPPREFIX=`pwd`/fonts/util/map- \
+	DESTDIR=$RPM_BUILD_ROOT
+%{__make} -C fonts install.man TOP=`pwd` \
+	UCS2ANY=`pwd`/fonts/util/ucs2any.pl \
+	BDFTRUNCATE=`pwd`/fonts/util/bdftruncate.pl \
+	UCSMAPPREFIX=`pwd`/fonts/util/map- \
+	DESTDIR=$RPM_BUILD_ROOT
+cd ..
 
 %{__make} -C ulT1mo-beta-1.0 install \
 	FONTDIR=$RPM_BUILD_ROOT%{_fontdir}
@@ -312,6 +332,11 @@ rm -f %{_fontdir}/Type1/fonts.dir.tmp
 %verify(not mtime size md5) %{_fontdir}/local/fonts.*
 %verify(not mtime size md5) %{_fontdir}/Type1/fonts.*
 %verify(not mtime size md5) %{_fontdir}/misc/fonts.*
+
+%files utils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*
+%{_fontdir}/util
 
 %files -n XFree86-75dpi-fonts
 %defattr(644,root,root,755)
