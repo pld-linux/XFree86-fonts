@@ -4,12 +4,12 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.3.99.902
-Release:	1
+Version:	4.3.99.903
+Release:	0.1
 License:	MIT
 Group:		Fonts
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
-# Source0-md5:	eec2d5e4b980ec73a7772b9362ed9021
+# Source0-md5:	9864cd3f5443849d13694d9b2a7b1e72
 # We need source0 for arabic fonts
 #Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
 #Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-4.tgz
@@ -21,6 +21,7 @@ Source5:	vga.pcf
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-do_not_run_fccache.patch
 Patch2:		%{name}-ISO8859-2.patch
+Patch3:		%{name}-TTF_build.patch
 #BuildRequires:	XFree86 >= %{version}-1
 #BuildRequires:	XFree86-devel >= %{version}-1
 BuildRequires:	XFree86
@@ -859,6 +860,7 @@ Starosyryjskie fonty OpenType.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
+%patch3 -p1
 
 cp -f xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc
 cp -f xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc
@@ -947,9 +949,9 @@ tail -n +2 $RPM_BUILD_ROOT%{_fontsdir}/Speedo/fonts.scale \
 rm -f $RPM_BUILD_ROOT%{_fontsdir}/Speedo/fonts.scale
 
 # does mkfontscale support CID fonts? it's safer to assume that doesn't
-tail -n +2 $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale \
-	> $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale.XFree86-fonts
-rm -f $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale
+#tail -n +2 $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale \
+#	> $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale.XFree86-fonts
+#rm -f $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale
 
 install %{SOURCE5} $RPM_BUILD_ROOT%{_fontsdir}/misc
 gzip -9nf $RPM_BUILD_ROOT%{_fontsdir}/misc/vga.pcf
@@ -959,7 +961,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 fontpostinst misc
-fontpostinst CID
+#fontpostinst CID
 fontpostinst Speedo
 fontpostinst TTF
 fontpostinst Type1
@@ -967,7 +969,7 @@ fontpostinst local
 
 %postun
 fontpostinst misc
-fontpostinst CID
+#fontpostinst CID
 fontpostinst Speedo
 fontpostinst TTF
 fontpostinst Type1
@@ -1335,9 +1337,9 @@ fontpostinst OTF
 %exclude %{_fontsdir}/misc/jiskan*.pcf.gz
 %{_fontsdir}/misc/fonts.alias.10XFree86-fonts
 
-%dir %{_fontsdir}/CID
-%{_fontsdir}/CID/fonts.scale.%{name}
-%ghost %{_fontsdir}/CID/fonts.dir
+##%dir %{_fontsdir}/CID
+##%{_fontsdir}/CID/fonts.scale.%{name}
+##%ghost %{_fontsdir}/CID/fonts.dir
 
 %dir %{_fontsdir}/OTF
 
@@ -1348,6 +1350,9 @@ fontpostinst OTF
 
 %{_fontsdir}/TTF/luxi*.ttf
 %ghost %{_fontsdir}/TTF/fonts.dir
+
+# These fonts are in fonts-ttf-bitstream-vera package
+##%{_fontsdir}/TTF/Vera*.ttf
 
 %{_t1fontsdir}/*[a-z_].pfb
 %{_t1fontsdir}/*.%{name}
