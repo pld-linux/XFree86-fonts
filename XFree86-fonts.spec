@@ -49,8 +49,8 @@ Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 
 %description utils
-Perl scripts that allow to generate from an ISO10646-1 encoded
-BDF font other BDF fonts in any possible encoding.
+Perl scripts that allow to generate from an ISO10646-1 encoded BDF
+font other BDF fonts in any possible encoding.
 
 %package 75dpi
 Summary:	X11R6 75dpi fonts - only need on server side
