@@ -2,7 +2,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
 Version:	4.1.0
-Release:	5
+Release:	6
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -944,7 +944,9 @@ tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
+
 install %{SOURCE6} $RPM_BUILD_ROOT%{_fontsdir}/misc
+gzip -9nf $RPM_BUILD_ROOT%{_fontsdir}/misc/vga.pcf
 
 # make TrueType font dir, touch default .dir and .scale files
 install	-d $RPM_BUILD_ROOT%{_fontsdir}/TTF
