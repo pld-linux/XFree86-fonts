@@ -74,7 +74,7 @@ kullanan kullanýcýlar 100dpi yazýtiplerini yeðleyebilirler.
 Summary:	X11R6 100dpi fonts - only need on server side
 Summary(de):	X11R6 100dpi-Fonts - nur auf Server-Seite erforderlich
 Summary(fr):	Fontes 100ppp pour X11R6 - nécessaires seulement coté serveur.
-Summary(pl):	Fonty o rozdzielczosci 100dpi-niezbêdne dla serwera.
+Summary(pl):	Fonty o rozdzielczosci 100dpi - niezbêdne dla serwera.
 Summary(tr):	X11R6 100dpi yazýtipleri - yalnýzca sunucu tarafýnda gereklidir
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -111,7 +111,7 @@ olanlara yeðleyebilirler.
 
 %package -n XFree86-cyrillic-fonts
 Summary:	Cyrillic fonts - only need on server side
-Summary(pl):	Cyrlica
+Summary(pl):	Fonty rastrowe z cyrylic±
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
@@ -121,7 +121,7 @@ Prereq:		%{_bindir}/mkfontdir
 Cyrillic raster fonts.
 
 %description -l pl -n XFree86-cyrillic-fonts
-Czcionki rastrowe z cyrylic±.
+Fonty rastrowe z cyrylic±.
 
 %package -n XFree86-latin2-fonts
 Summary:	Latin 2 basic fonts - only need on server side
@@ -135,11 +135,11 @@ Prereq:		%{_bindir}/mkfontdir
 Latin 2 raster fonts.
 
 %description -l pl -n XFree86-latin2-fonts
-Czcionki rastrowe ISO-8859-2.
+Fonty rastrowe ISO-8859-2.
 
 %package -n XFree86-latin2-100dpi-fonts
 Summary:	Latin 2 100dpi fonts - only need on server side
-Summary(pl):	Pliterki
+Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
@@ -149,11 +149,11 @@ Prereq:		%{_bindir}/mkfontdir
 Latin 2 raster fonts.
 
 %description -l pl -n XFree86-latin2-100dpi-fonts
-Czcionki rastrowe ISO-8859-2.
+Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi.
 
 %package -n XFree86-latin2-75dpi-fonts
 Summary:	Latin 2 75dpi fonts - only need on server side
-Summary(pl):	Pliterki
+Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
@@ -163,12 +163,13 @@ Prereq:		%{_bindir}/mkfontdir
 Latin 2 raster fonts.
 
 %description -l pl -n XFree86-latin2-75dpi-fonts
-Czcionki rastrowe ISO-8859-2.
+Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi
 
 %package -n XFree86-latin2-Type1-fonts
 Summary:	Type1 (scalable) ISO8859-2 X11 system fonts
+Summary(pl):	Fonty Type 1 ISO-8859-2
 Group:		X11/Fonts
-Group(de):	
+Group(de):	X11/Fonts
 Group(pl):	X11/Fonty
 Prereq:		type1inst
 Prereq:		/usr/bin/type1inst
