@@ -12,10 +12,10 @@ Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X401src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Patch0:		%{name}-extras-fix.patch
-Patch1:		%{name}-ISO-8859-2.patch
-Patch2:		XFree86-ISO8859-2-pld.patch
+Patch1:		%{name}-ISO8859-2.patch
 BuildRequires:	XFree86-devel = %{version}
 Prereq:		/usr/X11R6/bin/mkfontdir
+Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -123,20 +123,6 @@ Cyrillic raster fonts.
 %description -l pl -n XFree86-cyrillic-fonts
 Fonty rastrowe z cyrylic±.
 
-%package -n XFree86-latin2-fonts
-Summary:	Latin 2 basic fonts - only need on server side
-Summary(pl):	Pliterki
-Group:		X11/XFree86
-Group(de):	X11/XFree86
-Group(pl):	X11/XFree86
-Prereq:		%{_bindir}/mkfontdir
-
-%description -n XFree86-latin2-fonts
-Latin 2 raster fonts.
-
-%description -l pl -n XFree86-latin2-fonts
-Fonty rastrowe ISO-8859-2.
-
 %package -n XFree86-latin2-100dpi-fonts
 Summary:	Latin 2 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi
@@ -190,25 +176,28 @@ Pakiet ten zawiera zestaw fontów Type 1 ISO-8859-2 dla X Window.
 
 %prep
 %setup -q -c -b1 -b2 -a3
+%patch0 -p0
+%patch1 -p1
+ln -s . xc/fonts/fonts
 
-rm -f misc/font*
+rm -f misc/{font*,*13*}
 
-mv -f misc xc/fonts/bdf/latin2/
+cd misc
+for i in *.bdf ; do
+	mv $i "`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
+done
+cd ..
+mv -f misc/*.bdf xc/fonts/bdf/misc/
 mv -f 100dpi/{char,term,lutBS,lutRS}* xc/fonts/bdf/latin2/100dpi/
 mv -f 75dpi/{char,term,ncenR{18,24},lutBS{08,19,24},lutRS{08,19,24}}* xc/fonts/bdf/latin2/75dpi/
 
-rm -rf 100dpi 75dpi misc
-
-#%patch0 -p0
-#%patch1 -p1
-#%patch2 -p1
+cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
+cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
 
 %build
 %{__make} all -C ulT1mo-beta-1.0
 
 cd xc/fonts
-(cd bdf/misc; cp ../../../extras/fonts/arabic24/*.bdf .)
-(cd bdf/misc; cp ../../../extras/fonts/ClearlyU/*.bdf .)
 imake -DBuildFonts -DUseInstalled -I%{_libdir}/X11/config
 %{__make} Makefiles
 %{__make} depend
@@ -266,10 +255,6 @@ umask 022
 cd %{_fontdir}/cyrillic
 %{_bindir}/mkfontdir
 
-%post -n XFree86-latin2-fonts
-cd %{_fontdir}/latin2/misc
-%{_bindir}/mkfontdir
-
 %post -n XFree86-latin2-100dpi-fonts
 cd %{_fontdir}/latin2/100dpi
 %{_bindir}/mkfontdir
@@ -306,6 +291,7 @@ rm -f %{_fontdir}/Type1/fonts.dir.tmp
 
 %files
 %defattr(644,root,root,755)
+%doc RELEASE_NOTES.TXT.gz
 %dir %{_fontdir}/CID
 %dir %{_fontdir}/PEX
 %dir %{_fontdir}/Speedo
@@ -341,11 +327,6 @@ rm -f %{_fontdir}/Type1/fonts.dir.tmp
 %files -n XFree86-cyrillic-fonts
 %defattr(644,root,root,755)
 %{_fontdir}/cyrillic
-
-%files -n XFree86-latin2-fonts
-%defattr(644,root,root,755)
-%doc RELEASE_NOTES.TXT.gz
-%{_fontdir}/latin2/misc
 
 %files -n XFree86-latin2-100dpi-fonts
 %defattr(644,root,root,755)
