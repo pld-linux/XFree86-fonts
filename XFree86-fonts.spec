@@ -2,7 +2,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
 Version:	4.0.1
-Release:	1
+Release:	2
 Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
@@ -166,6 +166,7 @@ Prereq:		type1inst
 Prereq:		/usr/bin/type1inst
 Requires:	XFree86 > 3.2 
 Requires:	type1inst >= 0.6.1
+Prereq:		textutils
 
 %description -n XFree86-latin2-Type1-fonts
 This package includes the Central European (ISO-8859-2) Type1 fonts
