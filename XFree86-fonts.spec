@@ -5,17 +5,18 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.3.0
-Release:	0.2
+Version:	4.3.99.5
+Release:	1
 License:	MIT
 Group:		X11/XFree86
+# Source0-md5:	d01d01a7abd4f0764e20ef493f76a3b2
+Source0:        ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
+
 # We need source0 for arabic fonts
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
-# Source0-md5:	4f241a4f867363f40efa2b00dca292af
-Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-4.tgz
-# Source1-md5:	567903747018f2534965ab6cb3976b38
-Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-5.tgz
-# Source2-md5:	4dbdbe9a85c8f7f98dd0ee015a3c7b4f
+#Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
+#Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-4.tgz
+#Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-5.tgz
+# Source3-md5:	5dd69ab949d833944048b10a97f7a589
 Source3:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source4:	%{name}.Fontmap
 Source5:	vga.pcf
@@ -23,8 +24,8 @@ Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-do_not_run_fccache.patch
 Patch2:		%{name}-lubB19-typo.patch
 Patch3:		%{name}-ISO8859-2.patch
-BuildRequires:	XFree86 >= %{version}-1
-BuildRequires:	XFree86-devel >= %{version}-1
+#BuildRequires:	XFree86 >= %{version}-1
+#BuildRequires:	XFree86-devel >= %{version}-1
 BuildRequires:	perl
 BuildRequires:	t1utils
 Requires(post,postun):	fontpostinst
@@ -839,17 +840,6 @@ Ethiopic OpenType and TrueType fonts.
 %description Ethiopic -l pl
 Etiopskie fonty OpenType i TrueType.
 
-%package PEX
-Summary:	PEX fonts
-Summary(pl):	Fonty PEX
-Group:		X11/XFree86
-
-%description PEX
-PEX fonts for PEX extension (not installed by default since 4.2.0).
-
-%description PEX -l pl
-Fonty PEX do rozszerzenia PEX (nie instalowane domy¶lnie od 4.2.0).
-
 %package Syriac
 Summary:	Syriac OpenType fonts
 Summary(pl):	Starosyryjskie fonty OpenType
@@ -865,7 +855,8 @@ Syriac OpenType fonts.
 Starosyryjskie fonty OpenType.
 
 %prep
-%setup -q -c -a1 -a2 -a3
+#%setup -q -c -a1 -a2 -a3
+%setup -q -c -a3
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
@@ -1610,12 +1601,6 @@ fontpostinst OTF
 %defattr(644,root,root,755)
 %{_fontsdir}/OTF/GohaTibebZemen.otf
 %{_fontsdir}/TTF/GohaTibebZemen.ttf
-
-%ifnarch alpha
-%files PEX
-%defattr(644,root,root,755)
-%{_fontsdir}/PEX
-%endif
 
 %files Syriac
 %defattr(644,root,root,755)
