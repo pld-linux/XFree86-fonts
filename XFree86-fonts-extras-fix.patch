@@ -1,28 +1,33 @@
-diff -ur XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/Imakefile XFree86-fonts-4.0.2/xc/fonts/bdf/misc/Imakefile
---- XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/Imakefile	Wed Dec 13 00:57:28 2000
-+++ XFree86-fonts-4.0.2/xc/fonts/bdf/misc/Imakefile	Sat Dec 30 03:39:42 2000
-@@ -230,7 +230,8 @@
- 	FontObj(gb24st)
+--- XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile~	Sat Apr  7 03:49:12 2001
++++ XFree86-fonts-4.1.0/xc/fonts/bdf/misc/Imakefile	Wed Jun 20 21:43:44 2001
+@@ -10,12 +10,10 @@
  
- OBJS = $(UCSOBJS) $(DERIVEDOBJS) $(DERIVEDOBJS2) $(PREDERIVEDOBJS) \
--	$(MISCOBJS) $(ARABIC24OBJS) $(CLEARLYUOBJS)
-+	$(MISCOBJS) FontObj(arabic24) FontObj(cu-alt12) FontObj(cu-arabic12) \
-+	FontObj(cu-lig12) FontObj(cu-pua12) FontObj(cu12)
+ #if BuildArabicFonts
+ ARABIC24OBJS = FontObj(arabic24)
+-ARABIC24DIR = $(TOP)/extras/fonts/arabic24
+ #endif
  
- FONTINSTDIR = $(FONTDIR)/misc
+ CLEARLYUOBJS = FontObj(cu-alt12) FontObj(cu-arabic12) FontObj(cu-lig12) \
+ 	FontObj(cu-pua12) FontObj(cu12)
+-CLEARLYUDIR = $(TOP)/extras/fonts/ClearlyU
  
-@@ -636,14 +637,6 @@
- FontTarget(cu-lig12)
- FontTarget(cu-pua12)
- FontTarget(cu12)
+ #if BuildJapaneseFonts
+ UCSJAOBJS = FontObj(12x13ja) FontObj(18x18ja)
+@@ -725,17 +723,6 @@
+ FontTarget(gb16fs)
+ FontTarget(gb16st)
+ FontTarget(gb24st)
+-#endif
 -
+-#if BuildUCSFonts
+-#if BuildArabicFonts
 -LinkSourceFile(arabic24.bdf,$(ARABIC24DIR))
--
+-#endif
 -LinkSourceFile(cu-alt12.bdf,$(CLEARLYUDIR))
 -LinkSourceFile(cu-arabic12.bdf,$(CLEARLYUDIR))
 -LinkSourceFile(cu-lig12.bdf,$(CLEARLYUDIR))
 -LinkSourceFile(cu-pua12.bdf,$(CLEARLYUDIR))
 -LinkSourceFile(cu12.bdf,$(CLEARLYUDIR))
+ #endif
  
- #if TruncateUCSFonts
- MakeTruncatedUCSBdfFont(5x7,MaxUCSChar,5x7t)
+ #if BuildUCSFonts && TruncateUCSFonts
