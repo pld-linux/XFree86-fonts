@@ -30,8 +30,8 @@ Requires(post,postun):	fontpostinst
 Requires:	%{name}-base = %{version}
 Requires:	%{_fontsdir}/misc
 Requires:	%{_fontsdir}/Type1
-Obsoletes:	XFree86-latin2-fonts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	XFree86-latin2-fonts
 
 %define		_mandir		%{_prefix}/man
 %define		_t1fontsdir	%{_fontsdir}/Type1
@@ -888,6 +888,8 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_t1afmdir}
+
 cd xc
 %{__make} -C fonts install TOP=`pwd` \
 	UCS2ANY=`pwd`/fonts/util/ucs2any.pl \
@@ -902,7 +904,6 @@ cd xc
 cd ..
 
 # separate *.afm, convert *.pfa to .pfb
-install -d $RPM_BUILD_ROOT%{_t1afmdir}
 mv -f $RPM_BUILD_ROOT%{_t1fontsdir}/*.afm $RPM_BUILD_ROOT%{_t1afmdir}
 cd $RPM_BUILD_ROOT%{_t1fontsdir}
 for f in *.pfa ; do
