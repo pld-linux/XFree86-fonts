@@ -1,21 +1,20 @@
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
-Version:	4.0.3
+Version:	4.1.0
 Release:	1
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X402src-2.tgz
-Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X402src-1.tgz
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X410src-2.tgz
+Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X410src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Source4:	%{name}.Fontmap
 Source5:	%{name}-latin2-Type1.Fontmap
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
-Patch2:		ftp://ftp.xfree86.org/pub/XFree86/4.0.3/patches/4.0.2-4.0.3.diff.gz
 BuildRequires:	XFree86 = %{version}
 BuildRequires:	XFree86-devel = %{version}
 BuildRequires:	perl
@@ -52,7 +51,7 @@ Group(pl):	X11/XFree86
 Perl scripts that allow to generate from an ISO10646-1 encoded
 BDF font other BDF fonts in any possible encoding.
 
-%package -n XFree86-75dpi-fonts
+%package 75dpi
 Summary:	X11R6 75dpi fonts - only need on server side
 Summary(de):	X11RT 75 dpi-Fonts - nur auf Serverseite erforderlich
 Summary(fr):	Fontes 75 dpi X11R6 - nécessaire uniquement côté serveur
@@ -62,35 +61,36 @@ Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
+Obsoletes:	XFree86-75dpi-fonts
 
 %ifarch sparc
 Obsoletes:	X11R6.1-75dpi-fonts
 %endif
 
-%description -n XFree86-75dpi-fonts
+%description 75dpi
 The 75dpi fonts used on most Linux systems. Users with high resolution
 displays may prefer the 100dpi fonts available in a separate package.
 
-%description -l de -n XFree86-75dpi-fonts
+%description 75dpi -l de
 Die 75dpi-Fonts, die auf meisten Linux-Systemen verwendet werden. Für
 Benutzer mit einer hochauflösender Darstellung sind die 100dpi-Fonts
 eines getrennt erhältlichen Pakets besser geeignet.
 
-%description -l fr -n XFree86-75dpi-fonts
+%description 75dpi -l fr
 Fontes 75 dpi utilisées sur la plupart des systèmes Linux. Ceux qui
 ont des écrans à haute résolution préfèreront les fontes 100 dpi
 disponibles dans un autre paquetage.
 
-%description -l pl -n XFree86-75dpi-fonts
+%description 75dpi -l pl
 Pakiet ten zawiera czcionki rastrowe 75dpi. W wypadku wiêkszej
 rozdzielczo¶ci zalecane s± czcionki 100dpi, które s± dostêpne w
 osobnym pakiecie.
 
-%description -l tr -n XFree86-75dpi-fonts
+%description 75dpi -l tr
 Çoðu Linux sisteminde 75dpi yazýtipi kullanýlýr. Yüksek çözünürlük
 kullanan kullanýcýlar 100dpi yazýtiplerini yeðleyebilirler.
 
-%package -n XFree86-100dpi-fonts
+%package 100dpi
 Summary:	X11R6 100dpi fonts - only need on server side
 Summary(de):	X11R6 100dpi-Fonts - nur auf Server-Seite erforderlich
 Summary(fr):	Fontes 100ppp pour X11R6 - nécessaires seulement coté serveur.
@@ -100,80 +100,154 @@ Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
+Obsoletes:	XFree86-100dpi-fonts
 
 %ifarch sparc
 Obsoletes:	X11R6.1-100dpi-fonts
 %endif
 
-%description -n XFree86-100dpi-fonts
+%description 100dpi
 The 100dpi fonts used on most Linux systems. Users with high
 resolution displays may prefer the 100dpi fonts available in a
 separate package.
 
-%description -l de -n XFree86-100dpi-fonts
+%description 100dpi -l de
 Die 100dpi-Schriftarten, die auf den meisten Linux-Systemen zum
 Einsatz kommen. Anwender mit hochauflösenden Monitoren ziehen unter
 Umständen die 100dpi-Schriften vor, die in einem separaten Paket
 erhältlich sind.
 
-%description -l fr -n XFree86-100dpi-fonts
+%description 100dpi -l fr
 Les fontes 100dpi sont utilisées par la plupart des systèmes Linux.
 Les utilisateurs ayant des hautes résolutions peuvent préférer les
 fontes 100dpi disponibles dans un package séparé.
 
-%description -l pl -n XFree86-100dpi-fonts
+%description 100dpi -l pl
 Pakiet ten zawiera czcionki rastrowe 100dpi. Bed± one potrzebne przy
 pracy w du¿ych rozdzielczo¶ciach.
 
-%description -l tr -n XFree86-100dpi-fonts
+%description 100dpi -l tr
 Yüksek çözünürlük kullanan kullanýcýlar 100dpi yazýtiplerini 75dpi
 olanlara yeðleyebilirler.
 
-%package -n XFree86-cyrillic-fonts
-Summary:	Cyrillic fonts - only need on server side
-Summary(pl):	Fonty rastrowe z cyrylic±
+%package KOI8-R
+Summary:	KOI8-R (cyrillic) fonts - only need on server side
+Summary(pl):	Fonty rastrowe KOI8-R (cyrylica)
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+Obsoletes:	XFree86-cyrillic-fonts
+
+%description KOI8-R
+KOI8-R (cyrillic) raster fonts.
+
+%description KOI8-R -l pl
+Fonty rastrowe KOI8-R (cyrylica).
+
+%package 100dpi-KOI8-R
+Summary:	KOI8-R 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe KOI8-R o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
-%description -n XFree86-cyrillic-fonts
-Cyrillic raster fonts.
+%description 100dpi-KOI8-R
+KOI8-R raster fonts.
 
-%description -l pl -n XFree86-cyrillic-fonts
-Fonty rastrowe z cyrylic±.
+%description 100dpi-KOI8-R -l pl
+Fonty rastrowe KOI8-R o rozdzielczo¶ci 100dpi.
 
-%package -n XFree86-latin2-100dpi-fonts
-Summary:	Latin 2 100dpi fonts - only need on server side
+%package 75dpi-KOI8-R
+Summary:	KOI8-R 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe KOI8-R o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-KOI8-R
+KOI8-R raster fonts.
+
+%description 75dpi-KOI8-R -l pl
+Fonty rastrowe ISO-KOI8-R o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-1
+Summary:	ISO-8859-1 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-1
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-1
+Basic ISO-8859-1 raster fonts.
+
+%description ISO8859-1 -l pl
+Podstawowe fonty rastrowe ISO-8859-1.
+
+%package 100dpi-ISO8859-1
+Summary:	ISO-8859-1 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-1
+ISO-8859-1 raster fonts.
+
+%description 100dpi-ISO8859-1 -l pl
+Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-1
+Summary:	ISO-8859-1 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-1
+ISO-8859-1 raster fonts.
+
+%description 75dpi-ISO8859-1 -l pl
+Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 75dpi.
+
+%package 100dpi-ISO8859-2
+Summary:	ISO-8859-2 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 Obsoletes:	XFree86-ISO8859-2-100dpi-fonts
+Obsoletes:	XFree86-latin2-100dpi-fonts
 
-%description -n XFree86-latin2-100dpi-fonts
-Latin 2 raster fonts.
+%description 100dpi-ISO8859-2
+ISO-8859-2 raster fonts.
 
-%description -l pl -n XFree86-latin2-100dpi-fonts
+%description 100dpi-ISO8859-2 -l pl
 Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi.
 
-%package -n XFree86-latin2-75dpi-fonts
-Summary:	Latin 2 75dpi fonts - only need on server side
+%package 75dpi-ISO8859-2
+Summary:	ISO-8859-2 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
 Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 Obsoletes:	XFree86-ISO8859-2-75dpi-fonts
+Obsoletes:	XFree86-latin2-75dpi-fonts
 
-%description -n XFree86-latin2-75dpi-fonts
-Latin 2 raster fonts.
+%description 75dpi-ISO8859-2
+ISO-8859-2 raster fonts.
 
-%description -l pl -n XFree86-latin2-75dpi-fonts
+%description 75dpi-ISO8859-2 -l pl
 Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi.
 
-%package -n XFree86-latin2-Type1-fonts
+%package Type1-ISO8859-2
 Summary:	Type1 (scalable) ISO8859-2 X11 system fonts
 Summary(pl):	Fonty Type 1 ISO-8859-2
 Group:		X11/Fonts
@@ -183,8 +257,9 @@ Prereq:		textutils
 Prereq:		sed
 Requires:	XFree86 > 3.2 
 Obsoletes:	XFree86-ISO8859-2-Type1-fonts
+Obsoletes:	XFree86-latin2-Type1-fonts
 
-%description -n XFree86-latin2-Type1-fonts
+%description Type1-ISO8859-2
 This package includes the Central European (ISO-8859-2) Type1 fonts
 for the X11 system.
 
@@ -192,14 +267,602 @@ This is the famous ulT1mo (read ultimo) collection. All fonts are
 copyrighted to their authors and declared to be freeware. Originals
 was taken from the net or CDs.
 
-%description -n XFree86-latin2-Type1-fonts -l pl
+%description Type1-ISO8859-2 -l pl
 Pakiet ten zawiera zestaw fontów Type1 ISO-8859-2 dla X Window.
 
+%package ISO8859-3
+Summary:	ISO-8859-3 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-3
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-3
+Basic ISO-8859-3 raster fonts.
+
+%description ISO8859-3 -l pl
+Podstawowe fonty rastrowe ISO-8859-3.
+
+%package 100dpi-ISO8859-3
+Summary:	ISO-8859-3 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-3
+ISO-8859-3 raster fonts.
+
+%description 100dpi-ISO8859-3 -l pl
+Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-3
+Summary:	ISO-8859-3 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-3
+ISO-8859-3 raster fonts.
+
+%description 75dpi-ISO8859-3 -l pl
+Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-4
+Summary:	ISO-8859-4 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-4
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-4
+Basic ISO-8859-4 raster fonts.
+
+%description ISO8859-4 -l pl
+Podstawowe fonty rastrowe ISO-8859-4.
+
+%package 100dpi-ISO8859-4
+Summary:	ISO-8859-4 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-4
+ISO-8859-4 raster fonts.
+
+%description 100dpi-ISO8859-4 -l pl
+Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-4
+Summary:	ISO-8859-4 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-4
+ISO-8859-4 raster fonts.
+
+%description 75dpi-ISO8859-4 -l pl
+Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-5
+Summary:	ISO-8859-5 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-5
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-5
+Basic ISO-8859-5 raster fonts.
+
+%description ISO8859-5 -l pl
+Podstawowe fonty rastrowe ISO-8859-5.
+
+%package 100dpi-ISO8859-5
+Summary:	ISO-8859-5 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-5
+ISO-8859-5 raster fonts.
+
+%description 100dpi-ISO8859-5 -l pl
+Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-5
+Summary:	ISO-8859-5 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-5
+ISO-8859-5 raster fonts.
+
+%description 75dpi-ISO8859-5 -l pl
+Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-6
+Summary:	ISO-8859-6 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-6
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-6
+Basic ISO-8859-6 raster fonts.
+
+%description ISO8859-6 -l pl
+Podstawowe fonty rastrowe ISO-8859-6.
+
+%package 100dpi-ISO8859-6
+Summary:	ISO-8859-6 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-6
+ISO-8859-6 raster fonts.
+
+%description 100dpi-ISO8859-6 -l pl
+Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-6
+Summary:	ISO-8859-6 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-6
+ISO-8859-6 raster fonts.
+
+%description 75dpi-ISO8859-6 -l pl
+Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-7
+Summary:	ISO-8859-7 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-7
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-7
+Basic ISO-8859-7 raster fonts.
+
+%description ISO8859-7 -l pl
+Podstawowe fonty rastrowe ISO-8859-7.
+
+%package 100dpi-ISO8859-7
+Summary:	ISO-8859-7 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-7
+ISO-8859-7 raster fonts.
+
+%description 100dpi-ISO8859-7 -l pl
+Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-7
+Summary:	ISO-8859-7 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-7
+ISO-8859-7 raster fonts.
+
+%description 75dpi-ISO8859-7 -l pl
+Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-8
+Summary:	ISO-8859-8 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-8
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-8
+Basic ISO-8859-8 raster fonts.
+
+%description ISO8859-8 -l pl
+Podstawowe fonty rastrowe ISO-8859-8.
+
+%package 100dpi-ISO8859-8
+Summary:	ISO-8859-8 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-8
+ISO-8859-8 raster fonts.
+
+%description 100dpi-ISO8859-8 -l pl
+Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-8
+Summary:	ISO-8859-8 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-8
+ISO-8859-8 raster fonts.
+
+%description 75dpi-ISO8859-8 -l pl
+Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-9
+Summary:	ISO-8859-9 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-9
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-9
+Basic ISO-8859-9 raster fonts.
+
+%description ISO8859-9 -l pl
+Podstawowe fonty rastrowe ISO-8859-9.
+
+%package 100dpi-ISO8859-9
+Summary:	ISO-8859-9 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-9
+ISO-8859-9 raster fonts.
+
+%description 100dpi-ISO8859-9 -l pl
+Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-9
+Summary:	ISO-8859-9 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-9
+ISO-8859-9 raster fonts.
+
+%description 75dpi-ISO8859-9 -l pl
+Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-10
+Summary:	ISO-8859-10 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-10
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-10
+Basic ISO-8859-10 raster fonts.
+
+%description ISO8859-10 -l pl
+Podstawowe fonty rastrowe ISO-8859-10.
+
+%package 100dpi-ISO8859-10
+Summary:	ISO-8859-10 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-10
+ISO-8859-10 raster fonts.
+
+%description 100dpi-ISO8859-10 -l pl
+Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-10
+Summary:	ISO-8859-10 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-10
+ISO-8859-10 raster fonts.
+
+%description 75dpi-ISO8859-10 -l pl
+Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-11
+Summary:	ISO-8859-11 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-11
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-11
+Basic ISO-8859-11 raster fonts.
+
+%description ISO8859-11 -l pl
+Podstawowe fonty rastrowe ISO-8859-11.
+
+%package 100dpi-ISO8859-11
+Summary:	ISO-8859-11 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-11
+ISO-8859-11 raster fonts.
+
+%description 100dpi-ISO8859-11 -l pl
+Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-11
+Summary:	ISO-8859-11 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-11
+ISO-8859-11 raster fonts.
+
+%description 75dpi-ISO8859-11 -l pl
+Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-12
+Summary:	ISO-8859-12 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-12
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-12
+Basic ISO-8859-12 raster fonts.
+
+%description ISO8859-12 -l pl
+Podstawowe fonty rastrowe ISO-8859-12.
+
+%package 100dpi-ISO8859-12
+Summary:	ISO-8859-12 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-12
+ISO-8859-12 raster fonts.
+
+%description 100dpi-ISO8859-12 -l pl
+Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-12
+Summary:	ISO-8859-12 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-12
+ISO-8859-12 raster fonts.
+
+%description 75dpi-ISO8859-12 -l pl
+Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-13
+Summary:	ISO-8859-13 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-13
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-13
+Basic ISO-8859-13 raster fonts.
+
+%description ISO8859-13 -l pl
+Podstawowe fonty rastrowe ISO-8859-13.
+
+%package 100dpi-ISO8859-13
+Summary:	ISO-8859-13 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-13
+ISO-8859-13 raster fonts.
+
+%description 100dpi-ISO8859-13 -l pl
+Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-13
+Summary:	ISO-8859-13 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-13
+ISO-8859-13 raster fonts.
+
+%description 75dpi-ISO8859-13 -l pl
+Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-14
+Summary:	ISO-8859-14 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-14
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-14
+Basic ISO-8859-14 raster fonts.
+
+%description ISO8859-14 -l pl
+Podstawowe fonty rastrowe ISO-8859-14.
+
+%package 100dpi-ISO8859-14
+Summary:	ISO-8859-14 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-14
+ISO-8859-14 raster fonts.
+
+%description 100dpi-ISO8859-14 -l pl
+Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-14
+Summary:	ISO-8859-14 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-14
+ISO-8859-14 raster fonts.
+
+%description 75dpi-ISO8859-14 -l pl
+Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 75dpi.
+
+%package ISO8859-15
+Summary:	ISO-8859-15 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe ISO-8859-15
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description ISO8859-15
+Basic ISO-8859-15 raster fonts.
+
+%description ISO8859-15 -l pl
+Podstawowe fonty rastrowe ISO-8859-15.
+
+%package 100dpi-ISO8859-15
+Summary:	ISO-8859-15 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-ISO8859-15
+ISO-8859-15 raster fonts.
+
+%description 100dpi-ISO8859-15 -l pl
+Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-ISO8859-15
+Summary:	ISO-8859-15 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-ISO8859-15
+ISO-8859-15 raster fonts.
+
+%description 75dpi-ISO8859-15 -l pl
+Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 75dpi.
+
+%package JISX0201.1976-0
+Summary:	JISX0201.1976-0 basic fonts - only need on server side
+Summary(pl):	Podstawowe fonty rastrowe JISX0201.1976-0
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description JISX0201.1976-0
+Basic JISX0201.1976-0 raster fonts.
+
+%description JISX0201.1976-0 -l pl
+Podstawowe fonty rastrowe JISX0201.1976-0.
+
+%package 100dpi-JISX0201.1976-0
+Summary:	JISX0201.1976-0 100dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 100dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 100dpi-JISX0201.1976-0
+JISX0201.1976-0 raster fonts.
+
+%description 100dpi-JISX0201.1976-0 -l pl
+Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 100dpi.
+
+%package 75dpi-JISX0201.1976-0
+Summary:	JISX0201.1976-0 75dpi fonts - only need on server side
+Summary(pl):	Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+Prereq:		%{_bindir}/mkfontdir
+
+%description 75dpi-JISX0201.1976-0
+JISX0201.1976-0 raster fonts.
+
+%description 75dpi-JISX0201.1976-0 -l pl
+Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
+
 %prep
+%setup -q -c -b1
 %setup -q -c -b1 -b2 -a3
 %patch0 -p1
 %patch1 -p1
-%patch2 -p0
 
 cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
 cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
@@ -210,8 +873,9 @@ for i in {12x24,8x16}*.bdf ; do
 done
 cd ..
 mv -f misc/{12x24,8x16}*.bdf xc/fonts/bdf/misc/
-mv -f 100dpi/{char,term,lutBS,lutRS}* xc/fonts/bdf/latin2/100dpi/
-mv -f 75dpi/{char,term,ncenR{18,24},lutBS{08,19,24},lutRS{08,19,24}}* xc/fonts/bdf/latin2/75dpi/
+# TODO:
+#mv -f 100dpi/{char,term,lutBS,lutRS}* xc/fonts/bdf/100dpi/
+#mv -f 75dpi/{char,term,ncenR{18,24},lutBS{08,19,24},lutRS{08,19,24}}* xc/fonts/bdf/75dpi/
 
 %build
 %{__make} all -C ulT1mo-beta-1.0
@@ -392,33 +1056,178 @@ rm -f %{_t1fontsdir}/fonts.dir.tmp
 %attr(755,root,root) %{_bindir}/*
 %{_fontsdir}/util
 
-%files -n XFree86-75dpi-fonts
+%files 75dpi
 %defattr(644,root,root,755)
 %dir %{_fontsdir}/75dpi
 %{_fontsdir}/75dpi/*gz
 %verify(not mtime size md5) %{_fontsdir}/75dpi/fonts.*
 
-%files -n XFree86-100dpi-fonts
+%files 100dpi
 %defattr(644,root,root,755)
 %dir %{_fontsdir}/100dpi
 %{_fontsdir}/100dpi/*gz
 %verify(not mtime size md5) %{_fontsdir}/100dpi/fonts.*
 
-%files -n XFree86-cyrillic-fonts
-%defattr(644,root,root,755)
-%{_fontsdir}/cyrillic
 
-%files -n XFree86-latin2-100dpi-fonts
+%files ISO8859-1
 %defattr(644,root,root,755)
-%{_fontsdir}/latin2/100dpi
 
-%files -n XFree86-latin2-75dpi-fonts
+%files 75dpi-ISO8859-1
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-1
+%defattr(644,root,root,755)
+
+%files ISO8859-2
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-2
 %defattr(644,root,root,755)
 %{_fontsdir}/latin2/75dpi
 
-%files -n XFree86-latin2-Type1-fonts
+%files 100dpi-ISO8859-2
+%defattr(644,root,root,755)
+%{_fontsdir}/latin2/100dpi
+
+%files Type1-ISO8859-2
 %defattr(644,root,root,755)
 %{_t1fontsdir}/*-ISO-8859-2*
 %{_t1afmdir}/*-ISO-8859-2*.afm
 %{_t1pfmdir}/*-ISO-8859-2*.pfm
 %{_t1fontsdir}/*.XFree86-latin2-Type1-fonts
+
+%files ISO8859-3
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-3
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-3
+%defattr(644,root,root,755)
+
+%files ISO8859-4
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-4
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-4
+%defattr(644,root,root,755)
+
+%files ISO8859-5
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-5
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-5
+%defattr(644,root,root,755)
+
+%files ISO8859-6
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-6
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-6
+%defattr(644,root,root,755)
+
+%files ISO8859-7
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-7
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-7
+%defattr(644,root,root,755)
+
+%files ISO8859-8
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-8
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-8
+%defattr(644,root,root,755)
+
+%files ISO8859-9
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-9
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-9
+%defattr(644,root,root,755)
+
+%files ISO8859-10
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-10
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-10
+%defattr(644,root,root,755)
+
+%files ISO8859-11
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-11
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-11
+%defattr(644,root,root,755)
+
+%files ISO8859-12
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-12
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-12
+%defattr(644,root,root,755)
+
+%files ISO8859-13
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-13
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-13
+%defattr(644,root,root,755)
+
+%files ISO8859-14
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-14
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-14
+%defattr(644,root,root,755)
+
+%files ISO8859-15
+%defattr(644,root,root,755)
+
+%files 75dpi-ISO8859-15
+%defattr(644,root,root,755)
+
+%files 100dpi-ISO8859-15
+%defattr(644,root,root,755)
+
+%files KOI8-R
+%defattr(644,root,root,755)
+%{_fontsdir}/cyrillic
+
+%files 75dpi-KOI8-R
+%defattr(644,root,root,755)
+
+%files 100dpi-KOI8-R
+%defattr(644,root,root,755)
+
+%files JISX0201.1976-0
+%defattr(644,root,root,755)
+
+%files 75dpi-JISX0201.1976-0
+%defattr(644,root,root,755)
+
+%files 100dpi-JISX0201.1976-0
+%defattr(644,root,root,755)
