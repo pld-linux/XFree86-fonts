@@ -6,16 +6,14 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.2.0
-Release:	5.1
+Release:	6
 License:	MIT
 Group:		X11/XFree86
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-2.tgz
 Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
-Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
-Source4:	%{name}.Fontmap
-Source5:	%{name}-latin2-Type1.Fontmap
-Source6:	vga.pcf
+Source3:	%{name}.Fontmap
+Source4:	vga.pcf
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
 Patch2:		%{name}-do_not_run_xftchache.patch
@@ -23,14 +21,10 @@ BuildRequires:	XFree86 >= %{version}-0.8
 BuildRequires:	XFree86-devel >= %{version}-0.8
 BuildRequires:	perl
 BuildRequires:	t1utils
-Requires(post):	%{_bindir}/mkfontdir
-Requires(post):	fileutils
-Requires(post):	textutils
-Requires(post):	sed
-Requires(postun):	%{_bindir}/mkfontdir
-Requires(postun):	fileutils
-Requires(postun):	textutils
-Requires(postun):	sed
+Requires(post,postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	fileutils
+Requires(post,postun):	textutils
+Requires(post,postun):	sed
 Requires:	%{name}-base = %{version}
 Obsoletes:	XFree86-latin2-fonts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -88,8 +82,7 @@ Summary(fr):	Fontes 75 dpi X11R6 - nécessaire uniquement côté serveur
 Summary(pl):	Fonty o rozdzielczo¶ci 75dpi - potrzebne tylko po stronie serwera
 Summary(tr):	X11R6 75dpi yazýtipleri - yalnýzca sunucu tarafýnda gerekir
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-75dpi-fonts
 %ifarch sparc
 Obsoletes:	X11R6.1-75dpi-fonts
@@ -125,8 +118,7 @@ Summary(fr):	Fontes 100ppp pour X11R6 - nécessaires seulement coté serveur.
 Summary(pl):	Fonty o rozdzielczosci 100dpi - potrzebne tylko po stronie serwera
 Summary(tr):	X11R6 100dpi yazýtipleri - yalnýzca sunucu tarafýnda gereklidir
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-100dpi-fonts
 
 %ifarch sparc
@@ -161,8 +153,7 @@ olanlara yeðleyebilirler.
 Summary:	KOI8-R (cyrillic) fonts - only need on server side
 Summary(pl):	Fonty rastrowe KOI8-R (cyrylica)
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-cyrillic-fonts
 
 %description KOI8-R
@@ -175,8 +166,7 @@ Fonty rastrowe KOI8-R (cyrylica).
 Summary:	KOI8-R 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe KOI8-R o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-KOI8-R
 KOI8-R raster fonts.
@@ -188,8 +178,7 @@ Fonty rastrowe KOI8-R o rozdzielczo¶ci 100dpi.
 Summary:	KOI8-R 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe KOI8-R o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-KOI8-R
 KOI8-R raster fonts.
@@ -201,8 +190,7 @@ Fonty rastrowe ISO-KOI8-R o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-1 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-1
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-1
 Basic ISO-8859-1 raster fonts.
@@ -214,8 +202,7 @@ Podstawowe fonty rastrowe ISO-8859-1.
 Summary:	ISO-8859-1 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-1
 ISO-8859-1 raster fonts.
@@ -227,8 +214,7 @@ Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-1 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-1
 ISO-8859-1 raster fonts.
@@ -240,8 +226,7 @@ Fonty rastrowe ISO-8859-1 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-2 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-2
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-2
 Basic ISO-8859-2 raster fonts.
@@ -253,8 +238,7 @@ Podstawowe fonty rastrowe ISO-8859-2.
 Summary:	ISO-8859-2 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-ISO8859-2-100dpi-fonts
 Obsoletes:	XFree86-latin2-100dpi-fonts
 
@@ -268,8 +252,7 @@ Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-2 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 Obsoletes:	XFree86-ISO8859-2-75dpi-fonts
 Obsoletes:	XFree86-latin2-75dpi-fonts
 
@@ -279,39 +262,11 @@ ISO-8859-2 raster fonts.
 %description 75dpi-ISO8859-2 -l pl
 Fonty rastrowe ISO-8859-2 o rozdzielczo¶ci 75dpi.
 
-%package Type1-ISO8859-2
-Summary:	Type1 (scalable) ISO8859-2 X11 system fonts
-Summary(pl):	Fonty Type 1 ISO-8859-2
-Group:		X11/Fonts
-Requires(post):	fileutils
-Requires(post):	grep
-Requires(post):	textutils
-Requires(post):	sed
-Requires(postun):	fileutils
-Requires(postun):	grep
-Requires(postun):	textutils
-Requires(postun):	sed
-Requires:	XFree86 > 3.2
-Obsoletes:	XFree86-ISO8859-2-Type1-fonts
-Obsoletes:	XFree86-latin2-Type1-fonts
-
-%description Type1-ISO8859-2
-This package includes the Central European (ISO-8859-2) Type1 fonts
-for the X11 system.
-
-This is the famous ulT1mo (read ultimo) collection. All fonts are
-copyrighted to their authors and declared to be freeware. Originals
-was taken from the net or CDs.
-
-%description Type1-ISO8859-2 -l pl
-Pakiet ten zawiera zestaw fontów Type1 ISO-8859-2 dla X Window.
-
 %package ISO8859-3
 Summary:	ISO-8859-3 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-3
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-3
 Basic ISO-8859-3 raster fonts.
@@ -323,8 +278,7 @@ Podstawowe fonty rastrowe ISO-8859-3.
 Summary:	ISO-8859-3 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-3
 ISO-8859-3 raster fonts.
@@ -336,8 +290,7 @@ Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-3 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-3
 ISO-8859-3 raster fonts.
@@ -349,8 +302,7 @@ Fonty rastrowe ISO-8859-3 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-4 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-4
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-4
 Basic ISO-8859-4 raster fonts.
@@ -362,8 +314,7 @@ Podstawowe fonty rastrowe ISO-8859-4.
 Summary:	ISO-8859-4 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-4
 ISO-8859-4 raster fonts.
@@ -375,8 +326,7 @@ Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-4 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-4
 ISO-8859-4 raster fonts.
@@ -388,8 +338,7 @@ Fonty rastrowe ISO-8859-4 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-5 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-5
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-5
 Basic ISO-8859-5 raster fonts.
@@ -401,8 +350,7 @@ Podstawowe fonty rastrowe ISO-8859-5.
 Summary:	ISO-8859-5 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-5
 ISO-8859-5 raster fonts.
@@ -414,8 +362,7 @@ Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-5 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-5
 ISO-8859-5 raster fonts.
@@ -427,8 +374,7 @@ Fonty rastrowe ISO-8859-5 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-6 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-6
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-6
 Basic ISO-8859-6 raster fonts.
@@ -440,8 +386,7 @@ Podstawowe fonty rastrowe ISO-8859-6.
 Summary:	ISO-8859-6 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-6
 ISO-8859-6 raster fonts.
@@ -453,8 +398,7 @@ Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-6 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-6
 ISO-8859-6 raster fonts.
@@ -466,8 +410,7 @@ Fonty rastrowe ISO-8859-6 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-7 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-7
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-7
 Basic ISO-8859-7 raster fonts.
@@ -479,8 +422,7 @@ Podstawowe fonty rastrowe ISO-8859-7.
 Summary:	ISO-8859-7 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-7
 ISO-8859-7 raster fonts.
@@ -492,8 +434,7 @@ Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-7 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-7
 ISO-8859-7 raster fonts.
@@ -505,8 +446,7 @@ Fonty rastrowe ISO-8859-7 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-8 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-8
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-8
 Basic ISO-8859-8 raster fonts.
@@ -518,8 +458,7 @@ Podstawowe fonty rastrowe ISO-8859-8.
 Summary:	ISO-8859-8 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-8
 ISO-8859-8 raster fonts.
@@ -531,8 +470,7 @@ Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-8 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-8
 ISO-8859-8 raster fonts.
@@ -544,8 +482,7 @@ Fonty rastrowe ISO-8859-8 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-9 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-9
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-9
 Basic ISO-8859-9 raster fonts.
@@ -557,8 +494,7 @@ Podstawowe fonty rastrowe ISO-8859-9.
 Summary:	ISO-8859-9 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-9
 ISO-8859-9 raster fonts.
@@ -570,8 +506,7 @@ Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-9 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-9
 ISO-8859-9 raster fonts.
@@ -583,8 +518,7 @@ Fonty rastrowe ISO-8859-9 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-10 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-10
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-10
 Basic ISO-8859-10 raster fonts.
@@ -596,8 +530,7 @@ Podstawowe fonty rastrowe ISO-8859-10.
 Summary:	ISO-8859-10 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-10
 ISO-8859-10 raster fonts.
@@ -609,8 +542,7 @@ Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-10 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-10
 ISO-8859-10 raster fonts.
@@ -622,8 +554,7 @@ Fonty rastrowe ISO-8859-10 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-11 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-11
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-11
 Basic ISO-8859-11 raster fonts.
@@ -635,8 +566,7 @@ Podstawowe fonty rastrowe ISO-8859-11.
 Summary:	ISO-8859-11 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-11
 ISO-8859-11 raster fonts.
@@ -648,8 +578,7 @@ Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-11 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-11
 ISO-8859-11 raster fonts.
@@ -661,8 +590,7 @@ Fonty rastrowe ISO-8859-11 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-12 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-12
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-12
 Basic ISO-8859-12 raster fonts.
@@ -674,8 +602,7 @@ Podstawowe fonty rastrowe ISO-8859-12.
 Summary:	ISO-8859-12 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-12
 ISO-8859-12 raster fonts.
@@ -687,8 +614,7 @@ Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-12 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-12
 ISO-8859-12 raster fonts.
@@ -700,8 +626,7 @@ Fonty rastrowe ISO-8859-12 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-13 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-13
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-13
 Basic ISO-8859-13 raster fonts.
@@ -713,8 +638,7 @@ Podstawowe fonty rastrowe ISO-8859-13.
 Summary:	ISO-8859-13 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-13
 ISO-8859-13 raster fonts.
@@ -726,8 +650,7 @@ Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-13 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-13
 ISO-8859-13 raster fonts.
@@ -739,8 +662,7 @@ Fonty rastrowe ISO-8859-13 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-14 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-14
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-14
 Basic ISO-8859-14 raster fonts.
@@ -752,8 +674,7 @@ Podstawowe fonty rastrowe ISO-8859-14.
 Summary:	ISO-8859-14 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-14
 ISO-8859-14 raster fonts.
@@ -765,8 +686,7 @@ Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-14 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-14
 ISO-8859-14 raster fonts.
@@ -778,8 +698,7 @@ Fonty rastrowe ISO-8859-14 o rozdzielczo¶ci 75dpi.
 Summary:	ISO-8859-15 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe ISO-8859-15
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description ISO8859-15
 Basic ISO-8859-15 raster fonts.
@@ -791,8 +710,7 @@ Podstawowe fonty rastrowe ISO-8859-15.
 Summary:	ISO-8859-15 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-ISO8859-15
 ISO-8859-15 raster fonts.
@@ -804,8 +722,7 @@ Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 100dpi.
 Summary:	ISO-8859-15 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-ISO8859-15
 ISO-8859-15 raster fonts.
@@ -817,8 +734,7 @@ Fonty rastrowe ISO-8859-15 o rozdzielczo¶ci 75dpi.
 Summary:	JISX0201.1976-0 basic fonts - only need on server side
 Summary(pl):	Podstawowe fonty rastrowe JISX0201.1976-0
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description JISX0201.1976-0
 Basic JISX0201.1976-0 raster fonts.
@@ -830,8 +746,7 @@ Podstawowe fonty rastrowe JISX0201.1976-0.
 Summary:	JISX0201.1976-0 100dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 100dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 100dpi-JISX0201.1976-0
 JISX0201.1976-0 raster fonts.
@@ -843,8 +758,7 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 100dpi.
 Summary:	JISX0201.1976-0 75dpi fonts - only need on server side
 Summary(pl):	Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi
 Group:		X11/XFree86
-Requires(post):	%{_bindir}/mkfontdir
-Requires(postun):	%{_bindir}/mkfontdir
+Requires(post,postun):	%{_bindir}/mkfontdir
 
 %description 75dpi-JISX0201.1976-0
 JISX0201.1976-0 raster fonts.
@@ -853,7 +767,7 @@ JISX0201.1976-0 raster fonts.
 Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 
 %prep
-%setup -q -c -a1 -a2 -a3
+%setup -q -c -a1 -a2
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -868,8 +782,6 @@ for i in {misc/{12x24,8x16},{75,100}dpi/{char,term,lu{BIS,bB}19}}*.bdf ; do
 done
 
 %build
-%{__make} all -C ulT1mo-beta-1.0
-
 cd xc/fonts
 imake -DBuildFonts -DUseInstalled -I%{_libdir}/X11/config
 %{__make} Makefiles
@@ -896,10 +808,8 @@ cd xc
 	DESTDIR=$RPM_BUILD_ROOT
 cd ..
 
-%{__make} -C ulT1mo-beta-1.0 install \
-	FONTDIR=$RPM_BUILD_ROOT%{_fontsdir}
-
 # separate *.afm, convert *.pfa to .pfb
+install -d $RPM_BUILD_ROOT%{_t1afmdir}
 mv -f $RPM_BUILD_ROOT%{_t1fontsdir}/*.afm $RPM_BUILD_ROOT%{_t1afmdir}
 (cd $RPM_BUILD_ROOT%{_t1fontsdir}
 for f in *.pfa ; do
@@ -908,10 +818,6 @@ for f in *.pfa ; do
 done
 )
 
-# make "fixed" font
-#sed -e 's/^FONT -Misc.*/FONT fixed/' xc/fonts/bdf/misc/6x13-ISO8859-1.bdf | \
-#	%{_bindir}/bdftopcf -t | gzip -9 > $RPM_BUILD_ROOT%{_fontsdir}/misc/fixed.pcf.gz
-
 # split fonts.alias (separate "fixed")
 grep -v '^fixed[ \t]' $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias \
 	> $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias.10XFree86-fonts
@@ -919,13 +825,10 @@ grep '^fixed[ \t].*' $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias \
 	> $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias.00XFree86-fonts-base
 rm -f $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias
 	
-tail -n +2 ulT1mo-beta-1.0/fonts.scale.ulT1mo | sed -e 's/\.pfb/-ISO-8859-2\.pfb/' \
-	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.XFree86-fonts-Type1-ISO8859-2
 tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
-install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
-install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
-install %{SOURCE6} $RPM_BUILD_ROOT%{_fontsdir}/misc
+install %{SOURCE3} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
+install %{SOURCE4} $RPM_BUILD_ROOT%{_fontsdir}/misc
 tail -n +2 $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale \
 	> $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale.XFree86-fonts
 rm -f $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale
@@ -1091,44 +994,6 @@ umask 022
 cd %{_fontsdir}/100dpi
 umask 022
 %{_bindir}/mkfontdir
-
-%post Type1-ISO8859-2
-cd %{_t1fontsdir}
-rm -f fonts.scale.bak Fontmap.bak
-cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp
-ln -sf fonts.scale fonts.dir
-cat Fontmap.* > Fontmap
-grep '^.*ISO-8859-2.pfb' %{_t1fontsdir}/fonts.dir |\
-	sed 's/\(^.*ISO-8859-2.pfb \)\(.*\)/"\2"/' |\
-	sed 's/\(^".*\)\(-[a-z]*-[a-z]*"\)/\1-iso8859-2" \1\2/' |\
-	grep -v ^[0-9] > %{_t1fontsdir}/fonts.alias.tmp
-cat %{_t1fontsdir}/fonts.alias.tmp >> %{_t1fontsdir}/fonts.alias
-sort -u < %{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
-mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
-if [ -x %{_bindir}/xftcache ]; then
-	%{_bindir}/xftcache .
-fi
-
-%postun Type1-ISO8859-2
-cd %{_t1fontsdir}
-rm -f fonts.scale.bak Fontmap.bak
-cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp
-ln -sf fonts.scale fonts.dir
-cat Fontmap.* > Fontmap 2>/dev/null
-sed 's/^.*pfb -//' %{_t1fontsdir}/fonts.dir > %{_t1fontsdir}/fonts.dir.tmp
-grep -f %{_t1fontsdir}/fonts.dir.tmp \
-	%{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
-mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
-rm -f %{_t1fontsdir}/fonts.dir.tmp
-if [ -x %{_bindir}/xftcache ]; then
-	%{_bindir}/xftcache .
-fi
 
 %post ISO8859-3
 cd %{_fontsdir}/misc
@@ -1556,6 +1421,11 @@ cd %{_fontsdir}/100dpi
 umask 022
 %{_bindir}/mkfontdir
 
+%triggerpostun base -- XFree86-fonts < 4.2.0-6
+cd %{_fontsdir}/misc
+umask 022
+cat fonts.alias.* > fonts.alias
+
 %files
 %defattr(644,root,root,755)
 %dir %{_fontsdir}/CID
@@ -1666,13 +1536,6 @@ umask 022
 %files 100dpi-ISO8859-2
 %defattr(644,root,root,755)
 %{_fontsdir}/100dpi/*ISO8859-2.pcf.gz
-
-%files Type1-ISO8859-2
-%defattr(644,root,root,755)
-%{_t1fontsdir}/*-ISO-8859-2*
-%{_t1afmdir}/*-ISO-8859-2*.afm
-%{_t1pfmdir}/*-ISO-8859-2*.pfm
-%{_t1fontsdir}/*.XFree86-fonts-Type1-ISO8859-2
 
 %files ISO8859-3
 %defattr(644,root,root,755)
