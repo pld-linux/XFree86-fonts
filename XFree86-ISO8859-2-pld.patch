@@ -59,15 +59,15 @@ diff -urN XFree86-ISO8859-2/ulT1mo-beta-1.0/Makefile XFree86-ISO8859-2.pld/ulT1m
 +
 +all: 
 +	for j in *.pfb ; do \
-+	   mv $$j `basename $$j .pfb`-lat2.pfb; \
++	   mv $$j `basename $$j .pfb`-ISO-8859-2.pfb; \
 +	done; \
 +	cd afm; \
 +	for j in *.afm ; do \
-+	   mv $$j `basename $$j .afm`-lat2.afm; \
++	   mv $$j `basename $$j .afm`-ISO-8859-2.afm; \
 +	done; \
 +	cd ../pfm; \
 +	for j in *.pfm ; do \
-+	   mv $$j `basename $$j .pfm`-lat2.pfm; \
++	   mv $$j `basename $$j .pfm`-ISO-8859-2.pfm; \
 +	done;
 +
 +install:
