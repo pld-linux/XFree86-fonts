@@ -23,6 +23,7 @@ Patch1:		%{name}-do_not_run_fccache.patch
 Patch2:		%{name}-ISO8859-2.patch
 #BuildRequires:	XFree86 >= %{version}-1
 #BuildRequires:	XFree86-devel >= %{version}-1
+BuildRequires:	XFree86
 BuildRequires:	perl
 BuildRequires:	t1utils
 Requires(post,postun):	fontpostinst
