@@ -6,7 +6,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.3.0
-Release:	0.1
+Release:	0.2
 License:	MIT
 Group:		X11/XFree86
 # We need source0 for arabic fonts
@@ -58,6 +58,7 @@ ISO10646-1 fonty BDF z dowolnym kodowaniem.
 Summary:	Base fonts (cursor and fixed)
 Summary(pl):	Podstawowe fonty (cursor i fixed)
 Group:		X11/XFree86
+Prereq:		textutils
 
 %description base
 Base fonts (cursor and fixed) needed to start X server.
