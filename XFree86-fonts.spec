@@ -7,7 +7,7 @@ Copyright:	MIT
 Group:		X11/XFree86
 Group(pl):	X11/XFree86
 Source:		ftp://ftp.xfree86.org/pub/XFree86/3.3.3/source/X333src-2.tgz
-Patch0:		%{name}-3.3.3.1.patch.bz2
+Patch:		XFree86-3.3.3-3.3.3.1.diff.fonts.gz
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define _fontdir        /usr/share/fonts
@@ -111,7 +111,7 @@ Cyrlica.
 
 %prep
 %setup -q -c 
-%patch0 -p1
+%patch0 -p0
 
 %build
 # Clean up to save a *lot* of disk space
@@ -130,6 +130,9 @@ make CDEBUGFLAGS="$RPM_OPT_FLAGS"
  make DESTDIR=$RPM_BUILD_ROOT install.man;\
 )
 
+install -d $RPM_BUILD_ROOT/usr/X11R6/include/X11
+ln -s %{_fontdir} $RPM_BUILD_ROOT/usr/X11R6/include/X11/fonts
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -139,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_fontdir}/Speedo
 %{_fontdir}/Type1
 %{_fontdir}/misc
+/usr/X11R6/include/X11/fonts
 
 %files -n XFree86-75dpi-fonts
 %defattr(644,root,root,755)
