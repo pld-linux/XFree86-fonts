@@ -912,7 +912,7 @@ cat fonts.alias.* > fonts.alias 2>/dev/null
 if [ -x %{_bindir}/mkfontdir ]; then
 	%{_bindir}/mkfontdir
 else
-	:> fonts.dir
+	echo "0" > fonts.dir
 fi
 
 %post 75dpi
