@@ -854,8 +854,7 @@ Syriac OpenType fonts.
 Starosyryjskie fonty OpenType.
 
 %prep
-%setup -qcT -b0 -b1 -b2 -b3
-#%setup -q -c -a3
+%setup -qc -a1 -a2 -a3
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
