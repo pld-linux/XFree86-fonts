@@ -2,7 +2,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86 
 Name:		XFree86-fonts
 Version:	4.1.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		X11/XFree86
 Group(de):	X11/XFree86
@@ -1522,13 +1522,17 @@ umask 022
 %defattr(644,root,root,755)
 %doc RELEASE_NOTES.TXT.gz
 %dir %{_fontsdir}/CID
+%ifnarch alpha
 %dir %{_fontsdir}/PEX
+%endif
 %dir %{_fontsdir}/Speedo
 %dir %{_fontsdir}/TTF
 %dir %{_fontsdir}/encodings
 %dir %{_fontsdir}/local
 %dir %{_fontsdir}/misc
+%ifnarch alpha
 %{_fontsdir}/PEX/*
+%endif
 %{_fontsdir}/Speedo/*.spd
 %{_fontsdir}/encodings/*
 %{_t1fontsdir}/*[a-z_].pfb
