@@ -1,11 +1,12 @@
 
 %define		_sver	%(echo %{version} | tr -d .)
+%define		_prefix		/usr/X11R6
 
 Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.2.0
-Release:	3
+Release:	4
 License:	MIT
 Group:		X11/XFree86
 Group(cs):	X11/XFree86
@@ -52,7 +53,6 @@ Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
 %define		_t1fontsdir	%{_fontsdir}/Type1
 %define		_t1afmdir	%{_t1fontsdir}/afm
