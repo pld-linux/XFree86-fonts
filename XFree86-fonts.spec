@@ -1531,7 +1531,7 @@ umask 022
 
 %files
 %defattr(644,root,root,755)
-%doc RELEASE_NOTES.TXT.gz
+%doc RELEASE_NOTES.TXT.gz font/scales/TTF/COPYRIGHT.BH
 %dir %{_fontsdir}/CID
 %ifnarch alpha
 %dir %{_fontsdir}/PEX
