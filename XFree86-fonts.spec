@@ -1333,39 +1333,13 @@ fontpostinst OTF
 %defattr(644,root,root,755)
 %{_fontsdir}/encodings
 
-%{_fontsdir}/misc/10x20.pcf.gz
-%{_fontsdir}/misc/12x24.pcf.gz
-%{_fontsdir}/misc/4x6.pcf.gz
-%{_fontsdir}/misc/5x7.pcf.gz
-%{_fontsdir}/misc/5x8.pcf.gz
-%{_fontsdir}/misc/6x10.pcf.gz
-%{_fontsdir}/misc/6x12.pcf.gz
-%{_fontsdir}/misc/6x13.pcf.gz
-%{_fontsdir}/misc/6x13B.pcf.gz
-%{_fontsdir}/misc/6x13O.pcf.gz
-%{_fontsdir}/misc/6x9.pcf.gz
-%{_fontsdir}/misc/7x13.pcf.gz
-%{_fontsdir}/misc/7x13B.pcf.gz
-%{_fontsdir}/misc/7x13O.pcf.gz
-%{_fontsdir}/misc/7x14.pcf.gz
-%{_fontsdir}/misc/7x14B.pcf.gz
-%{_fontsdir}/misc/8x13.pcf.gz
-%{_fontsdir}/misc/8x13B.pcf.gz
-%{_fontsdir}/misc/8x13O.pcf.gz
-%{_fontsdir}/misc/8x16.pcf.gz
-%{_fontsdir}/misc/9x15.pcf.gz
-%{_fontsdir}/misc/9x15B.pcf.gz
-%{_fontsdir}/misc/9x18.pcf.gz
-%{_fontsdir}/misc/9x18B.pcf.gz
-%{_fontsdir}/misc/arabic*.pcf.gz
-%{_fontsdir}/misc/c[!u]*.pcf.gz
-%{_fontsdir}/misc/cu[!r]*.pcf.gz
-%{_fontsdir}/misc/[d-e]*.pcf.gz
-%{_fontsdir}/misc/[g-h]*.pcf.gz
-%{_fontsdir}/misc/k*.pcf.gz
-%{_fontsdir}/misc/[m-z]*.pcf.gz
-%{_fontsdir}/misc/*rk.pcf.gz
-%{_fontsdir}/misc/*ko.pcf.gz
+%{_fontsdir}/misc/*.pcf.gz
+%exclude %{_fontsdir}/misc/*-ISO8859-*.pcf.gz
+%exclude %{_fontsdir}/misc/*-JISX0201.1976-0.pcf.gz
+%exclude %{_fontsdir}/misc/*-KOI8-R.pcf.gz
+%exclude %{_fontsdir}/misc/cursor.pcf.gz
+%exclude %{_fontsdir}/misc/*ja.pcf.gz
+%exclude %{_fontsdir}/misc/jiskan*.pcf.gz
 %{_fontsdir}/misc/fonts.alias.10XFree86-fonts
 
 %dir %{_fontsdir}/CID
