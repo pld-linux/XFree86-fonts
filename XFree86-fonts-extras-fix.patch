@@ -1,17 +1,17 @@
---- xc/fonts/bdf/misc/Imakefile.org	Wed Dec 29 01:56:40 1999
-+++ xc/fonts/bdf/misc/Imakefile	Tue Apr 11 15:08:47 2000
-@@ -47,8 +47,8 @@
- 	FontObj(clR8x14) FontObj(clR8x16) FontObj(clR8x8) FontObj(clR9x15) \
- 	FontObj(k14) FontObj(jiskan16) FontObj(jiskan24) FontObj(hanglg16) \
- 	FontObj(hanglm16) FontObj(hanglm24) FontObj(gb16fs) FontObj(gb16st) \
--	FontObj(gb24st) \
--	$(ARABIC24OBJS) $(CLEARLYUOBJS)
-+	FontObj(gb24st) FontObj(arabic24) FontObj(cu-alt12) FontObj(cu-arabic12) \
+diff -ur XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/Imakefile XFree86-fonts-4.0.2/xc/fonts/bdf/misc/Imakefile
+--- XFree86-fonts-4.0.2.orig/xc/fonts/bdf/misc/Imakefile	Wed Dec 13 00:57:28 2000
++++ XFree86-fonts-4.0.2/xc/fonts/bdf/misc/Imakefile	Sat Dec 30 03:39:42 2000
+@@ -230,7 +230,8 @@
+ 	FontObj(gb24st)
+ 
+ OBJS = $(UCSOBJS) $(DERIVEDOBJS) $(DERIVEDOBJS2) $(PREDERIVEDOBJS) \
+-	$(MISCOBJS) $(ARABIC24OBJS) $(CLEARLYUOBJS)
++	$(MISCOBJS) FontObj(arabic24) FontObj(cu-alt12) FontObj(cu-arabic12) \
 +	FontObj(cu-lig12) FontObj(cu-pua12) FontObj(cu12)
  
  FONTINSTDIR = $(FONTDIR)/misc
  
-@@ -168,14 +168,6 @@
+@@ -636,14 +637,6 @@
  FontTarget(cu-lig12)
  FontTarget(cu-pua12)
  FontTarget(cu12)
@@ -24,5 +24,5 @@
 -LinkSourceFile(cu-pua12.bdf,$(CLEARLYUDIR))
 -LinkSourceFile(cu12.bdf,$(CLEARLYUDIR))
  
- InstallFonts($(FONTINSTDIR))
- InstallFontAliases($(FONTINSTDIR))
+ #if TruncateUCSFonts
+ MakeTruncatedUCSBdfFont(5x7,MaxUCSChar,5x7t)
