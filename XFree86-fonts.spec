@@ -96,13 +96,13 @@ kullanýcýlar 100dpi yazýtiplerini yeðleyebilirler.
 %description -l tr -n XFree86-cyrillic-fonts
 
 %description -l pl -n XFree86-75dpi-fonts
-75dpi - Bazowe fonty dla wielu maszyn Linuxowych.
-W wypadku wiêkszej rozdzielczo¶ci zaleczne fonty 100dpi dostêpne 
-w oddzielnym pakiecie.
+75dpi - Podstawowe czcionki dla wielu maszyn Linuxowych.
+W wypadku wiêkszej rozdzielczo¶ci zalecane czcionki 100dpi s± dostêpne 
+w osobnym sk³adzie.
  
 %description -l pl -n XFree86-100dpi-fonts
-100dpi - Bazowe fonty dla maszyn Linuxowych pracuj±cych w wysokiej 
-rozdzielczo¶ci.
+100dpi - Podstawowe czcionki dla maszyn Linuxowych pracuj±cych z wysok±
+rozdzielczo¶ci± obrazu.
 
 %description -l pl -n XFree86-cyrillic-fonts
 Cyrlica.
