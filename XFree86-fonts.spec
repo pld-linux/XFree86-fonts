@@ -25,10 +25,8 @@ BuildRequires:	XFree86-devel >= %{version}
 BuildRequires:	perl
 BuildRequires:	t1utils
 PreReq:		/usr/X11R6/bin/mkfontdir
-PreReq:		freetype1
 PreReq:		textutils
 PreReq:		sed
-PreReq:		xfs
 Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -58,6 +56,23 @@ Group(pl):	X11/XFree86
 Perl scripts that allow to generate from an ISO10646-1 encoded BDF
 font other BDF fonts in any possible encoding.
 
+%description utils -l pl
+Skrypty perlowe pozwalaj±ce wygenerowaæ z fontów BDF kodowanych w
+ISO10646-1 fonty BDF z dowolnym kodowaniem.
+
+%package PEX
+Summary:	PEX fonts
+Summary(pl):	Fonty PEX
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+
+%description PEX
+PEX fonts for PEX extension (not installed by default since 4.2.0).
+
+%description PEX -l pl
+Fonty PEX do rozszerzenia PEX (nie instalowane domy¶lnie od 4.2.0).
+
 %package 75dpi
 Summary:	X11R6 75dpi fonts - only need on server side
 Summary(de):	X11RT 75 dpi-Fonts - nur auf Serverseite erforderlich
@@ -69,7 +84,6 @@ Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 PreReq:		%{_bindir}/mkfontdir
 Obsoletes:	XFree86-75dpi-fonts
-
 %ifarch sparc
 Obsoletes:	X11R6.1-75dpi-fonts
 %endif
@@ -885,8 +899,8 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 %patch1 -p1
 %patch2 -p1
 
-cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
-cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
+cp -f xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc
+cp -f xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc
 
 # move ISO8859-2 fonts to main tree
 for i in {misc/{12x24,8x16},{75,100}dpi/{char,term,lu{BIS,bB}19}}*.bdf ; do
@@ -942,6 +956,7 @@ tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
 install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
 install %{SOURCE6} $RPM_BUILD_ROOT%{_fontsdir}/misc
+mv -f $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale{,.XFree86-fonts}
 gzip -9nf $RPM_BUILD_ROOT%{_fontsdir}/misc/vga.pcf
 
 %clean
@@ -959,12 +974,19 @@ cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
 cat Fontmap.* > Fontmap
-%{_bindir}/xftcache .
+if [ -x %{_bindir}/xftcache ]; then
+	%{_bindir}/xftcache .
+fi
 cd %{_fontsdir}/TTF
 umask 022
-/usr/bin/ttmkfdir > fonts.scale
+cat fonts.scale.* | sort -u > fonts.scale.tmp
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
-%{_bindir}/xftcache .
+if [ -x %{_bindir}/xftcache ]; then
+	%{_bindir}/xftcache .
+fi
 
 %postun
 cd %{_fontsdir}/misc
@@ -978,12 +1000,19 @@ cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
 cat Fontmap.* > Fontmap 2>/dev/null
-%{_bindir}/xftcache .
+if [ -x %{_bindir}/xftcache ]; then
+	%{_bindir}/xftcache .
+fi
 cd %{_fontsdir}/TTF
 umask 022
-/usr/bin/ttmkfdir > fonts.scale
+cat fonts.scale.* | sort -u > fonts.scale.tmp
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
-%{_bindir}/xftcache .
+if [ -x %{_bindir}/xftcache ]; then
+	%{_bindir}/xftcache .
+fi
 
 %post 75dpi
 cd %{_fontsdir}/75dpi
@@ -1081,7 +1110,9 @@ grep '^.*ISO-8859-2.pfb' %{_t1fontsdir}/fonts.dir |\
 cat %{_t1fontsdir}/fonts.alias.tmp >> %{_t1fontsdir}/fonts.alias
 sort -u < %{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
 mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
-%{_bindir}/xftcache .
+if [ -x %{_bindir}/xftcache ]; then
+	%{_bindir}/xftcache .
+fi
 
 %postun Type1-ISO8859-2
 cd %{_t1fontsdir}
@@ -1097,7 +1128,9 @@ grep -f %{_t1fontsdir}/fonts.dir.tmp \
 	%{_t1fontsdir}/fonts.alias > %{_t1fontsdir}/fonts.alias.tmp
 mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
 rm -f %{_t1fontsdir}/fonts.dir.tmp
-%{_bindir}/xftcache .
+if [ -x %{_bindir}/xftcache ]; then
+	%{_bindir}/xftcache .
+fi
 
 %post ISO8859-3
 cd %{_fontsdir}/misc
@@ -1574,6 +1607,10 @@ umask 022
 %{_fontsdir}/misc/[m-z]*.pcf.gz
 %{_fontsdir}/misc/*rk.pcf.gz
 %{_fontsdir}/misc/*ko.pcf.gz
+
+%files PEX
+%defattr(644,root,root,755)
+%{_fontsdir}/PEX
 
 %files utils
 %defattr(644,root,root,755)
