@@ -15,6 +15,7 @@ Source4:	%{name}.Fontmap
 Source5:	%{name}-latin2-Type1.Fontmap
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
+Patch2:		%{name}-do_not_run_xftchache.patch
 # added release because 4.1.0-1 had broken libXfont/bdftopcf
 BuildRequires:	XFree86 = %{version}-%{release}
 BuildRequires:	XFree86-devel = %{version}
@@ -877,6 +878,7 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 %setup -q -c -b1 -b2 -a3
 %patch0 -p1
 %patch1 -p1
+%patch3 -p1
 
 cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
 cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
