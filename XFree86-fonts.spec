@@ -3,15 +3,16 @@ Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.0.1
 Release:	2
-Copyright:	MIT
+License:	MIT
 Group:		X11/XFree86
+Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X401src-2.tgz
 Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X401src-1.tgz
 Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
-Patch0:		XFree86-fonts-extras-fix.patch
-Patch1:		XFree86-fonts-ISO-8859-2.patch
+Patch0:		%{name}-extras-fix.patch
+Patch1:		%{name}-ISO-8859-2.patch
 Patch2:		XFree86-ISO8859-2-pld.patch
 BuildRequires:	XFree86-devel = %{version}
 Prereq:		/usr/X11R6/bin/mkfontdir
@@ -38,6 +39,7 @@ Summary(fr):	Fontes 75 dpi X11R6 - nécessaire uniquement côté serveur
 Summary(pl):	Fonty o rozdzielczo¶ci 75dpi-niebêdne dla serwera.
 Summary(tr):	X11R6 75dpi yazýtipleri - yalnýzca sunucu tarafýnda gerekir
 Group:		X11/XFree86
+Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
@@ -75,6 +77,7 @@ Summary(fr):	Fontes 100ppp pour X11R6 - nécessaires seulement coté serveur.
 Summary(pl):	Fonty o rozdzielczosci 100dpi-niezbêdne dla serwera.
 Summary(tr):	X11R6 100dpi yazýtipleri - yalnýzca sunucu tarafýnda gereklidir
 Group:		X11/XFree86
+Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
@@ -110,6 +113,7 @@ olanlara yeðleyebilirler.
 Summary:	Cyrillic fonts - only need on server side
 Summary(pl):	Cyrlica
 Group:		X11/XFree86
+Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
@@ -123,6 +127,7 @@ Czcionki rastrowe z cyrylic±.
 Summary:	Latin 2 basic fonts - only need on server side
 Summary(pl):	Pliterki
 Group:		X11/XFree86
+Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
@@ -136,6 +141,7 @@ Czcionki rastrowe ISO-8859-2.
 Summary:	Latin 2 100dpi fonts - only need on server side
 Summary(pl):	Pliterki
 Group:		X11/XFree86
+Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
@@ -149,6 +155,7 @@ Czcionki rastrowe ISO-8859-2.
 Summary:	Latin 2 75dpi fonts - only need on server side
 Summary(pl):	Pliterki
 Group:		X11/XFree86
+Group(de):	X11/XFree86
 Group(pl):	X11/XFree86
 Prereq:		%{_bindir}/mkfontdir
 
@@ -161,6 +168,7 @@ Czcionki rastrowe ISO-8859-2.
 %package -n XFree86-latin2-Type1-fonts
 Summary:	Type1 (scalable) ISO8859-2 X11 system fonts
 Group:		X11/Fonts
+Group(de):	
 Group(pl):	X11/Fonty
 Prereq:		type1inst
 Prereq:		/usr/bin/type1inst
