@@ -14,7 +14,6 @@ Patch0:		XFree86-fonts-extras-fix.patch
 Patch1:		XFree86-fonts-ISO-8859-2.patch
 Patch2:		XFree86-ISO8859-2-pld.patch
 BuildRequires:	XFree86-devel = %{version}
-Requires:	type1inst
 Prereq:		/usr/X11R6/bin/mkfontdir
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -163,6 +162,7 @@ Czcionki rastrowe ISO-8859-2.
 Summary:	Type1 (scalable) ISO8859-2 X11 system fonts
 Group:		X11/Fonts
 Group(pl):	X11/Fonty
+Prereq:		type1inst
 Prereq:		/usr/bin/type1inst
 Requires:	XFree86 > 3.2 
 Requires:	type1inst >= 0.6.1
@@ -271,7 +271,7 @@ cd %{_fontdir}/latin2/75dpi
 %post -n XFree86-latin2-Type1-fonts
 cd %{_fontdir}/Type1
 rm -f fonts.dir fonts.scale
-/usr/bin/type1inst -nogs -nolog
+/usr/bin/type1inst -nogs -nolog -q
 grep '^.*ISO-8859-2.pfb' %{_fontdir}/Type1/fonts.dir |\
 sed 's/\(^.*ISO-8859-2.pfb \)\(.*\)/"\2"/' |\
 sed 's/\(^".*\)\(-[a-z]*-[a-z]*"\)/\1-iso8859-2" \1\2/' |\
@@ -285,7 +285,7 @@ mv -f %{_fontdir}/Type1/fonts.alias.tmp %{_fontdir}/Type1/fonts.alias
 %postun -n XFree86-latin2-Type1-fonts
 cd %{_fontdir}/Type1
 rm -f fonts.dir fonts.scale
-/usr/bin/type1inst -nogs -nolog
+/usr/bin/type1inst -nogs -nolog -q
 sed 's/^.*pfb -//' %{_fontdir}/Type1/fonts.dir > \
 %{_fontdir}/Type1/fonts.dir.tmp 
 grep -f %{_fontdir}/Type1/fonts.dir.tmp \
