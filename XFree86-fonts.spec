@@ -888,21 +888,11 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczo¶ci 75dpi.
 cp xc/extras/fonts/arabic24/*.bdf xc/fonts/bdf/misc/
 cp xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc/
 
-(cd xc/fonts/bdf/misc
-for i in {12x24,8x16}*.bdf ; do
-	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
-	cp -f $i $j
-done)
-(cd xc/fonts/bdf/75dpi
-for i in {char,term,lu{BIS,bB}19}*.bdf ; do
-	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
-	cp -f $i $j
-done)
-(cd xc/fonts/bdf/100dpi
-for i in {char,term,lu{BIS,bB}19}*.bdf ; do
-	j="`echo $i | sed 's/\.bdf//'`-ISO8859-2.bdf"
-	cp -f $i $j
-done)
+# move ISO8859-2 fonts to main tree
+for i in {misc/{12x24,8x16},{75,100}dpi/{char,term,lu{BIS,bB}19}}*.bdf ; do
+	j="`echo $i | sed 's/\.bdf$//'`-ISO8859-2.bdf"
+	mv -f $i xc/fonts/bdf/$j
+done
 
 %build
 %{__make} all -C ulT1mo-beta-1.0
@@ -953,9 +943,6 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
 install %{SOURCE6} $RPM_BUILD_ROOT%{_fontsdir}/misc
 gzip -9nf $RPM_BUILD_ROOT%{_fontsdir}/misc/vga.pcf
-
-# make TrueType font dir
-install	-d $RPM_BUILD_ROOT%{_fontsdir}/TTF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
