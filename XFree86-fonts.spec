@@ -6,7 +6,7 @@ Summary:	XFree86 Fonts
 Summary(pl):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.2.0
-Release:	5
+Release:	5.1
 License:	MIT
 Group:		X11/XFree86
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-2.tgz
@@ -911,12 +911,15 @@ done
 )
 
 # make "fixed" font
-sed -e 's/^FONT -Misc.*/FONT fixed/' xc/fonts/bdf/misc/6x13-ISO8859-1.bdf | \
-	%{_bindir}/bdftopcf -t | gzip -9 > $RPM_BUILD_ROOT%{_fontsdir}/misc/fixed.pcf.gz
-# remove "fixed" alias
+#sed -e 's/^FONT -Misc.*/FONT fixed/' xc/fonts/bdf/misc/6x13-ISO8859-1.bdf | \
+#	%{_bindir}/bdftopcf -t | gzip -9 > $RPM_BUILD_ROOT%{_fontsdir}/misc/fixed.pcf.gz
+
+# split fonts.alias (separate "fixed")
 grep -v '^fixed[ \t]' $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias \
-	> $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias.new
-mv -f $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias{.new,}
+	> $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias.10XFree86-fonts
+grep '^fixed[ \t].*' $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias \
+	> $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias.00XFree86-fonts-base
+rm -f $RPM_BUILD_ROOT%{_fontsdir}/misc/fonts.alias
 	
 tail -n +2 ulT1mo-beta-1.0/fonts.scale.ulT1mo | sed -e 's/\.pfb/-ISO-8859-2\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.XFree86-fonts-Type1-ISO8859-2
@@ -936,6 +939,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 cd %{_fontsdir}/misc
 umask 022
+cat fonts.alias.* > fonts.alias
 %{_bindir}/mkfontdir
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
@@ -962,6 +966,7 @@ fi
 %postun
 cd %{_fontsdir}/misc
 umask 022
+cat fonts.alias.* > fonts.alias 2>/dev/null
 %{_bindir}/mkfontdir
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
@@ -988,21 +993,25 @@ fi
 %post base
 cd %{_fontsdir}/misc
 umask 022
+cat fonts.alias.* > fonts.alias
 if [ -x %{_bindir}/mkfontdir ]; then
 	%{_bindir}/mkfontdir
 else
 	cat > fonts.dir <<EOF
 2
+6x13-ISO8859-1.pcf.gz -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
 cursor.pcf.gz cursor
-fixed.pcf.gz fixed
 EOF
 fi
 
 %postun base
+cd %{_fontsdir}/misc
+umask 022
+cat fonts.alias.* > fonts.alias 2>/dev/null
 if [ -x %{_bindir}/mkfontdir ]; then
-	cd %{_fontsdir}/misc
-	umask 022
 	%{_bindir}/mkfontdir
+else
+	:> fonts.dir
 fi
 
 %post 75dpi
@@ -1567,7 +1576,8 @@ umask 022
 %verify(not mtime size md5) %{_fontsdir}/Speedo/fonts.*
 %verify(not mtime size md5) %{_fontsdir}/TTF/fonts.dir
 %verify(not mtime size md5) %{_fontsdir}/local/fonts.*
-%verify(not mtime size md5) %{_fontsdir}/misc/fonts.*
+%verify(not mtime size md5) %{_fontsdir}/misc/fonts.dir
+%verify(not mtime size md5) %{_fontsdir}/misc/fonts.alias.10XFree86-fonts
 %{_fontsdir}/misc/10x20.pcf.gz
 %{_fontsdir}/misc/12x24.pcf.gz
 %{_fontsdir}/misc/5x7.pcf.gz
@@ -1605,7 +1615,8 @@ umask 022
 %defattr(644,root,root,755)
 %dir %{_fontsdir}/misc
 %{_fontsdir}/misc/cursor.pcf.gz
-%{_fontsdir}/misc/fixed.pcf.gz
+%{_fontsdir}/misc/6x13-ISO8859-1.pcf.gz
+%{_fontsdir}/misc/fonts.alias.00XFree86-fonts-base
 
 %ifnarch alpha
 %files PEX
@@ -1634,7 +1645,9 @@ umask 022
 
 %files ISO8859-1
 %defattr(644,root,root,755)
-%{_fontsdir}/misc/*ISO8859-1.pcf.gz
+%{_fontsdir}/misc/[^6]*ISO8859-1.pcf.gz
+%{_fontsdir}/misc/6x1[^3]*ISO8859-1.pcf.gz
+%{_fontsdir}/misc/6x13[BO]-ISO8859-1.pcf.gz
 
 %files 75dpi-ISO8859-1
 %defattr(644,root,root,755)
