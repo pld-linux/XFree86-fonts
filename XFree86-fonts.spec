@@ -21,6 +21,8 @@ BuildRequires:	XFree86-devel = %{version}
 BuildRequires:	perl
 BuildRequires:	t1utils
 Prereq:		/usr/X11R6/bin/mkfontdir
+Prereq:		textutils
+Prereq:		sed
 Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -178,6 +180,7 @@ Group:		X11/Fonts
 Group(de):	X11/Fonts
 Group(pl):	X11/Fonty
 Prereq:		textutils
+Prereq:		sed
 Requires:	XFree86 > 3.2 
 Obsoletes:	XFree86-ISO8859-2-Type1-fonts
 
@@ -273,8 +276,9 @@ cd %{_fontsdir}/misc
 umask 022
 %{_bindir}/mkfontdir
 cd %{_t1fontsdir}
+rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
@@ -285,8 +289,9 @@ cd %{_fontsdir}/misc
 umask 022
 %{_bindir}/mkfontdir
 cd %{_t1fontsdir}
+rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
@@ -329,8 +334,9 @@ umask 022
 
 %post -n XFree86-latin2-Type1-fonts
 cd %{_t1fontsdir}
+rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
@@ -345,8 +351,9 @@ mv -f %{_t1fontsdir}/fonts.alias.tmp %{_t1fontsdir}/fonts.alias
 
 %postun -n XFree86-latin2-Type1-fonts
 cd %{_t1fontsdir}
+rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
