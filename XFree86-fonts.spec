@@ -27,6 +27,7 @@ BuildRequires:	t1utils
 PreReq:		/usr/X11R6/bin/mkfontdir
 PreReq:		textutils
 PreReq:		sed
+Requires:	%{name}-base = %{version}
 Obsoletes:	XFree86-latin2-fonts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,6 +60,19 @@ font other BDF fonts in any possible encoding.
 %description utils -l pl
 Skrypty perlowe pozwalaj±ce wygenerowaæ z fontów BDF kodowanych w
 ISO10646-1 fonty BDF z dowolnym kodowaniem.
+
+%package base
+Summary:	Base fonts (cursor and fixed)
+Summary(pl):	Podstawowe fonty (cursor i fixed)
+Group:		X11/XFree86
+Group(de):	X11/XFree86
+Group(pl):	X11/XFree86
+
+%description base
+Base fonts (cursor and fixed) needed to start X server.
+
+%description base -l pl
+Podstawowe fonty (cursor i fixed) niezbêdne do uruchomienia X serwera.
 
 %package PEX
 Summary:	PEX fonts
@@ -949,14 +963,20 @@ for f in *.pfa ; do
 done
 )
 
-tail -n +2 ulT1mo-beta-1.0/fonts.scale.ulT1mo \
+# make "fixed" font
+sed -e 's/^FONT -Misc.*/FONT fixed/' xc/fonts/bdf/misc/6x13-ISO8859-1.bdf | \
+	/usr/X11R6/bin/bdftopcf -t | gzip -9 > $RPM_BUILD_ROOT%{_fontsdir}/misc/fixed.pcf.gz
+
+tail -n +2 ulT1mo-beta-1.0/fonts.scale.ulT1mo | sed -e 's/\.pfb/-ISO-8859-2\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.XFree86-fonts-Type1-ISO8859-2
 tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
 install %{SOURCE6} $RPM_BUILD_ROOT%{_fontsdir}/misc
-mv -f $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale{,.XFree86-fonts}
+tail -n +2 $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale \
+	> $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale.XFree86-fonts
+rm -f $RPM_BUILD_ROOT%{_fontsdir}/TTF/fonts.scale
 gzip -9nf $RPM_BUILD_ROOT%{_fontsdir}/misc/vga.pcf
 
 %clean
@@ -1012,6 +1032,26 @@ rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
 if [ -x %{_bindir}/xftcache ]; then
 	%{_bindir}/xftcache .
+fi
+
+%post base
+cd %{_fontsdir}/misc
+umask 022
+if [ -x %{_bindir}/mkfontdir ]; then
+	%{_bindir}/mkfontdir
+else
+	cat > fonts.dir <<EOF
+2
+cursor.pcf.gz cursor
+fixed.pcf.gz fixed
+EOF
+fi
+
+%postun base
+if [ -x %{_bindir}/mkfontdir ]; then
+	cd %{_fontsdir}/misc
+	umask 022
+	%{_bindir}/mkfontdir
 fi
 
 %post 75dpi
@@ -1565,16 +1605,16 @@ umask 022
 %dir %{_fontsdir}/TTF
 %dir %{_fontsdir}/encodings
 %dir %{_fontsdir}/local
-%dir %{_fontsdir}/misc
 %{_fontsdir}/Speedo/*.spd
 %{_fontsdir}/TTF/*.ttf
 %{_fontsdir}/encodings/*
 %{_t1fontsdir}/*[a-z_].pfb
 %{_t1afmdir}/*[a-z_].afm
 %{_t1fontsdir}/*.%{name}
+%{_fontsdir}/TTF/fonts.scale.%{name}
 %verify(not mtime size md5) %{_fontsdir}/CID/fonts.*
 %verify(not mtime size md5) %{_fontsdir}/Speedo/fonts.*
-%verify(not mtime size md5) %{_fontsdir}/TTF/fonts.*
+%verify(not mtime size md5) %{_fontsdir}/TTF/fonts.dir
 %verify(not mtime size md5) %{_fontsdir}/local/fonts.*
 %verify(not mtime size md5) %{_fontsdir}/misc/fonts.*
 %{_fontsdir}/misc/10x20.pcf.gz
@@ -1601,12 +1641,20 @@ umask 022
 %{_fontsdir}/misc/9x18.pcf.gz
 %{_fontsdir}/misc/9x18B.pcf.gz
 %{_fontsdir}/misc/arabic*.pcf.gz
-%{_fontsdir}/misc/[c-e]*.pcf.gz
+%{_fontsdir}/misc/c[^u]*.pcf.gz
+%{_fontsdir}/misc/cu[^r]*.pcf.gz
+%{_fontsdir}/misc/[d-e]*.pcf.gz
 %{_fontsdir}/misc/[g-h]*.pcf.gz
 %{_fontsdir}/misc/k*.pcf.gz
 %{_fontsdir}/misc/[m-z]*.pcf.gz
 %{_fontsdir}/misc/*rk.pcf.gz
 %{_fontsdir}/misc/*ko.pcf.gz
+
+%files base
+%defattr(644,root,root,755)
+%dir %{_fontsdir}/misc
+%{_fontsdir}/misc/cursor.pcf.gz
+%{_fontsdir}/misc/fixed.pcf.gz
 
 %files PEX
 %defattr(644,root,root,755)
