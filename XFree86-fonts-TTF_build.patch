@@ -1,12 +1,12 @@
-diff -urN aa/xc/fonts/scaled/TTF/Imakefile xc/fonts/scaled/TTF/Imakefile
---- aa/xc/fonts/scaled/TTF/Imakefile	2004-02-16 01:56:16.000000000 +0100
-+++ xc/fonts/scaled/TTF/Imakefile	2004-02-16 23:35:57.222915112 +0100
+--- X11-fonts-6.8.1/xc/fonts/scaled/TTF/Imakefile.org	2004-09-18 03:06:22.209820533 +0200
++++ X11-fonts-6.8.1/xc/fonts/scaled/TTF/Imakefile	2004-09-18 03:06:36.372786450 +0200
 @@ -4,7 +4,7 @@
  	luxirb.ttf luxirbi.ttf luxirr.ttf luxirri.ttf \
  	luxisb.ttf luxisbi.ttf luxisr.ttf luxisri.ttf
  
 -VERASRCDIR = $(TOP)/extras/fonts/Bitstream-Vera
 +VERASRCDIR = ../../../extras/fonts/Bitstream-Vera
- VERAFONTS = Vera.ttf VeraBI.ttf VeraBd.ttf VeraMoBI.ttf VeraMoBd.ttf \
- 	VeraMoIt.ttf VeraMono.ttf VeraSe.ttf VeraSeBd.ttf
+ VERAFONTS = Vera.ttf VeraBI.ttf VeraBd.ttf VeraIt.ttf VeraMoBI.ttf \
+ 	VeraMoBd.ttf VeraMoIt.ttf VeraMono.ttf VeraSe.ttf VeraSeBd.ttf
  
+
