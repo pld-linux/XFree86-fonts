@@ -13,6 +13,7 @@ Source2:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 Source3:	ftp://crash.fce.vutbr.cz/pub/linux_fonts/TGZ/ulT1mo-beta-1.0.tgz
 Source4:	%{name}.Fontmap
 Source5:	%{name}-latin2-Type1.Fontmap
+Source6:	vga.pcf
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-ISO8859-2.patch
 Patch2:		%{name}-do_not_run_xftchache.patch
@@ -943,6 +944,7 @@ tail -n +2 xc/fonts/scaled/Type1/fonts.scale | sed -e 's/\.pfa/\.pfb/' \
 	> $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 install %{SOURCE4} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.XFree86-fonts-Type1-ISO8859-2
+install %{SOURCE6} $RPM_BUILD_ROOT%{_fontsdir}/misc
 
 # make TrueType font dir, touch default .dir and .scale files
 install	-d $RPM_BUILD_ROOT%{_fontsdir}/TTF
