@@ -8,6 +8,7 @@ Group:		X11/XFree86
 Group(pl):	X11/XFree86
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-2.tgz
 Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-1.tgz
+Patch:		XFree86-fonts-extras-fix.patch
 BuildRequires:	XFree86-devel = %{version}
 Requires:	type1inst
 Prereq:		%{_bindir}/mkfontdir
@@ -140,12 +141,17 @@ Czcionki rastrowe ISO-8859-2.
 %prep
 %setup -q -c -b 1
 
+%patch -p0
+
 %build
 cd xc/fonts
+(cd bdf/misc; cp ../../../extras/fonts/arabic24/*.bdf .)
+(cd bdf/misc; cp ../../../extras/fonts/ClearlyU/*.bdf .)
 imake -DBuildFonts -DUseInstalled -I/usr/X11R6/lib/X11/config
 make Makefiles
 make depend
 make CDEBUGFLAGS="$RPM_OPT_FLAGS"
+
 
 %install
 (cd xc/fonts;\
