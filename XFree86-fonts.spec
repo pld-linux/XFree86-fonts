@@ -11,7 +11,7 @@ Source1:	ftp://ftp.xfree86.org/pub/XFree86/4.0/source/X400src-1.tgz
 Patch:		XFree86-fonts-extras-fix.patch
 BuildRequires:	XFree86-devel = %{version}
 Requires:	type1inst
-Prereq:		%{_bindir}/mkfontdir
+Prereq:		/usr/X11R6/bin/mkfontdir
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_fontdir	/usr/share/fonts
