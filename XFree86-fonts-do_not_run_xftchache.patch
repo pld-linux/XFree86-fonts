@@ -1,17 +1,15 @@
 --- XFree86-fonts-4.1.0/xc/fonts/scaled/Type1/Imakefile~	Fri Mar 30 04:15:18 2001
 +++ XFree86-fonts-4.1.0/xc/fonts/scaled/Type1/Imakefile	Sat Aug 18 03:00:18 2001
-@@ -26,12 +26,12 @@
+@@ -26,12 +26,10 @@
  FONTINSTDIR = $(FONTDIR)/Type1
  
  MakeFontsDir(fonts.scale)
 -MakeXftCache($(FONTS))
-+XCOMM MakeXftCache($(FONTS))
  
  InstallFonts($(FONTINSTDIR))
  InstallFontScale($(FONTINSTDIR))
  InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
 -InstallXftCache($(FONTINSTDIR))
-+XCOMM InstallXftCache($(FONTINSTDIR))
  
  #ifdef IHaveSubdirs
  MakeSubdirs($(SUBDIRS))
