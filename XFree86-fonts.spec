@@ -8,7 +8,7 @@ Version:	4.3.99.10
 Release:	1
 License:	MIT
 Group:		Fonts
-Source0:        ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
+Source0:	ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
 # Source0-md5:	d840a796e38d9a5fd30bdcd9a4c1383d
 # We need source0 for arabic fonts
 #Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/X%{_sver}src-1.tgz
