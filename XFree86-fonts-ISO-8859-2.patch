@@ -1,0 +1,271 @@
+diff -urN -x *.bdf XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/100dpi/Imakefile XFree86-fonts-4.0/xc/fonts/bdf/latin2/100dpi/Imakefile
+--- XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/100dpi/Imakefile	Mon May  3 17:54:33 1999
++++ XFree86-fonts-4.0/xc/fonts/bdf/latin2/100dpi/Imakefile	Mon May  1 16:51:31 2000
+@@ -4,6 +4,9 @@
+ 	FontObj(courB18) FontObj(courB24) FontObj(courBO08) \
+ 	FontObj(courBO10) FontObj(courBO12) FontObj(courBO14) \
+ 	FontObj(courBO18) FontObj(courBO24) FontObj(courO08) \
++	FontObj(charI08) FontObj(charI10) FontObj(charI12) FontObj(charI14) \
++	FontObj(charI18) FontObj(charI24) FontObj(charR08) FontObj(charR10) \
++	FontObj(charR12) FontObj(charR14) FontObj(charR18) FontObj(charR24) \
+ 	FontObj(courO10) FontObj(courO12) FontObj(courO14) FontObj(courO18) \
+ 	FontObj(courO24) FontObj(courR08) FontObj(courR10) FontObj(courR12) \
+ 	FontObj(courR14) FontObj(courR18) FontObj(courR24) FontObj(helvB08) \
+@@ -42,11 +45,16 @@
+ 	FontObj(lubI24) FontObj(lubR08) FontObj(lubR10) FontObj(lubR12) \
+ 	FontObj(lubR14) FontObj(lubR18) FontObj(lubR24) FontObj(luBIS19) \
+ 	FontObj(luBS19) FontObj(luIS19) FontObj(luRS19) FontObj(lubB19) \
+-	FontObj(lubBI19) FontObj(lubI19) FontObj(lubR19) \
++	FontObj(lubBI19) FontObj(lubI19) FontObj(lubR19) FontObj(lutBS08) \
++	FontObj(lutBS10) FontObj(lutBS12) FontObj(lutBS14) FontObj(lutBS18) \
++	FontObj(lutBS19) FontObj(lutBS14) FontObj(lutRS08) FontObj(lutRS10) \
++	FontObj(lutRS12) FontObj(lutRS14) FontObj(lutRS18) FontObj(lutRS19) \
++	FontObj(lutRS14) \
+ 	FontObj(UTI___14) FontObj(UTI___12) \
+ 	FontObj(UTI___24) FontObj(UTI___10) FontObj(UTI___18) \
+ 	FontObj(UTRG__14) FontObj(UTRG__12) FontObj(UTRG__24) \
+-	FontObj(UTRG__10) FontObj(UTRG__18)
++	FontObj(UTRG__10) FontObj(UTRG__18) \
++	FontObj(term14) FontObj(termB14)
+ 
+ OBJS = $(OBJS1) $(OBJS2)
+ 
+@@ -78,6 +86,18 @@
+ FontTarget(courR14)
+ FontTarget(courR18)
+ FontTarget(courR24)
++FontTarget(charI08)
++FontTarget(charI10)
++FontTarget(charI12)
++FontTarget(charI14)
++FontTarget(charI18)
++FontTarget(charI24)
++FontTarget(charR08)
++FontTarget(charR10)
++FontTarget(charR12)
++FontTarget(charR14)
++FontTarget(charR18)
++FontTarget(charR24)
+ FontTarget(helvB08)
+ FontTarget(helvB10)
+ FontTarget(helvB12)
+@@ -206,6 +226,20 @@
+ FontTarget(lubR18)
+ FontTarget(lubR19)
+ FontTarget(lubR24)
++FontTarget(lutBS08)
++FontTarget(lutBS10)
++FontTarget(lutBS12)
++FontTarget(lutBS14)
++FontTarget(lutBS18)
++FontTarget(lutBS19)
++FontTarget(lutBS24)
++FontTarget(lutRS08)
++FontTarget(lutRS10)
++FontTarget(lutRS12)
++FontTarget(lutRS14)
++FontTarget(lutRS18)
++FontTarget(lutRS19)
++FontTarget(lutRS24)
+ FontTarget(UTI___14)
+ FontTarget(UTI___12)
+ FontTarget(UTI___24)
+@@ -216,6 +250,8 @@
+ FontTarget(UTRG__24)
+ FontTarget(UTRG__10)
+ FontTarget(UTRG__18)
++FontTarget(term14)
++FontTarget(termB14)
+ 
+ InstallFontObjs($(OBJS1),$(FONTINSTDIR))
+ InstallFontObjs($(OBJS2),$(FONTINSTDIR))
+diff -urN -x *.bdf XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/75dpi/Imakefile XFree86-fonts-4.0/xc/fonts/bdf/latin2/75dpi/Imakefile
+--- XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/75dpi/Imakefile	Mon May  3 17:54:39 1999
++++ XFree86-fonts-4.0/xc/fonts/bdf/latin2/75dpi/Imakefile	Mon May  1 16:52:02 2000
+@@ -4,6 +4,9 @@
+ 	FontObj(courB18) FontObj(courB24) FontObj(courBO08) \
+ 	FontObj(courBO10) FontObj(courBO12) FontObj(courBO14) \
+ 	FontObj(courBO18) FontObj(courBO24) FontObj(courO08) \
++	FontObj(charI08) FontObj(charI10) FontObj(charI12) FontObj(charI14) \
++	FontObj(charI18) FontObj(charI24) FontObj(charR08) FontObj(charR10) \
++	FontObj(charR12) FontObj(charR14) FontObj(charR18) FontObj(charR24) \
+ 	FontObj(courO10) FontObj(courO12) FontObj(courO14) FontObj(courO18) \
+ 	FontObj(courO24) FontObj(courR08) FontObj(courR10) FontObj(courR12) \
+ 	FontObj(courR14) FontObj(courR18) FontObj(courR24) FontObj(helvB08) \
+@@ -15,8 +18,8 @@
+ 	FontObj(helvR10) FontObj(helvR12) FontObj(helvR14) FontObj(helvR18) \
+ 	FontObj(helvR24) FontObj(ncenB08) FontObj(ncenB10) FontObj(ncenB12) \
+ 	FontObj(ncenB14) FontObj(ncenB18) FontObj(ncenB24) FontObj(ncenBI08) \
+-	FontObj(ncenBI10) FontObj(ncenBI12) FontObj(ncenBI14) \
+-	FontObj(ncenBI18) FontObj(ncenBI24) FontObj(ncenI08) \
++	FontObj(ncenBI10) FontObj(ncenBI12) FontObj(ncenBI14) FontObj(ncenR18) \
++	FontObj(ncenBI18) FontObj(ncenBI24) FontObj(ncenI08) FontObj(ncenR24) \
+ 	FontObj(ncenI10) FontObj(ncenI12) FontObj(ncenI14) FontObj(ncenI18) \
+ 	FontObj(ncenI24) FontObj(ncenR08) FontObj(ncenR10) FontObj(ncenR12) \
+ 	FontObj(ncenR14) FontObj(timB08) FontObj(timB10) FontObj(timB12) \
+@@ -40,15 +43,17 @@
+ 	FontObj(lubI10) FontObj(lubI12) FontObj(lubI14) FontObj(lubI18) \
+ 	FontObj(lubI24) FontObj(lubR08) FontObj(lubR10) FontObj(lubR12) \
+ 	FontObj(lubR14) FontObj(lubR18) FontObj(lubR24) \
++	FontObj(lutBS08) FontObj(lutBS19) FontObj(lutBS24) \
+ 	FontObj(lutBS10) FontObj(lutBS12) FontObj(lutBS14) FontObj(lutBS18) \
+-	FontObj(lutRS10) FontObj(lutRS12) \
+-	FontObj(lutRS14) FontObj(lutRS18) FontObj(luBIS19) \
++	FontObj(lutRS08) FontObj(lutRS10) FontObj(lutRS12) FontObj(lutRS19) \
++	FontObj(lutRS14) FontObj(lutRS18) FontObj(luBIS19) FontObj(lutRS24) \
+ 	FontObj(luBS19) FontObj(luIS19) FontObj(luRS19) FontObj(lubB19) \
+ 	FontObj(lubBI19) FontObj(lubI19) FontObj(lubR19) \
+ 	FontObj(UTI___14) FontObj(UTI___12) \
+ 	FontObj(UTI___24) FontObj(UTI___10) FontObj(UTI___18) \
+ 	FontObj(UTRG__14) FontObj(UTRG__12) FontObj(UTRG__24) \
+-	FontObj(UTRG__10) FontObj(UTRG__18)
++	FontObj(UTRG__10) FontObj(UTRG__18) \
++	FontObj(term14) FontObj(termB14)
+ 
+ OBJS = $(OBJS1) $(OBJS2)
+ 
+@@ -80,6 +85,18 @@
+ FontTarget(courR14)
+ FontTarget(courR18)
+ FontTarget(courR24)
++FontTarget(charI08)
++FontTarget(charI10)
++FontTarget(charI12)
++FontTarget(charI14)
++FontTarget(charI18)
++FontTarget(charI24)
++FontTarget(charR08)
++FontTarget(charR10)
++FontTarget(charR12)
++FontTarget(charR14)
++FontTarget(charR18)
++FontTarget(charR24)
+ FontTarget(helvB08)
+ FontTarget(helvB10)
+ FontTarget(helvB12)
+@@ -126,6 +143,8 @@
+ FontTarget(ncenR10)
+ FontTarget(ncenR12)
+ FontTarget(ncenR14)
++FontTarget(ncenR18)
++FontTarget(ncenR24)
+ FontTarget(timB08)
+ FontTarget(timB10)
+ FontTarget(timB12)
+@@ -206,14 +225,20 @@
+ FontTarget(lubR18)
+ FontTarget(lubR19)
+ FontTarget(lubR24)
++FontTarget(lutBS08)
+ FontTarget(lutBS10)
+ FontTarget(lutBS12)
+ FontTarget(lutBS14)
+ FontTarget(lutBS18)
++FontTarget(lutBS19)
++FontTarget(lutBS24)
++FontTarget(lutRS08)
+ FontTarget(lutRS10)
+ FontTarget(lutRS12)
+ FontTarget(lutRS14)
+ FontTarget(lutRS18)
++FontTarget(lutRS19)
++FontTarget(lutRS24)
+ FontTarget(UTI___14)
+ FontTarget(UTI___12)
+ FontTarget(UTI___24)
+@@ -224,6 +249,8 @@
+ FontTarget(UTRG__24)
+ FontTarget(UTRG__10)
+ FontTarget(UTRG__18)
++FontTarget(term14)
++FontTarget(termB14)
+ 
+ InstallFontObjs($(OBJS1),$(FONTINSTDIR))
+ InstallFontObjs($(OBJS2),$(FONTINSTDIR))
+diff -urN -x *.bdf XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/Imakefile XFree86-fonts-4.0/xc/fonts/bdf/latin2/Imakefile
+--- XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/Imakefile	Thu Apr 17 14:55:44 1997
++++ XFree86-fonts-4.0/xc/fonts/bdf/latin2/Imakefile	Mon May  1 17:01:34 2000
+@@ -9,7 +9,7 @@
+ DPI100DIR = 100dpi
+ #endif
+ 
+-        SUBDIRS = $(DPI75DIR) $(DPI100DIR)
++        SUBDIRS = misc $(DPI75DIR) $(DPI100DIR)
+ 
+ MakeSubdirs($(SUBDIRS))
+ DependSubdirs($(SUBDIRS))
+diff -urN -x *.bdf XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/misc/Imakefile XFree86-fonts-4.0/xc/fonts/bdf/latin2/misc/Imakefile
+--- XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/misc/Imakefile	Thu Jan  1 01:00:00 1970
++++ XFree86-fonts-4.0/xc/fonts/bdf/latin2/misc/Imakefile	Mon May  1 16:57:43 2000
+@@ -0,0 +1,31 @@
++XCOMM $TOG: Imakefile /main/36 1998/05/20 15:10:33 kaleb $
++XCOMM $XFree86: xc/fonts/bdf/misc/Imakefile,v 1.7 1999/12/28 15:03:02 robin Exp $
++
++OBJS = FontObj(5x7) FontObj(6x10) FontObj(6x13) FontObj(6x13B) \
++	FontObj(7x13) FontObj(7x13B) FontObj(7x14) FontObj(7x14B) \
++	FontObj(8x13) FontObj(8x13B) FontObj(8x16) FontObj(9x15) \
++	FontObj(9x15B) FontObj(10x20) FontObj(12x24)
++
++FONTINSTDIR = $(FONTDIR)/latin2/misc
++
++MakeFonts()
++
++FontTarget(5x7)
++FontTarget(6x10)
++FontTarget(6x13)
++FontTarget(6x13B)
++FontTarget(7x13)
++FontTarget(7x13B)
++FontTarget(7x14)
++FontTarget(7x14B)
++FontTarget(8x13)
++FontTarget(8x13B)
++FontTarget(8x16)
++FontTarget(9x15)
++FontTarget(9x15B)
++FontTarget(10x20)
++FontTarget(12x24)
++
++InstallFonts($(FONTINSTDIR))
++InstallFontAliases($(FONTINSTDIR))
++InstallEncodingsDir($(ENCODINGSSRC),$(FONTINSTDIR))
+diff -urN -x *.bdf XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/misc/fonts.alias XFree86-fonts-4.0/xc/fonts/bdf/latin2/misc/fonts.alias
+--- XFree86-fonts-4.0.orig/xc/fonts/bdf/latin2/misc/fonts.alias	Thu Jan  1 01:00:00 1970
++++ XFree86-fonts-4.0/xc/fonts/bdf/latin2/misc/fonts.alias	Mon May  1 17:00:42 2000
+@@ -0,0 +1,36 @@
++fixedlatin2    -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2
++variablelatin2 -*-helvetica-bold-r-normal-*-*-120-*-*-*-*-iso8859-2
++5x7latin2      -misc-fixed-medium-r-normal--7-70-75-75-c-50-iso8859-2
++6x10latin2     -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-2
++6x13latin2     -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2
++6x13boldlatin2 -misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso8859-2
++7x13latin2     -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-2
++7x13boldlatin2 -misc-fixed-bold-r-normal--13-120-75-75-c-70-iso8859-2
++7x14latin2     -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-2
++7x14boldlatin2 -misc-fixed-bold-r-normal--14-130-75-75-c-70-iso8859-2
++8x13latin2     -misc-fixed-medium-r-normal--13-120-75-75-c-80-iso8859-2
++8x13boldlatin2 -misc-fixed-bold-r-normal--13-120-75-75-c-80-iso8859-2
++8x16latin2     -sony-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
++9x15latin2     -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-2
++9x15boldlatin2 -misc-fixed-bold-r-normal--15-140-75-75-c-90-iso8859-2
++10x20latin2    -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-2
++12x24latin2    -sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
++
++-misc-fixed-medium-r-normal--7-50-100-100-c-50-iso8859-2 -misc-fixed-medium-r-normal--7-70-75-75-c-50-iso8859-2
++-misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-2 -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-2
++-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-2 -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2
++-misc-fixed-bold-r-semicondensed--13-100-100-100-c-60-iso8859-2 -misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso8859-2
++-misc-fixed-medium-r-normal--13-100-100-100-c-70-iso8859-2 -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-2
++-misc-fixed-bold-r-normal--13-100-100-100-c-70-iso8859-2 -misc-fixed-bold-r-normal--13-120-75-75-c-70-iso8859-2
++-misc-fixed-medium-r-normal--13-100-100-100-c-80-iso8859-2 -misc-fixed-medium-r-normal--13-120-75-75-c-80-iso8859-2
++-misc-fixed-bold-r-normal--13-100-100-100-c-80-iso8859-2 -misc-fixed-bold-r-normal--13-120-75-75-c-80-iso8859-2
++-misc-fixed-medium-r-normal--14-110-100-100-c-70-iso8859-2 -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-2
++-misc-fixed-medium-r-normal--15-120-100-100-c-90-iso8859-2 -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-2
++-misc-fixed-bold-r-normal--15-120-100-100-c-90-iso8859-2 -misc-fixed-bold-r-normal--15-140-75-75-c-90-iso8859-2
++-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-2 -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-2
++-biznet-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-2 -biznet-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
++-biznet-fixed-medium-r-normal--24-230-75-75-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
++-sony-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-2 -biznet-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
++-sony-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2 -biznet-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-2
++-sony-fixed-medium-r-normal--24-230-75-75-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
++-sony-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2 -biznet-fixed-medium-r-normal--24-170-100-100-c-120-iso8859-2
