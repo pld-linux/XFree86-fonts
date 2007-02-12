@@ -1,5 +1,5 @@
 Summary:	XFree86 Fonts
-Summary(pl.UTF-8):   Fonty dla systemu XFree86
+Summary(pl.UTF-8):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
 Version:	4.4.0
 Release:	2
@@ -49,7 +49,7 @@ tylko dla X serwera (lokalnie dla serwera lub poprzez xfs).
 
 %package utils
 Summary:	Perl scripts for generating BDF fonts
-Summary(pl.UTF-8):   Skrypty perlowe do generowania fontów BDF
+Summary(pl.UTF-8):	Skrypty perlowe do generowania fontów BDF
 Group:		X11
 
 %description utils
@@ -62,7 +62,7 @@ ISO10646-1 fonty BDF z dowolnym kodowaniem.
 
 %package base
 Summary:	Base fonts (cursor and fixed)
-Summary(pl.UTF-8):   Podstawowe fonty (cursor i fixed)
+Summary(pl.UTF-8):	Podstawowe fonty (cursor i fixed)
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -74,7 +74,7 @@ Podstawowe fonty (cursor i fixed) niezbędne do uruchomienia X serwera.
 
 %package ISO8859-1
 Summary:	ISO-8859-1 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-1
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-1
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -87,7 +87,7 @@ Podstawowe fonty rastrowe ISO-8859-1.
 
 %package ISO8859-2
 Summary:	ISO-8859-2 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-2
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-2
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -100,7 +100,7 @@ Podstawowe fonty rastrowe ISO-8859-2.
 
 %package ISO8859-3
 Summary:	ISO-8859-3 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-3
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-3
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -113,7 +113,7 @@ Podstawowe fonty rastrowe ISO-8859-3.
 
 %package ISO8859-4
 Summary:	ISO-8859-4 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-4
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-4
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -126,7 +126,7 @@ Podstawowe fonty rastrowe ISO-8859-4.
 
 %package ISO8859-5
 Summary:	ISO-8859-5 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-5
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-5
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -139,7 +139,7 @@ Podstawowe fonty rastrowe ISO-8859-5.
 
 %package ISO8859-6
 Summary:	ISO-8859-6 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-6
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-6
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -152,7 +152,7 @@ Podstawowe fonty rastrowe ISO-8859-6.
 
 %package ISO8859-7
 Summary:	ISO-8859-7 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-7
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-7
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -165,7 +165,7 @@ Podstawowe fonty rastrowe ISO-8859-7.
 
 %package ISO8859-8
 Summary:	ISO-8859-8 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-8
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-8
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -178,7 +178,7 @@ Podstawowe fonty rastrowe ISO-8859-8.
 
 %package ISO8859-9
 Summary:	ISO-8859-9 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-9
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-9
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -191,7 +191,7 @@ Podstawowe fonty rastrowe ISO-8859-9.
 
 %package ISO8859-10
 Summary:	ISO-8859-10 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-10
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-10
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -204,7 +204,7 @@ Podstawowe fonty rastrowe ISO-8859-10.
 
 %package ISO8859-11
 Summary:	ISO-8859-11 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-11
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-11
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -217,7 +217,7 @@ Podstawowe fonty rastrowe ISO-8859-11.
 
 %package ISO8859-12
 Summary:	ISO-8859-12 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-12
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-12
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -230,7 +230,7 @@ Podstawowe fonty rastrowe ISO-8859-12.
 
 %package ISO8859-13
 Summary:	ISO-8859-13 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-13
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-13
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -243,7 +243,7 @@ Podstawowe fonty rastrowe ISO-8859-13.
 
 %package ISO8859-14
 Summary:	ISO-8859-14 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-14
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-14
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -256,7 +256,7 @@ Podstawowe fonty rastrowe ISO-8859-14.
 
 %package ISO8859-15
 Summary:	ISO-8859-15 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-15
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-15
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -269,7 +269,7 @@ Podstawowe fonty rastrowe ISO-8859-15.
 
 %package ISO8859-16
 Summary:	ISO-8859-16 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe ISO-8859-16
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe ISO-8859-16
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -282,7 +282,7 @@ Podstawowe fonty rastrowe ISO-8859-16.
 
 %package JISX0201.1976-0
 Summary:	JISX0201.1976-0 basic raster fonts
-Summary(pl.UTF-8):   Podstawowe fonty rastrowe JISX0201.1976-0
+Summary(pl.UTF-8):	Podstawowe fonty rastrowe JISX0201.1976-0
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -295,7 +295,7 @@ Podstawowe fonty rastrowe JISX0201.1976-0.
 
 %package KOI8-R
 Summary:	KOI8-R (cyrillic) raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe KOI8-R (cyrylica)
+Summary(pl.UTF-8):	Fonty rastrowe KOI8-R (cyrylica)
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
@@ -309,10 +309,10 @@ Fonty rastrowe KOI8-R (cyrylica).
 
 %package 75dpi
 Summary:	X11R6 75dpi raster fonts
-Summary(de.UTF-8):   X11R6 75 dpi-Fonts
-Summary(fr.UTF-8):   Fontes 75 dpi X11R6
-Summary(pl.UTF-8):   Fonty rastrowe o rozdzielczości 75dpi
-Summary(tr.UTF-8):   X11R6 75dpi yazıtipleri
+Summary(de.UTF-8):	X11R6 75 dpi-Fonts
+Summary(fr.UTF-8):	Fontes 75 dpi X11R6
+Summary(pl.UTF-8):	Fonty rastrowe o rozdzielczości 75dpi
+Summary(tr.UTF-8):	X11R6 75dpi yazıtipleri
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Obsoletes:	XFree86-75dpi-fonts
@@ -345,7 +345,7 @@ kullanan kullanıcılar 100dpi yazıtiplerini yeğleyebilirler.
 
 %package 75dpi-ISO8859-1
 Summary:	ISO-8859-1 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-1 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-1 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -358,7 +358,7 @@ Fonty rastrowe ISO-8859-1 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-2
 Summary:	ISO-8859-2 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-2 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-2 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -373,7 +373,7 @@ Fonty rastrowe ISO-8859-2 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-3
 Summary:	ISO-8859-3 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-3 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-3 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -386,7 +386,7 @@ Fonty rastrowe ISO-8859-3 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-4
 Summary:	ISO-8859-4 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-4 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-4 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -399,7 +399,7 @@ Fonty rastrowe ISO-8859-4 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-5
 Summary:	ISO-8859-5 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-5 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-5 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -412,7 +412,7 @@ Fonty rastrowe ISO-8859-5 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-6
 Summary:	ISO-8859-6 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-6 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-6 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -425,7 +425,7 @@ Fonty rastrowe ISO-8859-6 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-7
 Summary:	ISO-8859-7 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-7 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-7 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -438,7 +438,7 @@ Fonty rastrowe ISO-8859-7 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-8
 Summary:	ISO-8859-8 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-8 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-8 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -451,7 +451,7 @@ Fonty rastrowe ISO-8859-8 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-9
 Summary:	ISO-8859-9 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-9 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-9 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -464,7 +464,7 @@ Fonty rastrowe ISO-8859-9 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-10
 Summary:	ISO-8859-10 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-10 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-10 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -477,7 +477,7 @@ Fonty rastrowe ISO-8859-10 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-11
 Summary:	ISO-8859-11 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-11 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-11 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -490,7 +490,7 @@ Fonty rastrowe ISO-8859-11 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-12
 Summary:	ISO-8859-12 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-12 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-12 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -503,7 +503,7 @@ Fonty rastrowe ISO-8859-12 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-13
 Summary:	ISO-8859-13 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-13 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-13 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -516,7 +516,7 @@ Fonty rastrowe ISO-8859-13 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-14
 Summary:	ISO-8859-14 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-14 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-14 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -529,7 +529,7 @@ Fonty rastrowe ISO-8859-14 o rozdzielczości 75dpi.
 
 %package 75dpi-ISO8859-15
 Summary:	ISO-8859-15 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-15 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-15 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -542,7 +542,7 @@ Fonty rastrowe ISO-8859-15 o rozdzielczości 75dpi.
 
 %package 75dpi-JISX0201.1976-0
 Summary:	JISX0201.1976-0 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe JISX0201.1976-0 o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe JISX0201.1976-0 o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -555,7 +555,7 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczości 75dpi.
 
 %package 75dpi-KOI8-R
 Summary:	KOI8-R 75dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe KOI8-R o rozdzielczości 75dpi
+Summary(pl.UTF-8):	Fonty rastrowe KOI8-R o rozdzielczości 75dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/75dpi
@@ -568,10 +568,10 @@ Fonty rastrowe ISO-KOI8-R o rozdzielczości 75dpi.
 
 %package 100dpi
 Summary:	X11R6 100dpi raster fonts
-Summary(de.UTF-8):   X11R6 100dpi-Fonts
-Summary(fr.UTF-8):   Fontes 100ppp pour X11R6
-Summary(pl.UTF-8):   Fonty rastrowe o rozdzielczości 100dpi
-Summary(tr.UTF-8):   X11R6 100dpi yazıtipleri
+Summary(de.UTF-8):	X11R6 100dpi-Fonts
+Summary(fr.UTF-8):	Fontes 100ppp pour X11R6
+Summary(pl.UTF-8):	Fonty rastrowe o rozdzielczości 100dpi
+Summary(tr.UTF-8):	X11R6 100dpi yazıtipleri
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Obsoletes:	XFree86-100dpi-fonts
@@ -604,7 +604,7 @@ olanlara yeğleyebilirler.
 
 %package 100dpi-ISO8859-1
 Summary:	ISO-8859-1 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-1 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-1 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -617,7 +617,7 @@ Fonty rastrowe ISO-8859-1 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-2
 Summary:	ISO-8859-2 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-2 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-2 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -632,7 +632,7 @@ Fonty rastrowe ISO-8859-2 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-3
 Summary:	ISO-8859-3 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-3 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-3 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -645,7 +645,7 @@ Fonty rastrowe ISO-8859-3 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-4
 Summary:	ISO-8859-4 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-4 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-4 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -658,7 +658,7 @@ Fonty rastrowe ISO-8859-4 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-5
 Summary:	ISO-8859-5 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-5 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-5 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -671,7 +671,7 @@ Fonty rastrowe ISO-8859-5 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-6
 Summary:	ISO-8859-6 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-6 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-6 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -684,7 +684,7 @@ Fonty rastrowe ISO-8859-6 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-7
 Summary:	ISO-8859-7 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-7 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-7 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -697,7 +697,7 @@ Fonty rastrowe ISO-8859-7 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-8
 Summary:	ISO-8859-8 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-8 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-8 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -710,7 +710,7 @@ Fonty rastrowe ISO-8859-8 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-9
 Summary:	ISO-8859-9 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-9 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-9 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -723,7 +723,7 @@ Fonty rastrowe ISO-8859-9 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-10
 Summary:	ISO-8859-10 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-10 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-10 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -736,7 +736,7 @@ Fonty rastrowe ISO-8859-10 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-11
 Summary:	ISO-8859-11 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-11 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-11 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -749,7 +749,7 @@ Fonty rastrowe ISO-8859-11 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-12
 Summary:	ISO-8859-12 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-12 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-12 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -762,7 +762,7 @@ Fonty rastrowe ISO-8859-12 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-13
 Summary:	ISO-8859-13 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-13 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-13 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -775,7 +775,7 @@ Fonty rastrowe ISO-8859-13 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-14
 Summary:	ISO-8859-14 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-14 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-14 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -788,7 +788,7 @@ Fonty rastrowe ISO-8859-14 o rozdzielczości 100dpi.
 
 %package 100dpi-ISO8859-15
 Summary:	ISO-8859-15 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe ISO-8859-15 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe ISO-8859-15 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -801,7 +801,7 @@ Fonty rastrowe ISO-8859-15 o rozdzielczości 100dpi.
 
 %package 100dpi-JISX0201.1976-0
 Summary:	JISX0201.1976-0 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe JISX0201.1976-0 o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe JISX0201.1976-0 o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -814,7 +814,7 @@ Fonty rastrowe JISX0201.1976-0 o rozdzielczości 100dpi.
 
 %package 100dpi-KOI8-R
 Summary:	KOI8-R 100dpi raster fonts
-Summary(pl.UTF-8):   Fonty rastrowe KOI8-R o rozdzielczości 100dpi
+Summary(pl.UTF-8):	Fonty rastrowe KOI8-R o rozdzielczości 100dpi
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/100dpi
@@ -827,7 +827,7 @@ Fonty rastrowe KOI8-R o rozdzielczości 100dpi.
 
 %package Ethiopic
 Summary:	Ethiopic OpenType and TrueType fonts
-Summary(pl.UTF-8):   Etiopskie fonty OpenType i TrueType
+Summary(pl.UTF-8):	Etiopskie fonty OpenType i TrueType
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/OTF
@@ -841,7 +841,7 @@ Etiopskie fonty OpenType i TrueType.
 
 %package Syriac
 Summary:	Syriac OpenType fonts
-Summary(pl.UTF-8):   Starosyryjskie fonty OpenType
+Summary(pl.UTF-8):	Starosyryjskie fonty OpenType
 License:	distributable without modifications
 Group:		Fonts
 Requires(post,postun):	fontpostinst
