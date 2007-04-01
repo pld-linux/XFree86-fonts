@@ -16,7 +16,6 @@ Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-
 Source3:	http://www.biz.net.pl/images/ISO8859-2-bdf.tar.gz
 # Source3-md5:	5dd69ab949d833944048b10a97f7a589
 Source4:	%{name}.Fontmap
-Source5:	vga.pcf
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-do_not_run_fccache.patch
 Patch2:		%{name}-ISO8859-2.patch
@@ -950,9 +949,6 @@ rm -f $RPM_BUILD_ROOT%{_fontsdir}/Speedo/fonts.scale
 #tail -n +2 $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale \
 #	> $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale.XFree86-fonts
 #rm -f $RPM_BUILD_ROOT%{_fontsdir}/CID/fonts.scale
-
-install %{SOURCE5} $RPM_BUILD_ROOT%{_fontsdir}/misc
-gzip -9nf $RPM_BUILD_ROOT%{_fontsdir}/misc/vga.pcf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
