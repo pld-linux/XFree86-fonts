@@ -1,25 +1,29 @@
 Summary:	XFree86 Fonts
 Summary(pl.UTF-8):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.4.0
-Release:	2
+Version:	4.6.0
+Release:	1
 License:	MIT
 Group:		Fonts
-#Source0:	ftp://ftp.xfree86.org/pub/XFree86/develsnaps/XFree86-%{version}.tar.bz2
 # We need source0 for arabic fonts
 Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-1.tgz
-# Source0-md5:	97cea3d9e1197dde32ca34e3b6086469
+# Source0-md5:	6c05f3486f088d01584f4517540e8d18
 Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-4.tgz
-# Source1-md5:	5d1792f5c154c7462c6aef39c7853b3b
+# Source1-md5:	102ed22d33bd31a5853cb5addb51d7c9
 Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-5.tgz
-# Source2-md5:	5c37f028efc6d54a9c725e333f9cc8ae
+# Source2-md5:	f66708c7ff882e4ca232896266fbf92f
 Source3:	%{name}.Fontmap
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-do_not_run_fccache.patch
 Patch2:		%{name}-TTF_build.patch
-#BuildRequires:	XFree86 >= %{version}-1
-#BuildRequires:	XFree86-devel >= %{version}-1
-BuildRequires:	XFree86
+# allow utils from X11R7
+%if %(test -x /usr/bin/bdftopcf ; echo $?)
+BuildRequires:	XFree86-devel
+%else
+BuildRequires:	xorg-app-bdftopcf
+BuildRequires:	xorg-cf-files
+BuildRequires:	xorg-util-imake
+%endif
 BuildRequires:	perl
 BuildRequires:	t1utils
 Requires(post,postun):	fontpostinst
@@ -34,6 +38,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_t1fontsdir	%{_fontsdir}/Type1
 %define		_t1afmdir	%{_t1fontsdir}/afm
 %define		_t1pfmdir	%{_t1fontsdir}/pfm
+
+%if %(test -d /usr/%{_lib}/X11/config ; echo $?)
+%define		xconfdir	%{_prefix}/lib/X11/config
+%else
+%define		xconfdir	/usr/%{_lib}/X11/config
+%endif
 
 %description
 This package contains some common used fonts. Normally fonts are
@@ -860,11 +870,11 @@ cp -f xc/extras/fonts/ClearlyU/*.bdf xc/fonts/bdf/misc
 
 %build
 cd xc/fonts
-imake -DBuildFonts -DUseInstalled -I%{_prefix}/lib/X11/config
+imake -DBuildFonts -DUseInstalled -I%{xconfdir}
 %{__make} Makefiles
 cd scaled
-imake -DBuildFonts -DBuildEthiopicFonts -DBuildBethMarduthoFonts \
-	-DUseInstalled -I%{_prefix}/lib/X11/config
+imake -DBuildFonts -DBuildEthiopicFonts -DBuildBethMarduthoFonts -DBuildSpeedoFonts \
+	-DUseInstalled -I%{xconfdir}
 %{__make} Makefiles
 cd ..
 %{__make} depend
@@ -886,12 +896,16 @@ cd xc
 	UCS2ANY=`pwd`/fonts/util/ucs2any.pl \
 	BDFTRUNCATE=`pwd`/fonts/util/bdftruncate.pl \
 	UCSMAPPREFIX=`pwd`/fonts/util/map- \
+	BINDIR=%{_bindir} \
+	FONTDIR=%{_fontsdir} \
+	ENCODINGSDIR=%{_fontsdir}/encodings \
 	DESTDIR=$RPM_BUILD_ROOT
 %{__make} -C fonts install.man \
 	TOP=`pwd` \
 	UCS2ANY=`pwd`/fonts/util/ucs2any.pl \
 	BDFTRUNCATE=`pwd`/fonts/util/bdftruncate.pl \
 	UCSMAPPREFIX=`pwd`/fonts/util/map- \
+	MANDIR=%{_mandir}/man1 \
 	DESTDIR=$RPM_BUILD_ROOT
 cd ..
 
