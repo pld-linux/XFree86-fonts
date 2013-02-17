@@ -1,17 +1,17 @@
 Summary:	XFree86 Fonts
 Summary(pl.UTF-8):	Fonty dla systemu XFree86
 Name:		XFree86-fonts
-Version:	4.7.0
+Version:	4.8.0
 Release:	1
 License:	MIT
 Group:		Fonts
 # We need source0 for arabic fonts
-Source0:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-1.tgz
-# Source0-md5:	e452e53240d16091abdc4f4bd2967ebd
-Source1:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-4.tgz
-# Source1-md5:	e622168021c7e8ca60928fbb9febdae5
-Source2:	ftp://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-5.tgz
-# Source2-md5:	05a3f3ce703df2fd24112cb8e9d86f73
+Source0:	http://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-1.tgz
+# Source0-md5:	42d802caf03cbaadfa3a69b887e9b203
+Source1:	http://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-4.tgz
+# Source1-md5:	2743099973f1bd3a73bcb7b05df0f279
+Source2:	http://ftp.xfree86.org/pub/XFree86/%{version}/source/XFree86-%{version}-src-5.tgz
+# Source2-md5:	236c807d4f426850f24784ccceec08ab
 Source3:	%{name}.Fontmap
 Patch0:		%{name}-extras-fix.patch
 Patch1:		%{name}-do_not_run_fccache.patch
@@ -24,7 +24,7 @@ BuildRequires:	xorg-app-bdftopcf
 BuildRequires:	xorg-cf-files
 BuildRequires:	xorg-util-imake
 %endif
-BuildRequires:	perl
+BuildRequires:	perl-base
 BuildRequires:	t1utils
 Requires(post,postun):	fontpostinst
 Requires:	%{name}-base = %{version}
